@@ -11,7 +11,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\main.cpp">
+    <ClCompile Include="src\triangle-rasterizer-demo\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

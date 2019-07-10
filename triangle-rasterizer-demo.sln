@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29102.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "triangle-rasterizer-demo", "projects\triangle-rasterizer-demo\triangle-rasterizer-demo.vcxproj", "{9D405F52-3447-4DD9-A717-FA4D9D4141FE}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "triangle-rasterizer-demo", "triangle-rasterizer-demo.vcxproj", "{9D405F52-3447-4DD9-A717-FA4D9D4141FE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
