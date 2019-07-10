@@ -1,8 +1,12 @@
 #include <iostream>
 
+#include "trd/trdApp.hpp"
+
 int main()
 {
 	std::cout << "Hello, world" << std::endl;
 
-	return 0;
+	trd::App app;
+
+	return app.MainLoop();
 }
