@@ -1,0 +1,3 @@
+[submodule "projects/triangle-rasterizer"]
+	path = projects/triangle-rasterizer
+	url = https://github.com/frmr/triangle-rasterizer
