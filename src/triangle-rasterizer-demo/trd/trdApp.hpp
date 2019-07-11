@@ -12,7 +12,7 @@ namespace trd
 		                App();
 		                ~App();
 
-		int             mainLoop();
+		void            mainLoop();
 
 	private:
 		void            initSdl();

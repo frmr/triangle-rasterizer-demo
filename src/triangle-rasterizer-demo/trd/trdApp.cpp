@@ -110,7 +110,7 @@ void trd::App::renderColorBufferToWindow()
 	SDL_RenderPresent(m_sdlRenderer);
 }
 
-int trd::App::mainLoop()
+void trd::App::mainLoop()
 {
 	//const std::vector<tr::Vertex>     vertices         = defineVertices();
 	//const float                       aspectRatio      = float(screenWidth) / float(screenHeight);
@@ -138,12 +138,11 @@ int trd::App::mainLoop()
 	//shader.setTextureFiltering(false);
 	//shader.setBlendMode(tr::BlendMode::None);
 
-	double cumulativeFrameTime = 0.0;
-	int    frameCount = 0;
+	int       frameCount = 0;
+	tf::Timer timer;
 
 	while (m_running)
 	{
-		tf::Timer timer;
 		//Matrix4   viewMatrix;
 
 		updateInputs();
@@ -169,17 +168,15 @@ int trd::App::mainLoop()
 
 		renderColorBufferToWindow();
 
-		cumulativeFrameTime += timer.GetMilliseconds();
 		++frameCount;
 
-		if (frameCount == 50)
-		{
-			std::cout << cumulativeFrameTime / frameCount << "ms" << std::endl;
+		const double elapsed = timer.GetMilliseconds();
 
-			cumulativeFrameTime = 0.0;
+		if (elapsed >= 1000)
+		{
+			std::cout << int(frameCount * (1000.0 / elapsed)) << std::endl;
 			frameCount          = 0;
+			timer.Reset();
 		}
 	}
-
-	return 0;
 }
