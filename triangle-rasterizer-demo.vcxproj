@@ -11,8 +11,15 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\tf\src\tfBinaryFile.cpp" />
+    <ClCompile Include="src\tf\src\tfLogger.cpp" />
+    <ClCompile Include="src\tf\src\tfString.cpp" />
+    <ClCompile Include="src\tf\src\tfStringW.cpp" />
+    <ClCompile Include="src\tf\src\tfTextFile.cpp" />
+    <ClCompile Include="src\tf\src\tfTimer.cpp" />
     <ClCompile Include="src\triangle-rasterizer-demo\main.cpp" />
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdApp.cpp" />
+    <ClCompile Include="src\triangle-rasterizer-demo\trd\trdSettings.cpp" />
     <ClCompile Include="src\triangle-rasterizer\src\lodepng\lodepng.cpp" />
     <ClCompile Include="src\triangle-rasterizer\src\matrix\Matrices.cpp" />
     <ClCompile Include="src\triangle-rasterizer\src\tr\trDefaultShader.cpp" />
@@ -21,7 +28,36 @@
     <ClCompile Include="src\triangle-rasterizer\src\tr\trVertex.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\tf\src\tfBinaryFile.hpp" />
+    <ClInclude Include="src\tf\src\tfCsvFile.hpp" />
+    <ClInclude Include="src\tf\src\tfCsvLine.hpp" />
+    <ClInclude Include="src\tf\src\tfFileContentException.hpp" />
+    <ClInclude Include="src\tf\src\tfFileIoException.hpp" />
+    <ClInclude Include="src\tf\src\tfList.hpp" />
+    <ClInclude Include="src\tf\src\tfLock.hpp" />
+    <ClInclude Include="src\tf\src\tfLogger.hpp" />
+    <ClInclude Include="src\tf\src\tfMap.hpp" />
+    <ClInclude Include="src\tf\src\tfMultiMap.hpp" />
+    <ClInclude Include="src\tf\src\tfMultiset.hpp" />
+    <ClInclude Include="src\tf\src\tfQueue.hpp" />
+    <ClInclude Include="src\tf\src\tfRandomRange.hpp" />
+    <ClInclude Include="src\tf\src\tfSeekOrigin.hpp" />
+    <ClInclude Include="src\tf\src\tfSet.hpp" />
+    <ClInclude Include="src\tf\src\tfString.hpp" />
+    <ClInclude Include="src\tf\src\tfStringBase.hpp" />
+    <ClInclude Include="src\tf\src\tfStringW.hpp" />
+    <ClInclude Include="src\tf\src\tfTextFile.hpp" />
+    <ClInclude Include="src\tf\src\tfThread.hpp" />
+    <ClInclude Include="src\tf\src\tfTimer.hpp" />
+    <ClInclude Include="src\tf\src\tfUnorderedMap.hpp" />
+    <ClInclude Include="src\tf\src\tfUnorderedMultimap.hpp" />
+    <ClInclude Include="src\tf\src\tfUnorderedSet.hpp" />
+    <ClInclude Include="src\tf\src\tfVector.hpp" />
+    <ClInclude Include="src\tf\src\tfWait.hpp" />
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdApp.hpp" />
+    <ClInclude Include="src\triangle-rasterizer-demo\trd\trdExternalLibraryException.hpp" />
+    <ClInclude Include="src\triangle-rasterizer-demo\trd\trdScreenSize.hpp" />
+    <ClInclude Include="src\triangle-rasterizer-demo\trd\trdSettings.hpp" />
     <ClInclude Include="src\triangle-rasterizer\src\lodepng\lodepng.h" />
     <ClInclude Include="src\triangle-rasterizer\src\matrix\Matrices.h" />
     <ClInclude Include="src\triangle-rasterizer\src\matrix\Vectors.h" />
@@ -83,11 +119,13 @@
     <LinkIncremental>true</LinkIncremental>
     <OutDir>bin\$(Configuration)\</OutDir>
     <IntDir>bin\$(Configuration)\</IntDir>
+    <CustomBuildAfterTargets>Build</CustomBuildAfterTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>bin\$(Configuration)\</OutDir>
     <IntDir>bin\$(Configuration)\</IntDir>
+    <CustomBuildAfterTargets>Build</CustomBuildAfterTargets>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -96,14 +134,22 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS;_SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>src\triangle-rasterizer\src\tr;src\tf\src;C:\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\SDL2\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <CustomBuildStep>
+      <Command>copy C:\SDL2\lib\x64\SDL2.dll $(OutDir)</Command>
+      <Outputs>$(OutDir)\SDL2.dll</Outputs>
+    </CustomBuildStep>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -114,16 +160,24 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS;_SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>src\triangle-rasterizer\src\tr;src\tf\src;C:\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\SDL2\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <CustomBuildStep>
+      <Command>copy C:\SDL2\lib\x64\SDL2.dll $(OutDir)</Command>
+      <Outputs>$(OutDir)\SDL2.dll</Outputs>
+    </CustomBuildStep>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
