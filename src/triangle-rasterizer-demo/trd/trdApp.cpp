@@ -53,6 +53,8 @@ void trd::App::initWindow()
 	{
 		throw ExternalLibraryException("trd::App::initWindow(): Failed to initialize SDL teuxtre");
 	}
+
+	m_colorBuffer = tr::ColorBuffer(m_settings.getScreenSize().width, m_settings.getScreenSize().height);
 }
 
 void trd::App::deinitWindow()
@@ -101,7 +103,7 @@ void trd::App::renderColorBufferToWindow()
  	SDL_SetRenderTarget(m_sdlRenderer, m_sdlTexture);
 	SDL_LockTexture(m_sdlTexture, NULL, (void**)&pixels, &pitch);
 
- 	//memcpy(pixels, m_colorBuffer.getData(), m_colorBuffer.getWidth() * m_colorBuffer.getHeight() * 4);
+ 	memcpy(pixels, m_colorBuffer.getData(), m_colorBuffer.getWidth() * m_colorBuffer.getHeight() * 4);
 
  	SDL_UnlockTexture(m_sdlTexture);
 	SDL_RenderCopy(m_sdlRenderer, m_sdlTexture, NULL, NULL);
@@ -115,7 +117,6 @@ int trd::App::mainLoop()
 	//const Matrix4                     projectionMatrix = createPerspectiveProjectionMatrix(-aspectRatio, aspectRatio, -1.0f, 1.0f, 1.0f, 100.0f);
 
 	//tr::Texture                       texture("data/udon.png");
-	//tr::ColorBuffer                   colorBuffer(screenWidth, screenHeight);
 	//tr::DepthBuffer                   depthBuffer(screenWidth, screenHeight);
 	//tr::DefaultShader                 shader;
 
@@ -140,8 +141,6 @@ int trd::App::mainLoop()
 	double cumulativeFrameTime = 0.0;
 	int    frameCount = 0;
 
-
-
 	while (m_running)
 	{
 		tf::Timer timer;
@@ -155,6 +154,8 @@ int trd::App::mainLoop()
 			m_reinitWindow = false;
 		}
 
+		m_colorBuffer.fill(tr::Color(0, 0, 0, 255));
+		m_colorBuffer.at(5, 5) = tr::Color(255, 255, 255, 255);
 		//viewMatrix.identity();
 		//viewMatrix.translate(-cameraPosition.x, -cameraPosition.y, -cameraPosition.z);
 		//viewMatrix.rotateY(-cameraRotation.y);
