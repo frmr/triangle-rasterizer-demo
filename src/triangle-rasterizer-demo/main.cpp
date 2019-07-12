@@ -4,8 +4,6 @@
 
 int main(int argc, char* argv[])
 {
-	std::cout << "Hello, world" << std::endl;
-
 	try
 	{
 		trd::App app;

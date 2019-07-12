@@ -1,6 +1,7 @@
 #include "trdApp.hpp"
-#include "tfTimer.hpp"
 #include "trdExternalLibraryException.hpp"
+#include "trdInstructions.hpp"
+#include "trdFrameRateCounter.hpp"
 
 trd::App::App() :
 	m_reinitWindow(false),
@@ -79,8 +80,9 @@ void trd::App::updateInputs()
 			constexpr float translationIncrement = 0.1f;
 			constexpr float rotationIncrement    = 2.0f;
 
- 			if      (event.key.keysym.sym == SDLK_ESCAPE) { m_running = false;                    }
-			else if (event.key.keysym.sym == SDLK_1)      { m_settings.cycleScreenSize(); m_reinitWindow = true;         }
+ 			if      (event.key.keysym.sym == SDLK_ESCAPE) { m_running = false;                                    }
+			else if (event.key.keysym.sym == SDLK_1)      { m_settings.cycleScreenSize();  m_reinitWindow = true; }
+			else if (event.key.keysym.sym == SDLK_2)      { m_settings.toggleFullscreen(); m_reinitWindow = true; }
 			//else if (event.key.keysym.sym == SDLK_w)      { position.z -= translationIncrement; }
 			//else if (event.key.keysym.sym == SDLK_a)      { position.x -= translationIncrement; }
 			//else if (event.key.keysym.sym == SDLK_s)      { position.z += translationIncrement; }
@@ -138,8 +140,8 @@ void trd::App::mainLoop()
 	//shader.setTextureFiltering(false);
 	//shader.setBlendMode(tr::BlendMode::None);
 
-	int       frameCount = 0;
-	tf::Timer timer;
+	trd::Instructions     instructions;
+	trd::FrameRateCounter frameRateCounter;
 
 	while (m_running)
 	{
@@ -154,7 +156,7 @@ void trd::App::mainLoop()
 		}
 
 		m_colorBuffer.fill(tr::Color(0, 0, 0, 255));
-		m_colorBuffer.at(5, 5) = tr::Color(255, 255, 255, 255);
+		//m_colorBuffer.at(5, 5) = tr::Color(255, 255, 255, 255);
 		//viewMatrix.identity();
 		//viewMatrix.translate(-cameraPosition.x, -cameraPosition.y, -cameraPosition.z);
 		//viewMatrix.rotateY(-cameraRotation.y);
@@ -166,17 +168,11 @@ void trd::App::mainLoop()
 		//rasterizer.setMatrix(projectionMatrix * viewMatrix);
 		//rasterizer.draw(vertices, shader, colorBuffer, depthBuffer);
 
+		instructions.draw(m_settings, m_colorBuffer);
+		frameRateCounter.draw(m_settings.getScreenSize(), m_colorBuffer);
+
 		renderColorBufferToWindow();
 
-		++frameCount;
-
-		const double elapsed = timer.GetMilliseconds();
-
-		if (elapsed >= 1000)
-		{
-			std::cout << int(frameCount * (1000.0 / elapsed)) << std::endl;
-			frameCount          = 0;
-			timer.Reset();
-		}
+		frameRateCounter.update();
 	}
 }
