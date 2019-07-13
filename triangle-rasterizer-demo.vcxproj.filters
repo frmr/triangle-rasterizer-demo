@@ -83,7 +83,25 @@
       <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
     </ClCompile>
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdFrameRateCounter.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\triangle-rasterizer-demo\trd\trdCamera.cpp">
+      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\triangle-rasterizer-demo\trd\trdMesh.cpp">
+      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\triangle-rasterizer-demo\trd\trdTextureMap.cpp">
+      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\triangle-rasterizer-demo\trd\trdMeshMap.cpp">
+      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\triangle-rasterizer-demo\trd\trdModel.cpp">
+      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\triangle-rasterizer-demo\trd\trdShader.cpp">
+      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -262,6 +280,27 @@
       <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
     </ClInclude>
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdFrameRateCounter.hpp">
+      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\triangle-rasterizer-demo\trd\trdCamera.hpp">
+      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\triangle-rasterizer-demo\trd\trdMesh.hpp">
+      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\triangle-rasterizer-demo\trd\trdModel.hpp">
+      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\triangle-rasterizer-demo\trd\trdTextureMap.hpp">
+      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\triangle-rasterizer-demo\trd\trdMeshMap.hpp">
+      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\triangle-rasterizer-demo\trd\trdShader.hpp">
+      <Filter>Source Files\triangle-rasterizer\tr</Filter>
+    </ClInclude>
+    <ClInclude Include="src\triangle-rasterizer-demo\trd\trdRenderMode.hpp">
       <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
     </ClInclude>
   </ItemGroup>

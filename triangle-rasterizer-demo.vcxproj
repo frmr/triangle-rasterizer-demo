@@ -19,10 +19,16 @@
     <ClCompile Include="src\tf\src\tfTimer.cpp" />
     <ClCompile Include="src\triangle-rasterizer-demo\main.cpp" />
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdApp.cpp" />
+    <ClCompile Include="src\triangle-rasterizer-demo\trd\trdCamera.cpp" />
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdFrameRateCounter.cpp" />
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdInstructions.cpp" />
+    <ClCompile Include="src\triangle-rasterizer-demo\trd\trdMesh.cpp" />
+    <ClCompile Include="src\triangle-rasterizer-demo\trd\trdMeshMap.cpp" />
+    <ClCompile Include="src\triangle-rasterizer-demo\trd\trdModel.cpp" />
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdSettings.cpp" />
+    <ClCompile Include="src\triangle-rasterizer-demo\trd\trdShader.cpp" />
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdTextRenderer.cpp" />
+    <ClCompile Include="src\triangle-rasterizer-demo\trd\trdTextureMap.cpp" />
     <ClCompile Include="src\triangle-rasterizer\src\lodepng\lodepng.cpp" />
     <ClCompile Include="src\triangle-rasterizer\src\matrix\Matrices.cpp" />
     <ClCompile Include="src\triangle-rasterizer\src\tr\trDefaultShader.cpp" />
@@ -59,14 +65,21 @@
     <ClInclude Include="src\tf\src\tfWait.hpp" />
     <ClInclude Include="src\triangle-rasterizer-demo\font8x8\font8x8_basic.h" />
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdApp.hpp" />
+    <ClInclude Include="src\triangle-rasterizer-demo\trd\trdCamera.hpp" />
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdCorner.hpp" />
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdExternalLibraryException.hpp" />
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdFrameRateCounter.hpp" />
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdInstructions.hpp" />
+    <ClInclude Include="src\triangle-rasterizer-demo\trd\trdMesh.hpp" />
+    <ClInclude Include="src\triangle-rasterizer-demo\trd\trdMeshMap.hpp" />
+    <ClInclude Include="src\triangle-rasterizer-demo\trd\trdModel.hpp" />
+    <ClInclude Include="src\triangle-rasterizer-demo\trd\trdRenderMode.hpp" />
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdScreenPos.hpp" />
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdScreenSize.hpp" />
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdSettings.hpp" />
+    <ClInclude Include="src\triangle-rasterizer-demo\trd\trdShader.hpp" />
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdTextRenderer.hpp" />
+    <ClInclude Include="src\triangle-rasterizer-demo\trd\trdTextureMap.hpp" />
     <ClInclude Include="src\triangle-rasterizer\src\lodepng\lodepng.h" />
     <ClInclude Include="src\triangle-rasterizer\src\matrix\Matrices.h" />
     <ClInclude Include="src\triangle-rasterizer\src\matrix\Vectors.h" />
@@ -146,7 +159,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS;_SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>X:\produce\triangle-rasterizer-demo\src\triangle-rasterizer-demo\font8x8;src\triangle-rasterizer\src\tr;src\tf\src;C:\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src\triangle-rasterizer\src\matrix;src\triangle-rasterizer-demo\font8x8;src\triangle-rasterizer\src\tr;src\tf\src;C:\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
@@ -172,7 +185,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS;_SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>X:\produce\triangle-rasterizer-demo\src\triangle-rasterizer-demo\font8x8;src\triangle-rasterizer\src\tr;src\tf\src;C:\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src\triangle-rasterizer\src\matrix;src\triangle-rasterizer-demo\font8x8;src\triangle-rasterizer\src\tr;src\tf\src;C:\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>

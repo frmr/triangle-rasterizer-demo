@@ -2,13 +2,16 @@
 #include "trdExternalLibraryException.hpp"
 #include "trdInstructions.hpp"
 #include "trdFrameRateCounter.hpp"
+#include "trdMeshMap.hpp"
+#include "trdModel.hpp"
 
 trd::App::App() :
 	m_reinitWindow(false),
 	m_running(false),
 	m_sdlWindow(nullptr),
 	m_sdlRenderer(nullptr),
-	m_sdlTexture(nullptr)
+	m_sdlTexture(nullptr),
+	m_camera(m_settings.getScreenSize(), 1.0f, 100.0f)
 {
 	initSdl();
 	initWindow();
@@ -56,6 +59,8 @@ void trd::App::initWindow()
 	}
 
 	m_colorBuffer = tr::ColorBuffer(m_settings.getScreenSize().width, m_settings.getScreenSize().height);
+	m_depthBuffer = tr::DepthBuffer(m_settings.getScreenSize().width, m_settings.getScreenSize().height);
+	m_camera.setPerspective(m_settings.getScreenSize(), 1.0f, 1000.0f);
 }
 
 void trd::App::deinitWindow()
@@ -80,19 +85,20 @@ void trd::App::updateInputs()
 			constexpr float translationIncrement = 0.1f;
 			constexpr float rotationIncrement    = 2.0f;
 
- 			if      (event.key.keysym.sym == SDLK_ESCAPE) { m_running = false;                                    }
-			else if (event.key.keysym.sym == SDLK_1)      { m_settings.cycleScreenSize();  m_reinitWindow = true; }
-			else if (event.key.keysym.sym == SDLK_2)      { m_settings.toggleFullscreen(); m_reinitWindow = true; }
-			//else if (event.key.keysym.sym == SDLK_w)      { position.z -= translationIncrement; }
-			//else if (event.key.keysym.sym == SDLK_a)      { position.x -= translationIncrement; }
-			//else if (event.key.keysym.sym == SDLK_s)      { position.z += translationIncrement; }
-			//else if (event.key.keysym.sym == SDLK_d)      { position.x += translationIncrement; }
-			//else if (event.key.keysym.sym == SDLK_SPACE)  { position.y += translationIncrement; }
-			//else if (event.key.keysym.sym == SDLK_LCTRL)  { position.y -= translationIncrement; }
-			//else if (event.key.keysym.sym == SDLK_LEFT)   { rotation.y += rotationIncrement;    }
-			//else if (event.key.keysym.sym == SDLK_RIGHT)  { rotation.y -= rotationIncrement;    }
-			//else if (event.key.keysym.sym == SDLK_UP)     { rotation.x += rotationIncrement;    }
-			//else if (event.key.keysym.sym == SDLK_DOWN)   { rotation.x -= rotationIncrement;    }
+ 			if      (event.key.keysym.sym == SDLK_ESCAPE) { m_running = false;                                              }
+			else if (event.key.keysym.sym == SDLK_1)      { m_settings.cycleScreenSize();  m_reinitWindow = true;           }
+			else if (event.key.keysym.sym == SDLK_2)      { m_settings.toggleFullscreen(); m_reinitWindow = true;           }
+			else if (event.key.keysym.sym == SDLK_3)      { m_settings.cycleRenderMode();                                   }
+			else if (event.key.keysym.sym == SDLK_w)      { m_camera.translate(Vector3(0.0f, 0.0f, translationIncrement));  }
+			else if (event.key.keysym.sym == SDLK_a)      { m_camera.translate(Vector3(translationIncrement, 0.0f, 0.0f));  }
+			else if (event.key.keysym.sym == SDLK_s)      { m_camera.translate(Vector3(0.0f, 0.0f, -translationIncrement)); }
+			else if (event.key.keysym.sym == SDLK_d)      { m_camera.translate(Vector3(-translationIncrement, 0.0f, 0.0f)); }
+			else if (event.key.keysym.sym == SDLK_SPACE)  { m_camera.translate(Vector3(0.0f, -translationIncrement, 0.0f)); }
+			else if (event.key.keysym.sym == SDLK_LCTRL)  { m_camera.translate(Vector3(0.0f, translationIncrement, 0.0f));  }
+			else if (event.key.keysym.sym == SDLK_LEFT)   { m_camera.rotate(Vector2(0.0f, -rotationIncrement));             }
+			else if (event.key.keysym.sym == SDLK_RIGHT)  { m_camera.rotate(Vector2(0.0f, rotationIncrement));              }
+			else if (event.key.keysym.sym == SDLK_UP)     { m_camera.rotate(Vector2(-rotationIncrement, 0.0f));             }
+			else if (event.key.keysym.sym == SDLK_DOWN)   { m_camera.rotate(Vector2(rotationIncrement, 0.0f));              }
 		}
 	}
 }
@@ -114,40 +120,26 @@ void trd::App::renderColorBufferToWindow()
 
 void trd::App::mainLoop()
 {
-	//const std::vector<tr::Vertex>     vertices         = defineVertices();
-	//const float                       aspectRatio      = float(screenWidth) / float(screenHeight);
-	//const Matrix4                     projectionMatrix = createPerspectiveProjectionMatrix(-aspectRatio, aspectRatio, -1.0f, 1.0f, 1.0f, 100.0f);
+	m_rasterizer.setCullFaceMode(tr::CullFaceMode::None);
+	m_rasterizer.setPrimitive(tr::Primitive::Triangles);
+	m_rasterizer.setTextureMode(tr::TextureMode::Perspective);
 
-	//tr::Texture                       texture("data/udon.png");
-	//tr::DepthBuffer                   depthBuffer(screenWidth, screenHeight);
-	//tr::DefaultShader                 shader;
+	Instructions     instructions;
+	FrameRateCounter frameRateCounter;
 
-	//Vector4                           cameraRotation(0.0f, 0.0f, 0.0f, 1.0f);
-	//Vector4                           cameraPosition(0.0f, 0.0f, 10.0f, 1.0f);
-	//
-	//tr::Rasterizer<tr::DefaultShader> rasterizer;
+	TextureMap       textureMap;
+	MeshMap          meshMap;
 
-	//texture.generateMipmaps();
+	textureMap.add("data/textures/test.png");
+	meshMap.add("test.obj", textureMap);
 
-	//rasterizer.setPrimitive(tr::Primitive::Triangles);
-	//rasterizer.setDepthTest(true);
-	//rasterizer.setTextureMode(tr::TextureMode::Perspective);
-	//rasterizer.setCullFaceMode(tr::CullFaceMode::None);
-	//rasterizer.setInterlace(0, 1);
-	//
-	//shader.setTexture(&texture);
-	//shader.setTextureWrappingMode(tr::TextureWrappingMode::Repeat);
-	//shader.setTextureFiltering(false);
-	//shader.setBlendMode(tr::BlendMode::None);
-
-	trd::Instructions     instructions;
-	trd::FrameRateCounter frameRateCounter;
+	Model model("test.obj", meshMap, Vector3(), Vector2());
 
 	while (m_running)
 	{
-		//Matrix4   viewMatrix;
-
 		updateInputs();
+
+		m_shader.setRenderMode(m_settings.getRenderMode());
 
 		if (m_reinitWindow)
 		{
@@ -156,20 +148,12 @@ void trd::App::mainLoop()
 		}
 
 		m_colorBuffer.fill(tr::Color(0, 0, 0, 255));
-		//m_colorBuffer.at(5, 5) = tr::Color(255, 255, 255, 255);
-		//viewMatrix.identity();
-		//viewMatrix.translate(-cameraPosition.x, -cameraPosition.y, -cameraPosition.z);
-		//viewMatrix.rotateY(-cameraRotation.y);
-		//viewMatrix.rotateX(-cameraRotation.x);
 
-		//colorBuffer.fill(tr::Color(0, 0, 0, 255));
-		//depthBuffer.fill(1.0f);
-
-		//rasterizer.setMatrix(projectionMatrix * viewMatrix);
-		//rasterizer.draw(vertices, shader, colorBuffer, depthBuffer);
+		model.draw(m_camera, m_rasterizer, m_shader, m_colorBuffer, m_depthBuffer);
 
 		instructions.draw(m_settings, m_colorBuffer);
 		frameRateCounter.draw(m_settings.getScreenSize(), m_colorBuffer);
+		m_camera.drawParameters(m_settings.getScreenSize(), m_colorBuffer);
 
 		renderColorBufferToWindow();
 
