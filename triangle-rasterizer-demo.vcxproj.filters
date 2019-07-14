@@ -297,10 +297,10 @@
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdMeshMap.hpp">
       <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
     </ClInclude>
-    <ClInclude Include="src\triangle-rasterizer-demo\trd\trdShader.hpp">
-      <Filter>Source Files\triangle-rasterizer\tr</Filter>
-    </ClInclude>
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdRenderMode.hpp">
+      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\triangle-rasterizer-demo\trd\trdShader.hpp">
       <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
     </ClInclude>
   </ItemGroup>

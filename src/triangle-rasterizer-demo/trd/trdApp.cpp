@@ -60,7 +60,7 @@ void trd::App::initWindow()
 
 	m_colorBuffer = tr::ColorBuffer(m_settings.getScreenSize().width, m_settings.getScreenSize().height);
 	m_depthBuffer = tr::DepthBuffer(m_settings.getScreenSize().width, m_settings.getScreenSize().height);
-	m_camera.setPerspective(m_settings.getScreenSize(), 1.0f, 1000.0f);
+	m_camera.setPerspective(m_settings.getScreenSize(), 1.0f, 100.0f);
 }
 
 void trd::App::deinitWindow()
@@ -89,16 +89,16 @@ void trd::App::updateInputs()
 			else if (event.key.keysym.sym == SDLK_1)      { m_settings.cycleScreenSize();  m_reinitWindow = true;           }
 			else if (event.key.keysym.sym == SDLK_2)      { m_settings.toggleFullscreen(); m_reinitWindow = true;           }
 			else if (event.key.keysym.sym == SDLK_3)      { m_settings.cycleRenderMode();                                   }
-			else if (event.key.keysym.sym == SDLK_w)      { m_camera.translate(Vector3(0.0f, 0.0f, translationIncrement));  }
-			else if (event.key.keysym.sym == SDLK_a)      { m_camera.translate(Vector3(translationIncrement, 0.0f, 0.0f));  }
-			else if (event.key.keysym.sym == SDLK_s)      { m_camera.translate(Vector3(0.0f, 0.0f, -translationIncrement)); }
-			else if (event.key.keysym.sym == SDLK_d)      { m_camera.translate(Vector3(-translationIncrement, 0.0f, 0.0f)); }
-			else if (event.key.keysym.sym == SDLK_SPACE)  { m_camera.translate(Vector3(0.0f, -translationIncrement, 0.0f)); }
-			else if (event.key.keysym.sym == SDLK_LCTRL)  { m_camera.translate(Vector3(0.0f, translationIncrement, 0.0f));  }
-			else if (event.key.keysym.sym == SDLK_LEFT)   { m_camera.rotate(Vector2(0.0f, -rotationIncrement));             }
-			else if (event.key.keysym.sym == SDLK_RIGHT)  { m_camera.rotate(Vector2(0.0f, rotationIncrement));              }
-			else if (event.key.keysym.sym == SDLK_UP)     { m_camera.rotate(Vector2(-rotationIncrement, 0.0f));             }
-			else if (event.key.keysym.sym == SDLK_DOWN)   { m_camera.rotate(Vector2(rotationIncrement, 0.0f));              }
+			else if (event.key.keysym.sym == SDLK_w)      { m_camera.translate(Vector3(0.0f, 0.0f, -translationIncrement)); }
+			else if (event.key.keysym.sym == SDLK_a)      { m_camera.translate(Vector3(-translationIncrement, 0.0f, 0.0f)); }
+			else if (event.key.keysym.sym == SDLK_s)      { m_camera.translate(Vector3(0.0f, 0.0f, translationIncrement));  }
+			else if (event.key.keysym.sym == SDLK_d)      { m_camera.translate(Vector3(translationIncrement, 0.0f, 0.0f));  }
+			else if (event.key.keysym.sym == SDLK_SPACE)  { m_camera.translate(Vector3(0.0f, translationIncrement, 0.0f));  }
+			else if (event.key.keysym.sym == SDLK_LCTRL)  { m_camera.translate(Vector3(0.0f, -translationIncrement, 0.0f)); }
+			else if (event.key.keysym.sym == SDLK_LEFT)   { m_camera.rotate(Vector2(0.0f, rotationIncrement));              }
+			else if (event.key.keysym.sym == SDLK_RIGHT)  { m_camera.rotate(Vector2(0.0f, -rotationIncrement));             }
+			else if (event.key.keysym.sym == SDLK_UP)     { m_camera.rotate(Vector2(rotationIncrement, 0.0f));              }
+			else if (event.key.keysym.sym == SDLK_DOWN)   { m_camera.rotate(Vector2(-rotationIncrement, 0.0f));             }
 		}
 	}
 }
@@ -120,9 +120,10 @@ void trd::App::renderColorBufferToWindow()
 
 void trd::App::mainLoop()
 {
-	m_rasterizer.setCullFaceMode(tr::CullFaceMode::None);
+	m_rasterizer.setCullFaceMode(tr::CullFaceMode::Back);
 	m_rasterizer.setPrimitive(tr::Primitive::Triangles);
 	m_rasterizer.setTextureMode(tr::TextureMode::Perspective);
+	m_rasterizer.setDepthTest(true);
 
 	Instructions     instructions;
 	FrameRateCounter frameRateCounter;
@@ -134,6 +135,8 @@ void trd::App::mainLoop()
 	meshMap.add("test.obj", textureMap);
 
 	Model model("test.obj", meshMap, Vector3(), Vector2());
+
+	m_camera.translate(Vector3(0.0f, 0.0f, 4.0f));
 
 	while (m_running)
 	{
@@ -148,6 +151,7 @@ void trd::App::mainLoop()
 		}
 
 		m_colorBuffer.fill(tr::Color(0, 0, 0, 255));
+		m_depthBuffer.fill(1.0f);
 
 		model.draw(m_camera, m_rasterizer, m_shader, m_colorBuffer, m_depthBuffer);
 

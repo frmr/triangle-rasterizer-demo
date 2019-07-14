@@ -12,7 +12,7 @@ void trd::Shader::draw(const Vector4& position, const Vector4& worldPosition, co
 	switch (m_renderMode)
 	{
 	case trd::RenderMode::Lit:
-		*color = tr::Color(255, 255, 255, 255);
+		*color = m_texture->getAt(textureCoord.x, textureCoord.y, false, tr::TextureWrappingMode::Repeat);
 		break;
 	case trd::RenderMode::FullBright:
 		*color = tr::Color(255, 0, 0, 255);
