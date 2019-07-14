@@ -4,6 +4,8 @@
 #include "trdFrameRateCounter.hpp"
 #include "trdMeshMap.hpp"
 #include "trdModel.hpp"
+#include "trdRenderManager.hpp"
+#include <thread>
 
 trd::App::App() :
 	m_reinitWindow(false),
@@ -89,6 +91,8 @@ void trd::App::updateInputs()
 			else if (event.key.keysym.sym == SDLK_1)      { m_settings.cycleScreenSize();  m_reinitWindow = true;           }
 			else if (event.key.keysym.sym == SDLK_2)      { m_settings.toggleFullscreen(); m_reinitWindow = true;           }
 			else if (event.key.keysym.sym == SDLK_3)      { m_settings.cycleRenderMode();                                   }
+			else if (event.key.keysym.sym == SDLK_4)      { m_settings.cycleNumThreads();                                   }
+			else if (event.key.keysym.sym == SDLK_5)      { m_settings.cycleTextureMode();                                  }
 			else if (event.key.keysym.sym == SDLK_w)      { m_camera.translate(Vector3(0.0f, 0.0f, -translationIncrement)); }
 			else if (event.key.keysym.sym == SDLK_a)      { m_camera.translate(Vector3(-translationIncrement, 0.0f, 0.0f)); }
 			else if (event.key.keysym.sym == SDLK_s)      { m_camera.translate(Vector3(0.0f, 0.0f, translationIncrement));  }
@@ -120,29 +124,16 @@ void trd::App::renderColorBufferToWindow()
 
 void trd::App::mainLoop()
 {
-	m_rasterizer.setCullFaceMode(tr::CullFaceMode::Back);
-	m_rasterizer.setPrimitive(tr::Primitive::Triangles);
-	m_rasterizer.setTextureMode(tr::TextureMode::Perspective);
-	m_rasterizer.setDepthTest(true);
-
 	Instructions     instructions;
 	FrameRateCounter frameRateCounter;
 
-	TextureMap       textureMap;
-	MeshMap          meshMap;
-
-	textureMap.add("data/textures/test.png");
-	meshMap.add("test.obj", textureMap);
-
-	Model model("test.obj", meshMap, Vector3(), Vector2());
-
 	m_camera.translate(Vector3(0.0f, 0.0f, 4.0f));
+
+	RenderManager renderManager(m_settings);
 
 	while (m_running)
 	{
 		updateInputs();
-
-		m_shader.setRenderMode(m_settings.getRenderMode());
 
 		if (m_reinitWindow)
 		{
@@ -153,7 +144,7 @@ void trd::App::mainLoop()
 		m_colorBuffer.fill(tr::Color(0, 0, 0, 255));
 		m_depthBuffer.fill(1.0f);
 
-		model.draw(m_camera, m_rasterizer, m_shader, m_colorBuffer, m_depthBuffer);
+		renderManager.draw(m_camera, m_colorBuffer, m_depthBuffer);
 
 		instructions.draw(m_settings, m_colorBuffer);
 		frameRateCounter.draw(m_settings.getScreenSize(), m_colorBuffer);

@@ -1,9 +1,12 @@
 #include "trdSettings.hpp"
+#include <thread>
 
 trd::Settings::Settings() :
 	m_screenSizeIndex(0),
 	m_fullscreen(false),
-	m_renderMode(RenderMode::Lit)
+	m_renderMode(RenderMode::Lit),
+	m_numThreads(std::thread::hardware_concurrency()),
+	m_textureMode(tr::TextureMode::Perspective)
 {
 	m_screenSizes.push_back({640,  480});
 	m_screenSizes.push_back({1024, 768});
@@ -37,6 +40,16 @@ void trd::Settings::cycleRenderMode()
 	}
 }
 
+void trd::Settings::cycleNumThreads()
+{
+	m_numThreads = m_numThreads % std::thread::hardware_concurrency() + 1;
+}
+
+void trd::Settings::cycleTextureMode()
+{
+	m_textureMode = (m_textureMode == tr::TextureMode::Affine) ? tr::TextureMode::Perspective : tr::TextureMode::Affine;
+}
+
 trd::ScreenSize trd::Settings::getScreenSize() const
 {
 	return m_screenSizes[m_screenSizeIndex];
@@ -50,4 +63,14 @@ bool trd::Settings::getFullscreen() const
 trd::RenderMode trd::Settings::getRenderMode() const
 {
 	return m_renderMode;
+}
+
+unsigned int trd::Settings::getNumThreads() const
+{
+	return m_numThreads;
+}
+
+tr::TextureMode trd::Settings::getTextureMode() const
+{
+	return m_textureMode;
 }

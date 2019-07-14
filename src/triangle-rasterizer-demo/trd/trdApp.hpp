@@ -33,8 +33,6 @@ namespace trd
 		SDL_Texture*           m_sdlTexture;
 		tr::ColorBuffer        m_colorBuffer;
 		tr::DepthBuffer        m_depthBuffer;
-		Shader                 m_shader;
-		tr::Rasterizer<Shader> m_rasterizer;
 		Camera                 m_camera;
 	};
 }
