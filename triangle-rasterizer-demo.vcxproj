@@ -76,6 +76,7 @@
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdModel.hpp" />
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdRenderManager.hpp" />
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdRenderMode.hpp" />
+    <ClInclude Include="src\triangle-rasterizer-demo\trd\trdRenderThread.hpp" />
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdScreenPos.hpp" />
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdScreenSize.hpp" />
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdSettings.hpp" />

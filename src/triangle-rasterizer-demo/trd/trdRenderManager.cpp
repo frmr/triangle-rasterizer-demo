@@ -2,7 +2,10 @@
 #include <thread>
 
 trd::RenderManager::RenderManager(const Settings& settings) :
-	m_settings(settings)
+	m_settings(settings),
+	m_camera(nullptr),
+	m_colorBuffer(nullptr),
+	m_depthBuffer(nullptr)
 {
 	m_textureMap.add("data/textures/test.png");
 	m_meshMap.add("test.obj", m_textureMap);
@@ -10,22 +13,60 @@ trd::RenderManager::RenderManager(const Settings& settings) :
 	m_models.emplace_back("test.obj", m_meshMap, Vector3(), Vector2());
 }
 
+trd::RenderManager::~RenderManager()
+{
+	killThreads();
+}
+
 void trd::RenderManager::draw(const Camera& camera, tr::ColorBuffer& colorBuffer, tr::DepthBuffer& depthBuffer)
 {
-	std::list<std::thread> threads;
+	m_camera      = &camera;
+	m_colorBuffer = &colorBuffer;
+	m_depthBuffer = &depthBuffer;
 
-	for (size_t i = 0; i < m_settings.getNumThreads(); ++i)
+	if (m_settings.getNumThreads() != m_threads.size())
 	{
-		threads.emplace_back(&RenderManager::renderThread, this, i, std::ref(camera), std::ref(colorBuffer), std::ref(depthBuffer));
+		initThreads(m_settings.getNumThreads());
 	}
 
-	for (std::thread& thread : threads)
+	for (auto& thread : m_threads)
 	{
-		thread.join();
+		thread->draw = true;
+		thread->conditionVariable.notify_one();
+	}
+
+	for (auto& thread : m_threads)
+	{
+		std::unique_lock<std::mutex> lock(thread->mutex);
+
+		thread->conditionVariable.wait(lock, [&]{ return thread->draw == false; });
 	}
 }
 
-void trd::RenderManager::renderThread(const size_t threadIndex, const Camera& camera, tr::ColorBuffer& colorBuffer, tr::DepthBuffer& depthBuffer) const
+void trd::RenderManager::initThreads(const size_t numThreads)
+{
+	killThreads();
+
+	for (size_t i = 0; i < numThreads; ++i)
+	{
+		m_threads.emplace_back(new RenderThread{ std::thread(&RenderManager::renderThreadFunction, this, i), std::condition_variable(), std::mutex(), false, false });
+	}
+}
+
+void trd::RenderManager::killThreads()
+{
+	for (auto& thread : m_threads)
+	{
+		thread->quit = true;
+		thread->conditionVariable.notify_one();
+
+		thread->thread.join();
+	}
+
+	m_threads.clear();
+}
+
+void trd::RenderManager::renderThreadFunction(const size_t threadIndex)
 {
 	tr::Rasterizer<Shader> rasterizer;
 	Shader                 shader;
@@ -34,11 +75,24 @@ void trd::RenderManager::renderThread(const size_t threadIndex, const Camera& ca
 	rasterizer.setCullFaceMode(tr::CullFaceMode::Back);
 	rasterizer.setPrimitive(tr::Primitive::Triangles);
 	rasterizer.setDepthTest(true);
-	rasterizer.setTextureMode(m_settings.getTextureMode());
-	shader.setRenderMode(m_settings.getRenderMode());
 
-	for (const Model& model : m_models)
+	while (!m_threads[threadIndex]->quit)
 	{
-		model.draw(camera, rasterizer, shader, colorBuffer, depthBuffer);
+		std::unique_lock<std::mutex> lock(m_threads[threadIndex]->mutex);
+		m_threads[threadIndex]->conditionVariable.wait(lock, [&]{ return m_threads[threadIndex]->draw || m_threads[threadIndex]->quit; });
+
+		if (m_threads[threadIndex]->draw)
+		{
+			rasterizer.setTextureMode(m_settings.getTextureMode());
+			shader.setRenderMode(m_settings.getRenderMode());
+
+			for (const Model& model : m_models)
+			{
+				model.draw(*m_camera, rasterizer, shader, *m_colorBuffer, *m_depthBuffer);
+			}
+
+			m_threads[threadIndex]->draw = false;
+			m_threads[threadIndex]->conditionVariable.notify_one();
+		}
 	}
 }
