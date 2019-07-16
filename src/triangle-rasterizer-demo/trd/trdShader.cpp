@@ -7,21 +7,24 @@ trd::Shader::Shader() :
 {
 }
 
-void trd::Shader::draw(const Vector4& position, const Vector4& worldPosition, const Vector3& normal, const Vector2& textureCoord, tr::Color* const color, float* const depth) const
+void trd::Shader::draw(const Vector4& position, const Vector4& worldPosition, const Vector3& normal, const Vector2& textureCoord, tr::Color& color, float& depth) const
 {
+	depth = position.z;
+
 	switch (m_renderMode)
 	{
 	case trd::RenderMode::Lit:
-		*color = m_texture->getAt(textureCoord.x, textureCoord.y, false, tr::TextureWrappingMode::Repeat);
+		color = m_texture->getAt(textureCoord.x, textureCoord.y, false, tr::TextureWrappingMode::Repeat);
 		break;
 	case trd::RenderMode::FullBright:
-		*color = tr::Color(255, 0, 0, 255);
+		color = m_texture->getAt(textureCoord.x, textureCoord.y, false, tr::TextureWrappingMode::Repeat);
 		break;
 	case trd::RenderMode::Textureless:
-		*color = tr::Color(0, 255, 0, 255);
+		color = tr::Color(255, 255, 255, 255);
 		break;
 	case trd::RenderMode::Depth:
-		*color = tr::Color(0, 0, 255, 255);
+		const uint8_t depthChannel = 255 - uint8_t((position.z + 1.0f) * 127.0f);
+		color = tr::Color(depthChannel, depthChannel, depthChannel, 255);
 		break;
 	}
 }

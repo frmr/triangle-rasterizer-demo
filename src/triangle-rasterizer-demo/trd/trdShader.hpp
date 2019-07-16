@@ -10,7 +10,7 @@ namespace trd
 	public:
 		                    Shader();
 
-		void                draw(const Vector4& position, const Vector4& worldPosition, const Vector3& normal, const Vector2& textureCoord, tr::Color* const color, float* const depth) const;
+		void                draw(const Vector4& position, const Vector4& worldPosition, const Vector3& normal, const Vector2& textureCoord, tr::Color& color, float& depth) const;
 
 		void                setTexture(const tr::Texture* const texture);
 		void                setTextureFiltering(const bool textureFiltering);
