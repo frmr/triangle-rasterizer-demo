@@ -26,6 +26,7 @@
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdMeshMap.cpp" />
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdModel.cpp" />
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdRenderManager.cpp" />
+    <ClCompile Include="src\triangle-rasterizer-demo\trd\trdRenderThread.cpp" />
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdSettings.cpp" />
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdShader.cpp" />
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdTextRenderer.cpp" />

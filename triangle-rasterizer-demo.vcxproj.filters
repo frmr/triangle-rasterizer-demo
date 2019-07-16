@@ -106,6 +106,9 @@
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdRenderManager.cpp">
       <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
     </ClCompile>
+    <ClCompile Include="src\triangle-rasterizer-demo\trd\trdRenderThread.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdApp.hpp">
