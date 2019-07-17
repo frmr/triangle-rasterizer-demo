@@ -20,6 +20,24 @@ void trd::Shader::draw(const Vector4& position, const Vector4& worldPosition, co
 	else
 	{
 		color = m_useTexture ? m_texture->getAt(textureCoord.x, textureCoord.y, false, tr::TextureWrappingMode::Repeat) : tr::Color(255, 255, 255, 255);
+
+		if (m_renderMode == RenderMode::Lit)
+		{
+			const Vector4 colorFloat = color.toVector() / 255.0f;
+
+			Vector4 postLightColor(0.0f, 0.0f, 0.0f, colorFloat.w);
+
+			for (const AmbientLight& light : m_lights.getAmbientLights())
+			{
+				postLightColor.x += colorFloat.x * light.getColor().x;
+				postLightColor.y += colorFloat.y * light.getColor().y;
+				postLightColor.z += colorFloat.z * light.getColor().z;
+			}
+
+			color.b = uint8_t(postLightColor.x * 255.0f);
+			color.g = uint8_t(postLightColor.y * 255.0f);
+			color.r = uint8_t(postLightColor.z * 255.0f);
+		}
 	}
 }
 
@@ -41,4 +59,9 @@ void trd::Shader::setRenderMode(const RenderMode& renderMode)
 void trd::Shader::setUseTexture(const bool useTexture)
 {
 	m_useTexture = useTexture;
+}
+
+void trd::Shader::setLights(const Lights& lights)
+{
+	m_lights = lights;
 }

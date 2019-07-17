@@ -109,6 +109,24 @@
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdRenderThread.cpp">
       <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
     </ClCompile>
+    <ClCompile Include="src\triangle-rasterizer-demo\trd\trdLight.cpp">
+      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\triangle-rasterizer-demo\trd\trdAmbientLight.cpp">
+      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\triangle-rasterizer-demo\trd\trdDirectionalLight.cpp">
+      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\triangle-rasterizer-demo\trd\trdPointLight.cpp">
+      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\triangle-rasterizer-demo\trd\trdLights.cpp">
+      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\triangle-rasterizer-demo\trd\trdScene.cpp">
+      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdApp.hpp">
@@ -319,6 +337,24 @@
       <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
     </ClInclude>
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdTextureMode.hpp">
+      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\triangle-rasterizer-demo\trd\trdLight.hpp">
+      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\triangle-rasterizer-demo\trd\trdAmbientLight.hpp">
+      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\triangle-rasterizer-demo\trd\trdPointLight.hpp">
+      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\triangle-rasterizer-demo\trd\trdDirectionalLight.hpp">
+      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\triangle-rasterizer-demo\trd\trdScene.hpp">
+      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\triangle-rasterizer-demo\trd\trdLights.hpp">
       <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
     </ClInclude>
   </ItemGroup>

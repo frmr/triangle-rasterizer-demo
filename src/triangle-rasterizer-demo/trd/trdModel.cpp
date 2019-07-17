@@ -1,6 +1,6 @@
 #include "trdModel.hpp"
 
-trd::Model::Model(const tf::String& meshFilename, const MeshMap& meshMap, const Vector3& position, const Vector2& rotation) :
+trd::Model::Model(const tf::String& meshFilename, const MeshMap& meshMap, const Vector3& position, const Vector3& rotation) :
 	m_mesh(meshMap.get(meshFilename)),
 	m_matrix()
 {

@@ -10,7 +10,7 @@ namespace trd
 	class RenderManager
 	{
 	public:
-		                                          RenderManager(const Settings& settings);
+		                                          RenderManager(const Settings& settings, const Scene& scene);
 		                                          ~RenderManager();
 
 		void                                      draw(const Camera& camera, tr::ColorBuffer& colorBuffer, tr::DepthBuffer& depthBuffer);
@@ -22,9 +22,7 @@ namespace trd
 
 	private:
 		const Settings&                           m_settings;
-		TextureMap                                m_textureMap;
-		MeshMap                                   m_meshMap;
-		tf::Vector<Model>                         m_models;
+		const Scene&                              m_scene;
 		tf::Vector<std::unique_ptr<RenderThread>> m_threads;
 	};
 }

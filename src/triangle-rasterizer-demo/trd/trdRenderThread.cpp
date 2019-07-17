@@ -1,9 +1,9 @@
 #include "trdRenderThread.hpp"
 
-trd::RenderThread::RenderThread(const size_t threadIndex, const Settings& settings, const tf::Vector<Model>& models) :
+trd::RenderThread::RenderThread(const size_t threadIndex, const Settings& settings, const Scene& scene) :
 	m_threadIndex(threadIndex),
 	m_settings(settings),
-	m_models(models),
+	m_scene(scene),
 	m_thread(&RenderThread::threadFunction, this),
 	m_conditionVariable(),
 	m_mutex(),
@@ -71,10 +71,7 @@ void trd::RenderThread::threadFunction()
 			setTextureMode(rasterizer, shader);
 			shader.setRenderMode(m_settings.getRenderMode());
 
-			for (const Model& model : m_models)
-			{
-				model.draw(*m_camera, rasterizer, shader, *m_colorBuffer, *m_depthBuffer);
-			}
+			m_scene.draw(*m_camera, rasterizer, shader, *m_colorBuffer, *m_depthBuffer);
 
 			m_draw = false;
 			m_conditionVariable.notify_one();

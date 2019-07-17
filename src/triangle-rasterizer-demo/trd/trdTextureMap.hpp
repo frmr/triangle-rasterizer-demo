@@ -10,8 +10,12 @@ namespace trd
 	class TextureMap
 	{
 	public:
-		void                                                       add(const tf::String& filename);
+		                                                           TextureMap();
+
 		const tr::Texture*                                         get(const tf::String& filename) const;
+
+	private:
+		void                                                       add(const tf::String& filename);
 
 	private:
 		tf::UnorderedMap<tf::String, std::unique_ptr<tr::Texture>> m_textures;

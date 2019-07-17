@@ -4,6 +4,7 @@
 #include "trdCamera.hpp"
 #include "trdModel.hpp"
 #include "trdShader.hpp"
+#include "trdScene.hpp"
 #include "tr.hpp"
 #include <condition_variable>
 
@@ -12,7 +13,7 @@ namespace trd
 	class RenderThread
 	{
 	public:
-		                         RenderThread(const size_t threadIndex, const Settings& settings, const tf::Vector<Model>& models);
+		                         RenderThread(const size_t threadIndex, const Settings& settings, const Scene& scene);
 		                         ~RenderThread();
 
 		void                     draw(const Camera& camera, tr::ColorBuffer& colorBuffer, tr::DepthBuffer& depthBuffer);
@@ -26,7 +27,7 @@ namespace trd
 	private:
 		const size_t             m_threadIndex;
 		const Settings&          m_settings;
-		const tf::Vector<Model>& m_models;
+		const Scene&             m_scene;
 		std::thread              m_thread;
 		std::condition_variable  m_conditionVariable;
 		std::mutex               m_mutex;

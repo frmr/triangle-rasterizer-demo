@@ -12,7 +12,7 @@ namespace trd
 	class Model
 	{
 	public:
-		                  Model(const tf::String& meshFilename, const MeshMap& meshMap, const Vector3& position, const Vector2& rotation);
+		                  Model(const tf::String& meshFilename, const MeshMap& meshMap, const Vector3& position, const Vector3& rotation);
 
 		void              draw(const Camera& camera, tr::Rasterizer<Shader>& rasterizer, Shader& shader, tr::ColorBuffer& colorBuffer, tr::DepthBuffer& depthBuffer) const;
 

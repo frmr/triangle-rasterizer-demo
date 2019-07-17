@@ -131,7 +131,8 @@ void trd::App::mainLoop()
 
 	m_camera.translate(Vector3(0.0f, 0.0f, 4.0f));
 
-	RenderManager renderManager(m_settings);
+	Scene         scene;
+	RenderManager renderManager(m_settings, scene);
 
 	while (m_running)
 	{
