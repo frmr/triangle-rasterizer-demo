@@ -91,8 +91,10 @@ void trd::App::updateInputs()
 			else if (event.key.keysym.sym == SDLK_1)      { m_settings.cycleScreenSize();  m_reinitWindow = true;           }
 			else if (event.key.keysym.sym == SDLK_2)      { m_settings.toggleFullscreen(); m_reinitWindow = true;           }
 			else if (event.key.keysym.sym == SDLK_3)      { m_settings.cycleNumThreads();                                   }
-			else if (event.key.keysym.sym == SDLK_4)      { m_settings.cycleRenderMode();                                   }
-			else if (event.key.keysym.sym == SDLK_5)      { m_settings.cycleTextureMode();                                  }
+			else if (event.key.keysym.sym == SDLK_5)      { m_settings.cycleRenderMode();                                   }
+			else if (event.key.keysym.sym == SDLK_6)      { m_settings.cycleTextureMode();                                  }
+			else if (event.key.keysym.sym == SDLK_8)      { m_settings.toggleInstructionsEnabled();                         }
+			else if (event.key.keysym.sym == SDLK_9)      { m_settings.toggleFrameRateEnabled();                            }
 			else if (event.key.keysym.sym == SDLK_w)      { m_camera.translate(Vector3(0.0f, 0.0f, -translationIncrement)); }
 			else if (event.key.keysym.sym == SDLK_a)      { m_camera.translate(Vector3(-translationIncrement, 0.0f, 0.0f)); }
 			else if (event.key.keysym.sym == SDLK_s)      { m_camera.translate(Vector3(0.0f, 0.0f, translationIncrement));  }
@@ -146,8 +148,16 @@ void trd::App::mainLoop()
 
 		renderManager.draw(m_camera, m_colorBuffer, m_depthBuffer);
 
-		instructions.draw(m_settings, m_colorBuffer);
-		frameRateCounter.draw(m_settings.getScreenSize(), m_colorBuffer);
+		if (m_settings.getInstructionsEnabled())
+		{
+			instructions.draw(m_settings, m_colorBuffer);
+		}
+		
+		if (m_settings.getFrameRateEnabled())
+		{
+			frameRateCounter.draw(m_settings.getScreenSize(), m_colorBuffer);
+		}
+
 		m_camera.drawParameters(m_settings.getScreenSize(), m_colorBuffer);
 
 		renderColorBufferToWindow();

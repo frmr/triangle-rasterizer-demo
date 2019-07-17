@@ -6,7 +6,9 @@ trd::Settings::Settings() :
 	m_fullscreen(false),
 	m_renderMode(RenderMode::Lit),
 	m_numThreads(std::thread::hardware_concurrency()),
-	m_textureMode(TextureMode::Perspective)
+	m_textureMode(TextureMode::Perspective),
+	m_instructionsEnabled(true),
+	m_frameRateEnabled(true)
 {
 	m_screenSizes.push_back({640,  480});
 	m_screenSizes.push_back({1024, 768});
@@ -54,6 +56,16 @@ void trd::Settings::cycleTextureMode()
 	}
 }
 
+void trd::Settings::toggleInstructionsEnabled()
+{
+	m_instructionsEnabled = !m_instructionsEnabled;
+}
+
+void trd::Settings::toggleFrameRateEnabled()
+{
+	m_frameRateEnabled = !m_frameRateEnabled;
+}
+
 trd::ScreenSize trd::Settings::getScreenSize() const
 {
 	return m_screenSizes[m_screenSizeIndex];
@@ -77,4 +89,14 @@ unsigned int trd::Settings::getNumThreads() const
 trd::TextureMode trd::Settings::getTextureMode() const
 {
 	return m_textureMode;
+}
+
+bool trd::Settings::getInstructionsEnabled() const
+{
+	return m_instructionsEnabled;
+}
+
+bool trd::Settings::getFrameRateEnabled() const
+{
+	return m_frameRateEnabled;
 }
