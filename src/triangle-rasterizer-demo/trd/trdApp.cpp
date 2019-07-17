@@ -144,9 +144,6 @@ void trd::App::mainLoop()
 			m_reinitWindow = false;
 		}
 
-		m_colorBuffer.fill(tr::Color(0, 0, 0, 255));
-		m_depthBuffer.fill(1.0f);
-
 		renderManager.draw(m_camera, m_colorBuffer, m_depthBuffer);
 
 		if (m_settings.getInstructionsEnabled())

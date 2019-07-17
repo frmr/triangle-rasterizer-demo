@@ -14,6 +14,9 @@ trd::RenderManager::~RenderManager()
 
 void trd::RenderManager::draw(const Camera& camera, tr::ColorBuffer& colorBuffer, tr::DepthBuffer& depthBuffer)
 {
+	colorBuffer.fill(tr::Color(0, 0, 0, 255));
+	depthBuffer.fill(1.0f);
+
 	if (m_settings.getNumThreads() != m_threads.size())
 	{
 		initThreads(m_settings.getNumThreads());

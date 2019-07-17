@@ -43,6 +43,26 @@ void trd::Shader::draw(const Vector4& position, const Vector4& worldPosition, co
 				postLightColor.z += colorFloat.z * light.getColor().z * intensity;
 			}
 
+			for (const PointLight& light : m_lights.getPointLights())
+			{
+				Vector3 pixelLightVec;
+
+				pixelLightVec.x = light.getPosition().x - worldPosition.x;
+				pixelLightVec.y = light.getPosition().y - worldPosition.y;
+				pixelLightVec.z = light.getPosition().z - worldPosition.z;
+
+				const float attenuation = std::sqrtf(std::pow(pixelLightVec.x, 2) + std::pow(pixelLightVec.y, 2) + std::pow(pixelLightVec.z, 2)) * light.getAttenuation();
+				const float intensity   = std::clamp(pixelLightVec.dot(normal), 0.0f, 1.0f);
+
+				postLightColor.x += colorFloat.x * std::max((light.getColor().x - attenuation), 0.0f) * intensity;
+				postLightColor.y += colorFloat.y * std::max((light.getColor().y - attenuation), 0.0f) * intensity;
+				postLightColor.z += colorFloat.z * std::max((light.getColor().z - attenuation), 0.0f) * intensity;
+			}
+
+			postLightColor.x = std::min(postLightColor.x, 1.0f);
+			postLightColor.y = std::min(postLightColor.y, 1.0f);
+			postLightColor.z = std::min(postLightColor.z, 1.0f);
+
 			color = postLightColor * 255.0f;
 		}
 	}
