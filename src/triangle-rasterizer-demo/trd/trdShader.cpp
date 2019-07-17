@@ -34,9 +34,7 @@ void trd::Shader::draw(const Vector4& position, const Vector4& worldPosition, co
 				postLightColor.z += colorFloat.z * light.getColor().z;
 			}
 
-			color.b = uint8_t(postLightColor.x * 255.0f);
-			color.g = uint8_t(postLightColor.y * 255.0f);
-			color.r = uint8_t(postLightColor.z * 255.0f);
+			color = postLightColor * 255.0f;
 		}
 	}
 }
