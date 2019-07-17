@@ -8,7 +8,8 @@ trd::Model::Model(const tf::String& meshFilename, const MeshMap& meshMap, const 
 
 void trd::Model::draw(const Camera& camera, tr::Rasterizer<Shader>& rasterizer, Shader& shader, tr::ColorBuffer& colorBuffer, tr::DepthBuffer& depthBuffer) const
 {
-	rasterizer.setMatrix(camera.getProjectionViewMatrix() * m_matrix);
+	rasterizer.setProjectionViewMatrix(camera.getProjectionViewMatrix());
+	rasterizer.setModelMatrix(m_matrix);
 
 	m_mesh->draw(rasterizer, shader, colorBuffer, depthBuffer);
 }
