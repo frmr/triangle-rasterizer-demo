@@ -1,4 +1,5 @@
 #include "trdShader.hpp"
+#include <cassert>
 
 trd::Shader::Shader() :
 	m_texture(nullptr),
@@ -36,11 +37,16 @@ void trd::Shader::draw(const Vector4& position, const Vector4& worldPosition, co
 
 			for (const DirectionalLight& light : m_lights.getDirectionalLights())
 			{
-				const float intensity = -std::clamp(light.getDirection().dot(normal), -1.0f, 0.0f);
+				const float intensity = -light.getDirection().dot(normal);
 
-				postLightColor.x += colorFloat.x * light.getColor().x * intensity;
-				postLightColor.y += colorFloat.y * light.getColor().y * intensity;
-				postLightColor.z += colorFloat.z * light.getColor().z * intensity;
+				assert(intensity >= -1.0f && intensity <= 1.0f);
+
+				if (intensity > 0.0f)
+				{
+					postLightColor.x += colorFloat.x * light.getColor().x * intensity;
+					postLightColor.y += colorFloat.y * light.getColor().y * intensity;
+					postLightColor.z += colorFloat.z * light.getColor().z * intensity;
+				}
 			}
 
 			for (const PointLight& light : m_lights.getPointLights())
@@ -51,12 +57,20 @@ void trd::Shader::draw(const Vector4& position, const Vector4& worldPosition, co
 				pixelLightVec.y = light.getPosition().y - worldPosition.y;
 				pixelLightVec.z = light.getPosition().z - worldPosition.z;
 
-				const float attenuation = std::sqrtf(std::pow(pixelLightVec.x, 2) + std::pow(pixelLightVec.y, 2) + std::pow(pixelLightVec.z, 2)) * light.getAttenuation();
-				const float intensity   = std::clamp(pixelLightVec.dot(normal), 0.0f, 1.0f);
+				pixelLightVec.normalize();
 
-				postLightColor.x += colorFloat.x * std::max((light.getColor().x - attenuation), 0.0f) * intensity;
-				postLightColor.y += colorFloat.y * std::max((light.getColor().y - attenuation), 0.0f) * intensity;
-				postLightColor.z += colorFloat.z * std::max((light.getColor().z - attenuation), 0.0f) * intensity;
+				const float intensity = pixelLightVec.dot(normal);
+
+				assert(intensity >= -1.0f && intensity <= 1.0f);
+
+				if (intensity > 0.0f)
+				{
+					const float attenuation = std::sqrtf(std::pow(pixelLightVec.x, 2) + std::pow(pixelLightVec.y, 2) + std::pow(pixelLightVec.z, 2)) * light.getAttenuation();
+					
+					postLightColor.x += colorFloat.x * std::max((light.getColor().x - attenuation), 0.0f) * intensity;
+					postLightColor.y += colorFloat.y * std::max((light.getColor().y - attenuation), 0.0f) * intensity;
+					postLightColor.z += colorFloat.z * std::max((light.getColor().z - attenuation), 0.0f) * intensity;
+				}
 			}
 
 			postLightColor.x = std::min(postLightColor.x, 1.0f);
