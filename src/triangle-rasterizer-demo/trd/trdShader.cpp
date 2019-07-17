@@ -34,6 +34,15 @@ void trd::Shader::draw(const Vector4& position, const Vector4& worldPosition, co
 				postLightColor.z += colorFloat.z * light.getColor().z;
 			}
 
+			for (const DirectionalLight& light : m_lights.getDirectionalLights())
+			{
+				const float intensity = -std::clamp(light.getDirection().dot(normal), -1.0f, 0.0f);
+
+				postLightColor.x += colorFloat.x * light.getColor().x * intensity;
+				postLightColor.y += colorFloat.y * light.getColor().y * intensity;
+				postLightColor.z += colorFloat.z * light.getColor().z * intensity;
+			}
+
 			color = postLightColor * 255.0f;
 		}
 	}

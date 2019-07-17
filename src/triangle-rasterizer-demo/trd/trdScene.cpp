@@ -26,5 +26,6 @@ void trd::Scene::createScene()
 {
 	m_opaqueModels.emplace_back("test.obj", m_meshMap, Vector3(), Vector3());
 
-	m_lights.addLight(AmbientLight(Vector3(0.5f, 0.5f, 0.5f)));
+	m_lights.addLight(AmbientLight(Vector3(0.25f, 0.25f, 0.25f)));
+	m_lights.addLight(DirectionalLight(Vector3(0.8f, 0.25f, 0.25f), Vector3(-1.0f, 0.0f, -2.0f)));
 }
