@@ -19,18 +19,18 @@ tf::String trd::Instructions::convertRenderModeToString(const RenderMode renderM
 	{
 	case RenderMode::Lit:         return "Lit";
 	case RenderMode::FullBright:  return "Full bright";
-	case RenderMode::Textureless: return "Textureless";
 	case RenderMode::Depth:       return "Depth";
 	default:                      return "";
 	}
 }
 
-tf::String trd::Instructions::convertTextureModeToString(const tr::TextureMode textureMode)
+tf::String trd::Instructions::convertTextureModeToString(const TextureMode textureMode)
 {
 	switch (textureMode)
 	{
-	case tr::TextureMode::Affine:      return "Affine";
-	case tr::TextureMode::Perspective: return "Perspective";
-	default:                           return "";
+	case TextureMode::Off:         return "Off";
+	case TextureMode::Affine:      return "Affine";
+	case TextureMode::Perspective: return "Perspective";
+	default:                       return "";
 	}
 }

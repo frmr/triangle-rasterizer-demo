@@ -3,7 +3,7 @@
 #include "tfVector.hpp"
 #include "trdScreenSize.hpp"
 #include "trdRenderMode.hpp"
-#include "trTextureMode.hpp"
+#include "trdTextureMode.hpp"
 
 namespace trd
 {
@@ -22,7 +22,7 @@ namespace trd
 		bool                   getFullscreen() const;
 		RenderMode             getRenderMode() const;
 		unsigned int           getNumThreads() const;
-		tr::TextureMode        getTextureMode() const;
+		TextureMode            getTextureMode() const;
 
 	private:
 		tf::Vector<ScreenSize> m_screenSizes;
@@ -30,6 +30,6 @@ namespace trd
 		bool                   m_fullscreen;
 		RenderMode             m_renderMode;
 		unsigned int           m_numThreads;
-		tr::TextureMode        m_textureMode;
+		trd::TextureMode       m_textureMode;
 	};
 }

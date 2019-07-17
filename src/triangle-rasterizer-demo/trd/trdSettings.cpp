@@ -6,7 +6,7 @@ trd::Settings::Settings() :
 	m_fullscreen(false),
 	m_renderMode(RenderMode::Lit),
 	m_numThreads(std::thread::hardware_concurrency()),
-	m_textureMode(tr::TextureMode::Perspective)
+	m_textureMode(TextureMode::Perspective)
 {
 	m_screenSizes.push_back({640,  480});
 	m_screenSizes.push_back({1024, 768});
@@ -33,10 +33,9 @@ void trd::Settings::cycleRenderMode()
 {
 	switch (m_renderMode)
 	{
-	case RenderMode::Lit:         m_renderMode = RenderMode::FullBright;  break;
-	case RenderMode::FullBright:  m_renderMode = RenderMode::Textureless; break;
-	case RenderMode::Textureless: m_renderMode = RenderMode::Depth;       break;
-	case RenderMode::Depth:       m_renderMode = RenderMode::Lit;         break;
+	case RenderMode::Lit:         m_renderMode = RenderMode::FullBright; break;
+	case RenderMode::FullBright:  m_renderMode = RenderMode::Depth;      break;
+	case RenderMode::Depth:       m_renderMode = RenderMode::Lit;        break;
 	}
 }
 
@@ -47,7 +46,12 @@ void trd::Settings::cycleNumThreads()
 
 void trd::Settings::cycleTextureMode()
 {
-	m_textureMode = (m_textureMode == tr::TextureMode::Affine) ? tr::TextureMode::Perspective : tr::TextureMode::Affine;
+	switch (m_textureMode)
+	{
+	case TextureMode::Off:         m_textureMode = TextureMode::Affine;      break;
+	case TextureMode::Affine:      m_textureMode = TextureMode::Perspective; break;
+	case TextureMode::Perspective: m_textureMode = TextureMode::Off;         break;
+	}
 }
 
 trd::ScreenSize trd::Settings::getScreenSize() const
@@ -70,7 +74,7 @@ unsigned int trd::Settings::getNumThreads() const
 	return m_numThreads;
 }
 
-tr::TextureMode trd::Settings::getTextureMode() const
+trd::TextureMode trd::Settings::getTextureMode() const
 {
 	return m_textureMode;
 }

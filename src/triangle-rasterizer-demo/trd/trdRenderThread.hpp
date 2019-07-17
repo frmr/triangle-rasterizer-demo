@@ -3,8 +3,8 @@
 #include "trdSettings.hpp"
 #include "trdCamera.hpp"
 #include "trdModel.hpp"
-#include "trColorBuffer.hpp"
-#include "trDepthBuffer.hpp"
+#include "trdShader.hpp"
+#include "tr.hpp"
 #include <condition_variable>
 
 namespace trd
@@ -21,7 +21,9 @@ namespace trd
 
 	private:
 		void                     threadFunction();
+		void                     setTextureMode(tr::Rasterizer<Shader>& rasterizer, Shader& shader);
 
+	private:
 		const size_t             m_threadIndex;
 		const Settings&          m_settings;
 		const tf::Vector<Model>& m_models;

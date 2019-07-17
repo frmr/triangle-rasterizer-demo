@@ -14,6 +14,6 @@ namespace trd
 	
 	private:
 		static tf::String convertRenderModeToString(const RenderMode renderMode);
-		static tf::String convertTextureModeToString(const tr::TextureMode textureMode);
+		static tf::String convertTextureModeToString(const TextureMode textureMode);
 	};
 }

@@ -1,6 +1,4 @@
 #include "trdRenderThread.hpp"
-#include "trdShader.hpp"
-#include "tr.hpp"
 
 trd::RenderThread::RenderThread(const size_t threadIndex, const Settings& settings, const tf::Vector<Model>& models) :
 	m_threadIndex(threadIndex),
@@ -70,7 +68,7 @@ void trd::RenderThread::threadFunction()
 
 		if (m_draw)
 		{
-			rasterizer.setTextureMode(m_settings.getTextureMode());
+			setTextureMode(rasterizer, shader);
 			shader.setRenderMode(m_settings.getRenderMode());
 
 			for (const Model& model : m_models)
@@ -81,5 +79,18 @@ void trd::RenderThread::threadFunction()
 			m_draw = false;
 			m_conditionVariable.notify_one();
 		}
+	}
+}
+
+void trd::RenderThread::setTextureMode(tr::Rasterizer<Shader>& rasterizer, Shader& shader)
+{
+	if (m_settings.getTextureMode() == TextureMode::Off)
+	{
+		shader.setUseTexture(false);
+	}
+	else
+	{
+		shader.setUseTexture(true);
+		rasterizer.setTextureMode(m_settings.getTextureMode() == TextureMode::Affine ? tr::TextureMode::Affine : tr::TextureMode::Perspective);
 	}
 }

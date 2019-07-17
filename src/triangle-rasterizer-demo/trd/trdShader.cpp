@@ -3,7 +3,8 @@
 trd::Shader::Shader() :
 	m_texture(nullptr),
 	m_textureFiltering(false),
-	m_renderMode(trd::RenderMode::Lit)
+	m_renderMode(trd::RenderMode::Lit),
+	m_useTexture(true)
 {
 }
 
@@ -11,21 +12,14 @@ void trd::Shader::draw(const Vector4& position, const Vector4& worldPosition, co
 {
 	depth = position.z;
 
-	switch (m_renderMode)
+	if (m_renderMode == RenderMode::Depth)
 	{
-	case trd::RenderMode::Lit:
-		color = m_texture->getAt(textureCoord.x, textureCoord.y, false, tr::TextureWrappingMode::Repeat);
-		break;
-	case trd::RenderMode::FullBright:
-		color = m_texture->getAt(textureCoord.x, textureCoord.y, false, tr::TextureWrappingMode::Repeat);
-		break;
-	case trd::RenderMode::Textureless:
-		color = tr::Color(255, 255, 255, 255);
-		break;
-	case trd::RenderMode::Depth:
 		const uint8_t depthChannel = 255 - uint8_t((position.z + 1.0f) * 127.0f);
 		color = tr::Color(depthChannel, depthChannel, depthChannel, 255);
-		break;
+	}
+	else
+	{
+		color = m_useTexture ? m_texture->getAt(textureCoord.x, textureCoord.y, false, tr::TextureWrappingMode::Repeat) : tr::Color(255, 255, 255, 255);
 	}
 }
 
@@ -42,4 +36,9 @@ void trd::Shader::setTextureFiltering(const bool textureFiltering)
 void trd::Shader::setRenderMode(const RenderMode& renderMode)
 {
 	m_renderMode = renderMode;
+}
+
+void trd::Shader::setUseTexture(const bool useTexture)
+{
+	m_useTexture = useTexture;
 }

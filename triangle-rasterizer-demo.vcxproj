@@ -85,6 +85,7 @@
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdTextAlign.hpp" />
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdTextRenderer.hpp" />
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdTextureMap.hpp" />
+    <ClInclude Include="src\triangle-rasterizer-demo\trd\trdTextureMode.hpp" />
     <ClInclude Include="src\triangle-rasterizer\src\lodepng\lodepng.h" />
     <ClInclude Include="src\triangle-rasterizer\src\matrix\Matrices.h" />
     <ClInclude Include="src\triangle-rasterizer\src\matrix\Vectors.h" />

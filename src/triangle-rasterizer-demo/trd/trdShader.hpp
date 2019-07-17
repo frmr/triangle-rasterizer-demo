@@ -15,10 +15,12 @@ namespace trd
 		void                setTexture(const tr::Texture* const texture);
 		void                setTextureFiltering(const bool textureFiltering);
 		void                setRenderMode(const RenderMode& renderMode);
+		void                setUseTexture(const bool useTexture);
 
 	private:
 		const tr::Texture*  m_texture;
 		bool                m_textureFiltering;
 		RenderMode          m_renderMode;
+		bool                m_useTexture;
 	};
 }

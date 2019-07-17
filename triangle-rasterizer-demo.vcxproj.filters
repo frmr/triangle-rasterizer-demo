@@ -318,5 +318,8 @@
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdTextAlign.hpp">
       <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
     </ClInclude>
+    <ClInclude Include="src\triangle-rasterizer-demo\trd\trdTextureMode.hpp">
+      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

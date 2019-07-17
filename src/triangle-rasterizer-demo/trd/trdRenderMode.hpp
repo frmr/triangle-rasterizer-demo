@@ -6,7 +6,6 @@ namespace trd
 	{
 		Lit,
 		FullBright,
-		Textureless,
 		Depth
 	};
 }
