@@ -107,7 +107,7 @@
       <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
     </ClCompile>
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdRenderThread.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -313,6 +313,9 @@
       <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
     </ClInclude>
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdRenderThread.hpp">
+      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\triangle-rasterizer-demo\trd\trdTextAlign.hpp">
       <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
     </ClInclude>
   </ItemGroup>

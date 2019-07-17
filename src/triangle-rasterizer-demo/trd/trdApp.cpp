@@ -90,8 +90,8 @@ void trd::App::updateInputs()
  			if      (event.key.keysym.sym == SDLK_ESCAPE) { m_running = false;                                              }
 			else if (event.key.keysym.sym == SDLK_1)      { m_settings.cycleScreenSize();  m_reinitWindow = true;           }
 			else if (event.key.keysym.sym == SDLK_2)      { m_settings.toggleFullscreen(); m_reinitWindow = true;           }
-			else if (event.key.keysym.sym == SDLK_3)      { m_settings.cycleRenderMode();                                   }
-			else if (event.key.keysym.sym == SDLK_4)      { m_settings.cycleNumThreads();                                   }
+			else if (event.key.keysym.sym == SDLK_3)      { m_settings.cycleNumThreads();                                   }
+			else if (event.key.keysym.sym == SDLK_4)      { m_settings.cycleRenderMode();                                   }
 			else if (event.key.keysym.sym == SDLK_5)      { m_settings.cycleTextureMode();                                  }
 			else if (event.key.keysym.sym == SDLK_w)      { m_camera.translate(Vector3(0.0f, 0.0f, -translationIncrement)); }
 			else if (event.key.keysym.sym == SDLK_a)      { m_camera.translate(Vector3(-translationIncrement, 0.0f, 0.0f)); }
