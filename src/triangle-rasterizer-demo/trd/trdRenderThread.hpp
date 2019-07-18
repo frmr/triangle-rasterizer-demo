@@ -28,13 +28,13 @@ namespace trd
 		const size_t             m_threadIndex;
 		const Settings&          m_settings;
 		const Scene&             m_scene;
-		std::thread              m_thread;
-		std::condition_variable  m_conditionVariable;
-		std::mutex               m_mutex;
 		bool                     m_quit;
 		bool                     m_draw;
 		const Camera*            m_camera;
 		tr::ColorBuffer*         m_colorBuffer;
 		tr::DepthBuffer*         m_depthBuffer;
+		std::condition_variable  m_conditionVariable;
+		std::mutex               m_mutex;
+		std::thread              m_thread;
 	};
 }

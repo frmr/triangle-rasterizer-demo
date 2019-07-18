@@ -4,14 +4,14 @@ trd::RenderThread::RenderThread(const size_t threadIndex, const Settings& settin
 	m_threadIndex(threadIndex),
 	m_settings(settings),
 	m_scene(scene),
-	m_thread(&RenderThread::threadFunction, this),
-	m_conditionVariable(),
-	m_mutex(),
 	m_quit(false),
 	m_draw(false),
 	m_camera(nullptr),
 	m_colorBuffer(nullptr),
-	m_depthBuffer(nullptr)
+	m_depthBuffer(nullptr),
+	m_conditionVariable(),
+	m_mutex(),
+	m_thread(&RenderThread::threadFunction, this)
 {
 }
 
