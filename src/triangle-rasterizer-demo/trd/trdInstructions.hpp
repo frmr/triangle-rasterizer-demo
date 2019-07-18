@@ -2,7 +2,6 @@
 
 #include "trdTextRenderer.hpp"
 #include "trdSettings.hpp"
-#include "tfVector.hpp"
 #include "trTextureMode.hpp"
 
 namespace trd

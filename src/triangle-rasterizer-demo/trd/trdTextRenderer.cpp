@@ -1,7 +1,7 @@
 #include "trdTextRenderer.hpp"
 #include "font8x8_basic.h"
 
-void trd::TextRenderer::drawText(const tf::Vector<tf::String>& lines, const tr::Color& color, const ScreenPos& position, const TextAlign& alignment, tr::ColorBuffer& buffer)
+void trd::TextRenderer::drawText(const std::vector<tf::String>& lines, const tr::Color& color, const ScreenPos& position, const TextAlign& alignment, tr::ColorBuffer& buffer)
 {
 	const size_t textWidth = calculateTextWidth(lines);
 
@@ -34,7 +34,7 @@ void trd::TextRenderer::drawText(const tf::Vector<tf::String>& lines, const tr::
 	}
 }
 
-void trd::TextRenderer::drawText(const tf::Vector<tf::String>& lines, const tr::Color& color, const Corner corner, const ScreenSize& screenSize, tr::ColorBuffer& buffer)
+void trd::TextRenderer::drawText(const std::vector<tf::String>& lines, const tr::Color& color, const Corner corner, const ScreenSize& screenSize, tr::ColorBuffer& buffer)
 {
 	const size_t textHeight = lines.size() * (s_fontHeight + s_spacing);
 	const size_t textWidth  = calculateTextWidth(lines);
@@ -48,7 +48,7 @@ void trd::TextRenderer::drawText(const tf::Vector<tf::String>& lines, const tr::
 	}
 }
 
-size_t trd::TextRenderer::calculateTextWidth(const tf::Vector<tf::String>& lines)
+size_t trd::TextRenderer::calculateTextWidth(const std::vector<tf::String>& lines)
 {
 	size_t textWidth  = 0;
 

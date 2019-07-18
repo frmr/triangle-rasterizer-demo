@@ -45,9 +45,9 @@ Matrix4 trd::Camera::getProjectionViewMatrix() const
 
 void trd::Camera::drawParameters(const ScreenSize& screenSize, tr::ColorBuffer& buffer) const
 {
-	const tf::Vector<tf::String> lines = { 
+	const std::vector<tf::String> lines = { 
 		tf::String("{}, {}, {}", { std::to_string(m_position.x), std::to_string(m_position.y), std::to_string(m_position.z) }),
-		tf::String("{}, {}", { std::to_string(m_rotation.x), std::to_string(m_rotation.y) })
+		tf::String("{}, {}",     { std::to_string(m_rotation.x), std::to_string(m_rotation.y) })
 	};
 
 	drawText(lines, tr::Color(255, 255, 255, 255), Corner::TopLeft, screenSize, buffer);

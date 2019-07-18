@@ -10,7 +10,7 @@ trd::FrameRateCounter::FrameRateCounter() :
 
 void trd::FrameRateCounter::draw(const ScreenSize& screenSize, tr::ColorBuffer& buffer) const
 {
-	const tf::Vector<tf::String> lines = {
+	const std::vector<tf::String> lines = {
 		m_frameRate,
 		m_frameTime
 	};
