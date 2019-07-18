@@ -23,10 +23,14 @@ trd::RenderThread::~RenderThread()
 
 void trd::RenderThread::draw(const Camera& camera, tr::ColorBuffer& colorBuffer, tr::DepthBuffer& depthBuffer)
 {
+	std::unique_lock<std::mutex> lock(m_mutex);
+
 	m_camera      = &camera;
 	m_colorBuffer = &colorBuffer;
 	m_depthBuffer = &depthBuffer;
 	m_draw        = true;
+
+	lock.unlock();
 
 	m_continueConditionVariable.notify_one();
 }
@@ -40,7 +44,12 @@ void trd::RenderThread::wait()
 
 void trd::RenderThread::kill()
 {
+	std::unique_lock<std::mutex> lock(m_mutex);
+
 	m_quit = true;
+
+	lock.unlock();
+
 	m_continueConditionVariable.notify_one();
 
 	try
@@ -75,6 +84,8 @@ void trd::RenderThread::threadFunction()
 			m_scene.draw(*m_camera, rasterizer, shader, *m_colorBuffer, *m_depthBuffer);
 
 			m_draw = false;
+
+			lock.unlock();
 			m_waitConditionVariable.notify_one();
 		}
 	}
