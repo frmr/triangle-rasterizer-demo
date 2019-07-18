@@ -33,7 +33,8 @@ namespace trd
 		const Camera*            m_camera;
 		tr::ColorBuffer*         m_colorBuffer;
 		tr::DepthBuffer*         m_depthBuffer;
-		std::condition_variable  m_conditionVariable;
+		std::condition_variable  m_continueConditionVariable;
+		std::condition_variable  m_waitConditionVariable;
 		std::mutex               m_mutex;
 		std::thread              m_thread;
 	};
