@@ -80,6 +80,7 @@ void trd::RenderThread::threadFunction()
 		{
 			setTextureMode(rasterizer, shader);
 			shader.setRenderMode(m_settings.getRenderMode());
+			shader.setBilinearFiltering(m_settings.getBilinearFiltering());
 
 			m_scene.draw(*m_camera, rasterizer, shader, *m_colorBuffer, *m_depthBuffer);
 

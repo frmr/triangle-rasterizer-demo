@@ -93,6 +93,7 @@ void trd::App::updateInputs()
 			else if (event.key.keysym.sym == SDLK_3)      { m_settings.cycleNumThreads();                                   }
 			else if (event.key.keysym.sym == SDLK_5)      { m_settings.cycleRenderMode();                                   }
 			else if (event.key.keysym.sym == SDLK_6)      { m_settings.cycleTextureMode();                                  }
+			else if (event.key.keysym.sym == SDLK_7)      { m_settings.toggleBilinearFiltering();                           }
 			else if (event.key.keysym.sym == SDLK_8)      { m_settings.toggleInstructionsEnabled();                         }
 			else if (event.key.keysym.sym == SDLK_9)      { m_settings.toggleFrameRateEnabled();                            }
 			else if (event.key.keysym.sym == SDLK_w)      { m_camera.translate(Vector3(0.0f, 0.0f, -translationIncrement)); }

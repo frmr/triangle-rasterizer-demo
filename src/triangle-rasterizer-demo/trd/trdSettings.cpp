@@ -8,7 +8,8 @@ trd::Settings::Settings() :
 	m_numThreads(std::thread::hardware_concurrency()),
 	m_textureMode(TextureMode::Perspective),
 	m_instructionsEnabled(true),
-	m_frameRateEnabled(true)
+	m_frameRateEnabled(true),
+	m_bilinearFiltering(false)
 {
 	m_screenSizes.push_back({640,  480});
 	m_screenSizes.push_back({1024, 768});
@@ -66,6 +67,11 @@ void trd::Settings::toggleFrameRateEnabled()
 	m_frameRateEnabled = !m_frameRateEnabled;
 }
 
+void trd::Settings::toggleBilinearFiltering()
+{
+	m_bilinearFiltering = !m_bilinearFiltering;
+}
+
 trd::ScreenSize trd::Settings::getScreenSize() const
 {
 	return m_screenSizes[m_screenSizeIndex];
@@ -99,4 +105,9 @@ bool trd::Settings::getInstructionsEnabled() const
 bool trd::Settings::getFrameRateEnabled() const
 {
 	return m_frameRateEnabled;
+}
+
+bool trd::Settings::getBilinearFiltering() const
+{
+	return m_bilinearFiltering;
 }

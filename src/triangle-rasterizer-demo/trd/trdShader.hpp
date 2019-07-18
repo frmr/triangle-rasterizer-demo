@@ -17,6 +17,7 @@ namespace trd
 		void               setTextureFiltering(const bool textureFiltering);
 		void               setRenderMode(const RenderMode& renderMode);
 		void               setUseTexture(const bool useTexture);
+		void               setBilinearFiltering(const bool bilinearFiltering);
 		void               setLights(const Lights& lights);
 
 	private:
@@ -24,6 +25,7 @@ namespace trd
 		bool               m_textureFiltering;
 		RenderMode         m_renderMode;
 		bool               m_useTexture;
+		bool               m_bilinearFiltering;
 		Lights             m_lights;
 	};
 }

@@ -20,7 +20,7 @@ void trd::Shader::draw(const Vector4& position, const Vector4& worldPosition, co
 	}
 	else
 	{
-		color = m_useTexture ? m_texture->getAt(textureCoord.x, textureCoord.y, false, tr::TextureWrappingMode::Repeat) : tr::Color(255, 255, 255, 255);
+		color = m_useTexture ? m_texture->getAt(textureCoord.x, textureCoord.y, m_bilinearFiltering, tr::TextureWrappingMode::Repeat) : tr::Color(255, 255, 255, 255);
 
 		if (m_renderMode == RenderMode::Lit)
 		{
@@ -100,6 +100,11 @@ void trd::Shader::setRenderMode(const RenderMode& renderMode)
 void trd::Shader::setUseTexture(const bool useTexture)
 {
 	m_useTexture = useTexture;
+}
+
+void trd::Shader::setBilinearFiltering(const bool bilinearFiltering)
+{
+	m_bilinearFiltering = bilinearFiltering;
 }
 
 void trd::Shader::setLights(const Lights& lights)

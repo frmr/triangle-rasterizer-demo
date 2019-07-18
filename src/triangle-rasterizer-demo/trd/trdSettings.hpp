@@ -19,6 +19,7 @@ namespace trd
 		void                   cycleTextureMode();
 		void                   toggleInstructionsEnabled();
 		void                   toggleFrameRateEnabled();
+		void                   toggleBilinearFiltering();
 
 		ScreenSize             getScreenSize() const;
 		bool                   getFullscreen() const;
@@ -27,6 +28,7 @@ namespace trd
 		TextureMode            getTextureMode() const;
 		bool                   getInstructionsEnabled() const;
 		bool                   getFrameRateEnabled() const;
+		bool                   getBilinearFiltering() const;
 
 	private:
 		tf::Vector<ScreenSize> m_screenSizes;
@@ -37,5 +39,6 @@ namespace trd
 		trd::TextureMode       m_textureMode;
 		bool                   m_instructionsEnabled;
 		bool                   m_frameRateEnabled;
+		bool                   m_bilinearFiltering;
 	};
 }
