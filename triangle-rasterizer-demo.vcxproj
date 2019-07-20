@@ -21,8 +21,10 @@
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdAmbientLight.cpp" />
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdApp.cpp" />
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdCamera.cpp" />
+    <ClCompile Include="src\triangle-rasterizer-demo\trd\trdControlledCamera.cpp" />
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdDirectionalLight.cpp" />
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdFrameRateCounter.cpp" />
+    <ClCompile Include="src\triangle-rasterizer-demo\trd\trdInputState.cpp" />
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdInstructions.cpp" />
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdLight.cpp" />
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdLights.cpp" />
@@ -37,6 +39,7 @@
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdShader.cpp" />
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdTextRenderer.cpp" />
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdTextureMap.cpp" />
+    <ClCompile Include="src\triangle-rasterizer-demo\trd\trdWindow.cpp" />
     <ClCompile Include="src\triangle-rasterizer\src\lodepng\lodepng.cpp" />
     <ClCompile Include="src\triangle-rasterizer\src\matrix\Matrices.cpp" />
     <ClCompile Include="src\triangle-rasterizer\src\tr\trDefaultShader.cpp" />
@@ -75,11 +78,15 @@
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdAmbientLight.hpp" />
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdApp.hpp" />
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdCamera.hpp" />
+    <ClInclude Include="src\triangle-rasterizer-demo\trd\trdControlledCamera.hpp" />
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdCorner.hpp" />
+    <ClInclude Include="src\triangle-rasterizer-demo\trd\trdDigitalInput.hpp" />
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdDirectionalLight.hpp" />
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdExternalLibraryException.hpp" />
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdFrameRateCounter.hpp" />
+    <ClInclude Include="src\triangle-rasterizer-demo\trd\trdInputState.hpp" />
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdInstructions.hpp" />
+    <ClInclude Include="src\triangle-rasterizer-demo\trd\trdKey.hpp" />
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdLight.hpp" />
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdLights.hpp" />
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdMesh.hpp" />
@@ -98,6 +105,7 @@
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdTextRenderer.hpp" />
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdTextureMap.hpp" />
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdTextureMode.hpp" />
+    <ClInclude Include="src\triangle-rasterizer-demo\trd\trdWindow.hpp" />
     <ClInclude Include="src\triangle-rasterizer\src\lodepng\lodepng.h" />
     <ClInclude Include="src\triangle-rasterizer\src\matrix\Matrices.h" />
     <ClInclude Include="src\triangle-rasterizer\src\matrix\Vectors.h" />

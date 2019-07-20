@@ -3,6 +3,7 @@
 #include "trdScreenSize.hpp"
 #include "trdRenderMode.hpp"
 #include "trdTextureMode.hpp"
+#include "trdInputState.hpp"
 #include <vector>
 
 namespace trd
@@ -12,14 +13,7 @@ namespace trd
 	public:
 		                        Settings();
 
-		void                    cycleScreenSize();
-		void                    toggleFullscreen();
-		void                    cycleRenderMode();
-		void                    cycleNumThreads();
-		void                    cycleTextureMode();
-		void                    toggleInstructionsEnabled();
-		void                    toggleFrameRateEnabled();
-		void                    toggleBilinearFiltering();
+		void                    update(const InputState& inputState, bool& reinitWindow);
 
 		ScreenSize              getScreenSize() const;
 		bool                    getFullscreen() const;
@@ -29,6 +23,16 @@ namespace trd
 		bool                    getInstructionsEnabled() const;
 		bool                    getFrameRateEnabled() const;
 		bool                    getBilinearFiltering() const;
+
+	private:
+		void                    cycleScreenSize();
+		void                    toggleFullscreen();
+		void                    cycleRenderMode();
+		void                    cycleNumThreads();
+		void                    cycleTextureMode();
+		void                    toggleInstructionsEnabled();
+		void                    toggleFrameRateEnabled();
+		void                    toggleBilinearFiltering();
 
 	private:
 		std::vector<ScreenSize> m_screenSizes;

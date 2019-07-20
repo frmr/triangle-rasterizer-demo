@@ -22,6 +22,20 @@ trd::Settings::Settings() :
 
 }
 
+void trd::Settings::update(const InputState& inputState, bool& reinitWindow)
+{
+	reinitWindow = false;
+
+	if (inputState.getKeyState(Key::ChangeSetting1).pressed) { cycleScreenSize();           reinitWindow = true; }
+	if (inputState.getKeyState(Key::ChangeSetting2).pressed) { toggleFullscreen();          reinitWindow = true; }
+	if (inputState.getKeyState(Key::ChangeSetting3).pressed) { cycleNumThreads();                                }
+	if (inputState.getKeyState(Key::ChangeSetting5).pressed) { cycleRenderMode();                                }
+	if (inputState.getKeyState(Key::ChangeSetting6).pressed) { cycleTextureMode();                               }
+	if (inputState.getKeyState(Key::ChangeSetting7).pressed) { toggleBilinearFiltering();                        }
+	if (inputState.getKeyState(Key::ChangeSetting8).pressed) { toggleInstructionsEnabled();                      }
+	if (inputState.getKeyState(Key::ChangeSetting9).pressed) { toggleFrameRateEnabled();                         }
+}
+
 void trd::Settings::cycleScreenSize()
 {
 	++m_screenSizeIndex %= m_screenSizes.size();

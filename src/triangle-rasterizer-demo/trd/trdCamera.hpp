@@ -24,10 +24,10 @@ namespace trd
 
 		void    drawParameters(const ScreenSize& screenSize, tr::ColorBuffer& buffer) const;
 
-	private:
+	protected:
 		void    setPerspective(const float left, const float right, const float bottom, const float top, const float near, const float far);
 
-	private:
+	protected:
 		Vector3 m_position;
 		Vector2 m_rotation;
 		Matrix4 m_projectionMatrix;
