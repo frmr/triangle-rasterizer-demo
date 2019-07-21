@@ -11,20 +11,20 @@ namespace trd
 	class App
 	{
 	public:
-		                       App();
+		                 App();
 
-		void                   mainLoop();
-
-	private:
-		void                   initWindow();
-		void                   updateInputs();
+		void             mainLoop();
 
 	private:
-		Settings               m_settings;
-		Window                 m_window;
-		bool                   m_running;
-		tr::ColorBuffer        m_colorBuffer;
-		tr::DepthBuffer        m_depthBuffer;
-		ControlledCamera       m_camera;
+		void             initWindow();
+		void             updateInputs(const float deltaTime);
+
+	private:
+		Settings         m_settings;
+		Window           m_window;
+		bool             m_running;
+		tr::ColorBuffer  m_colorBuffer;
+		tr::DepthBuffer  m_depthBuffer;
+		ControlledCamera m_camera;
 	};
 }

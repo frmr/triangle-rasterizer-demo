@@ -10,7 +10,7 @@ namespace trd
 	public:
 		             ControlledCamera(const ScreenSize& screenSize, const float near, const float far);
 
-		void         update(const InputState& inputState);
+		void         update(const InputState& inputState, const float deltaTime);
 
 	private:
 		static float degreesToRadians(const float degrees);

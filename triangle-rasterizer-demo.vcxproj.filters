@@ -91,9 +91,6 @@
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdInstructions.cpp">
       <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
     </ClCompile>
-    <ClCompile Include="src\triangle-rasterizer-demo\trd\trdFrameRateCounter.cpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
-    </ClCompile>
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdMesh.cpp">
       <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
     </ClCompile>
@@ -144,6 +141,9 @@
     </ClCompile>
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdPointLight.cpp">
       <Filter>Source Files\triangle-rasterizer-demo\trd\Lights</Filter>
+    </ClCompile>
+    <ClCompile Include="src\triangle-rasterizer-demo\trd\trdFrameTimer.cpp">
+      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -318,9 +318,6 @@
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdScreenSize.hpp">
       <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
     </ClInclude>
-    <ClInclude Include="src\triangle-rasterizer-demo\trd\trdFrameRateCounter.hpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
-    </ClInclude>
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdMesh.hpp">
       <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
     </ClInclude>
@@ -389,6 +386,9 @@
     </ClInclude>
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdTextureMode.hpp">
       <Filter>Source Files\triangle-rasterizer-demo\trd\enums</Filter>
+    </ClInclude>
+    <ClInclude Include="src\triangle-rasterizer-demo\trd\trdFrameTimer.hpp">
+      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

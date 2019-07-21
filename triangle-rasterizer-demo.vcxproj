@@ -23,7 +23,7 @@
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdCamera.cpp" />
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdControlledCamera.cpp" />
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdDirectionalLight.cpp" />
-    <ClCompile Include="src\triangle-rasterizer-demo\trd\trdFrameRateCounter.cpp" />
+    <ClCompile Include="src\triangle-rasterizer-demo\trd\trdFrameTimer.cpp" />
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdInputState.cpp" />
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdInstructions.cpp" />
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdLight.cpp" />
@@ -83,7 +83,7 @@
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdDigitalInput.hpp" />
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdDirectionalLight.hpp" />
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdExternalLibraryException.hpp" />
-    <ClInclude Include="src\triangle-rasterizer-demo\trd\trdFrameRateCounter.hpp" />
+    <ClInclude Include="src\triangle-rasterizer-demo\trd\trdFrameTimer.hpp" />
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdInputState.hpp" />
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdInstructions.hpp" />
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdKey.hpp" />

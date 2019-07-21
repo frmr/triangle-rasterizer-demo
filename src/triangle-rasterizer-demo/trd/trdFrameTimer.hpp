@@ -5,21 +5,23 @@
 
 namespace trd
 {
-	class FrameRateCounter : public TextRenderer
+	class FrameTimer : public TextRenderer
 	{
 	public:
-		                  FrameRateCounter();
+		                  FrameTimer();
 
 		void              draw(const ScreenSize& screenSize, tr::ColorBuffer& buffer) const;
 		void              update();
+		float             getDeltaTime() const;
 
 	private:
 		static tf::String toString(const double value, const uint8_t decimalPlaces);
 
 	private:
-		tf::Timer         m_timer;
+		tf::Timer         m_frameTimer;
+		float             m_frameTime;
+		float             m_cumulativeFrameTime;
 		size_t            m_frameCount;
-		tf::String        m_frameRate;
-		tf::String        m_frameTime;
+		float             m_averageFrameTime;
 	};
 }

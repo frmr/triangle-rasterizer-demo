@@ -1,6 +1,6 @@
 #include "trdApp.hpp"
 #include "trdInstructions.hpp"
-#include "trdFrameRateCounter.hpp"
+#include "trdFrameTimer.hpp"
 #include "trdRenderManager.hpp"
 #include <thread>
 
@@ -25,7 +25,7 @@ void trd::App::initWindow()
 	m_depthBuffer = tr::DepthBuffer(m_settings.getScreenSize().width, m_settings.getScreenSize().height);
 }
 
-void trd::App::updateInputs()
+void trd::App::updateInputs(const float deltaTime)
 {
 	const InputState inputState = m_window.getInputState();
 	bool             reinitWindow;
@@ -35,7 +35,7 @@ void trd::App::updateInputs()
 		m_running = false;
 	}
 
-	m_camera.update(inputState);
+	m_camera.update(inputState, deltaTime);
 	m_settings.update(inputState, reinitWindow);
 
 	if (reinitWindow)
@@ -46,8 +46,8 @@ void trd::App::updateInputs()
 
 void trd::App::mainLoop()
 {
-	Instructions     instructions;
-	FrameRateCounter frameRateCounter;
+	Instructions instructions;
+	FrameTimer   frameTimer;
 
 	m_camera.translate(Vector3(0.0f, 0.0f, 4.0f));
 
@@ -56,7 +56,8 @@ void trd::App::mainLoop()
 
 	while (m_running)
 	{
-		updateInputs();
+		frameTimer.update();
+		updateInputs(frameTimer.getDeltaTime());
 		renderManager.draw(m_camera, m_colorBuffer, m_depthBuffer);
 
 		if (m_settings.getInstructionsEnabled())
@@ -66,11 +67,10 @@ void trd::App::mainLoop()
 		
 		if (m_settings.getFrameRateEnabled())
 		{
-			frameRateCounter.draw(m_settings.getScreenSize(), m_colorBuffer);
+			frameTimer.draw(m_settings.getScreenSize(), m_colorBuffer);
 		}
 
 		m_camera.drawParameters(m_settings.getScreenSize(), m_colorBuffer);
 		m_window.copyAndRender(m_colorBuffer);
-		frameRateCounter.update();
 	}
 }

@@ -5,7 +5,7 @@ trd::ControlledCamera::ControlledCamera(const ScreenSize& screenSize, const floa
 {
 }
 
-void trd::ControlledCamera::update(const InputState& inputState)
+void trd::ControlledCamera::update(const InputState& inputState, const float deltaTime)
 {
 	constexpr float  movementSpeed    = 0.01f;
 	constexpr float  mouseSensitivity = 1.0f;
@@ -38,7 +38,7 @@ void trd::ControlledCamera::update(const InputState& inputState)
 
 	if (movementVector.length() > 0.0f)
 	{
-		translate(movementVector.normalize() * movementSpeed);
+		translate(movementVector.normalize() * movementSpeed * deltaTime);
 	}
 }
 
