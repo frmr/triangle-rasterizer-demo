@@ -32,11 +32,11 @@
     <Filter Include="Source Files\triangle-rasterizer-demo\trd\Lights">
       <UniqueIdentifier>{34cf7320-0feb-4063-9230-d904df74c79a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\triangle-rasterizer-demo\trd\Camera">
-      <UniqueIdentifier>{a53edc92-2e2b-4b98-a3a4-564df6bb00c5}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\triangle-rasterizer-demo\trd\enums">
       <UniqueIdentifier>{a0cc3e9b-5fa2-49a0-9c0a-68279ce8ce73}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\triangle-rasterizer-demo\trd\Cameras">
+      <UniqueIdentifier>{a53edc92-2e2b-4b98-a3a4-564df6bb00c5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -134,10 +134,10 @@
       <Filter>Source Files\triangle-rasterizer-demo\trd\Lights</Filter>
     </ClCompile>
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdCamera.cpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd\Camera</Filter>
+      <Filter>Source Files\triangle-rasterizer-demo\trd\Cameras</Filter>
     </ClCompile>
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdControlledCamera.cpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd\Camera</Filter>
+      <Filter>Source Files\triangle-rasterizer-demo\trd\Cameras</Filter>
     </ClCompile>
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdAmbientLight.cpp">
       <Filter>Source Files\triangle-rasterizer-demo\trd\Lights</Filter>
@@ -367,10 +367,10 @@
       <Filter>Source Files\triangle-rasterizer-demo\trd\Lights</Filter>
     </ClInclude>
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdCamera.hpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd\Camera</Filter>
+      <Filter>Source Files\triangle-rasterizer-demo\trd\Cameras</Filter>
     </ClInclude>
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdControlledCamera.hpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd\Camera</Filter>
+      <Filter>Source Files\triangle-rasterizer-demo\trd\Cameras</Filter>
     </ClInclude>
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdAmbientLight.hpp">
       <Filter>Source Files\triangle-rasterizer-demo\trd\Lights</Filter>
