@@ -14,6 +14,7 @@ namespace trd
 		                   Scene();
 
 		void               draw(const Camera& camera, tr::Rasterizer<Shader>& rasterizer, Shader& shader, tr::ColorBuffer& colorBuffer, tr::DepthBuffer& depthBuffer) const;
+		void               update(const Vector3& cameraPosition);
 
 	private:
 		void               createScene();
@@ -23,6 +24,7 @@ namespace trd
 		MeshMap            m_meshMap;
 		std::vector<Model> m_opaqueModels;
 		std::vector<Model> m_translucentModels;
+		Model              m_earth;
 		Lights             m_lights;
 	};
 }

@@ -106,9 +106,6 @@
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdMeshMap.cpp">
       <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
     </ClCompile>
-    <ClCompile Include="src\triangle-rasterizer-demo\trd\trdModel.cpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
-    </ClCompile>
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdShader.cpp">
       <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
     </ClCompile>
@@ -153,6 +150,9 @@
     </ClCompile>
     <ClCompile Include="src\triangle-rasterizer-demo\tinyobjloader\tiny_obj_loader.cc">
       <Filter>Source Files\triangle-rasterizer-demo\tinyobjloader</Filter>
+    </ClCompile>
+    <ClCompile Include="src\triangle-rasterizer-demo\trd\trdModel.cpp">
+      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -327,9 +327,6 @@
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdMesh.hpp">
       <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
     </ClInclude>
-    <ClInclude Include="src\triangle-rasterizer-demo\trd\trdModel.hpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
-    </ClInclude>
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdTextureMap.hpp">
       <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
     </ClInclude>
@@ -404,6 +401,9 @@
     </ClInclude>
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdUnsupportedFileException.hpp">
       <Filter>Source Files\triangle-rasterizer-demo\trd\Exceptions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\triangle-rasterizer-demo\trd\trdModel.hpp">
+      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

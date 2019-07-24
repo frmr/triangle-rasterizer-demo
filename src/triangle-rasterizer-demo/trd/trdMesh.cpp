@@ -5,10 +5,7 @@
 
 trd::Mesh::Mesh(const tf::String& filename, const TextureMap& textureMap)
 {
-	if (m_texture->isInitialized())
-		m_texture->getWidth();
-
-	loadObj("data/meshes/test.obj", textureMap);
+	loadObj(filename, textureMap);
 }
 
 void trd::Mesh::loadObj(const tf::String& filename, const TextureMap& textureMap)

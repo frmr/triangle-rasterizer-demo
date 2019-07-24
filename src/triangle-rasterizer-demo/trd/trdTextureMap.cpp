@@ -3,6 +3,7 @@
 trd::TextureMap::TextureMap()
 {
 	add("data/textures/test.png");
+	add("data/textures/earth.png");
 }
 
 const tr::Texture* trd::TextureMap::get(const tf::String& filename) const

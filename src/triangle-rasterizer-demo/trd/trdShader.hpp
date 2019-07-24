@@ -20,6 +20,8 @@ namespace trd
 		void               setBilinearFiltering(const bool bilinearFiltering);
 		void               setLights(const Lights& lights);
 
+		RenderMode         getRenderMode() const;
+
 	private:
 		const tr::Texture* m_texture;
 		bool               m_textureFiltering;

@@ -2,7 +2,8 @@
 
 trd::MeshMap::MeshMap(const TextureMap& textureMap)
 {
-	add("test.obj", textureMap);
+	add("data/meshes/test.obj",  textureMap);
+	add("data/meshes/earth.obj", textureMap);
 }
 
 const trd::Mesh* trd::MeshMap::get(const tf::String& filename) const

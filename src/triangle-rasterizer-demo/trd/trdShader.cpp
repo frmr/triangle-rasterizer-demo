@@ -111,3 +111,8 @@ void trd::Shader::setLights(const Lights& lights)
 {
 	m_lights = lights;
 }
+
+trd::RenderMode trd::Shader::getRenderMode() const
+{
+	return m_renderMode;
+}
