@@ -16,10 +16,10 @@ namespace trd
 		void                           draw(tr::Rasterizer<Shader>& rasterizer, Shader& shader, tr::ColorBuffer& colorBuffer, tr::DepthBuffer& depthBuffer) const;
 
 	private:
-		static std::vector<tr::Vertex> defineVertices();
+		void                           loadObj(const tf::String& filename, const TextureMap& textureMap);
 
 	private:
-		const std::vector<tr::Vertex>  m_vertices;
-		const tr::Texture* const       m_texture;
+		std::vector<tr::Vertex>        m_vertices;
+		const tr::Texture*             m_texture;
 	};
 }

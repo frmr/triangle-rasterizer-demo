@@ -38,6 +38,12 @@
     <Filter Include="Source Files\triangle-rasterizer-demo\trd\Cameras">
       <UniqueIdentifier>{a53edc92-2e2b-4b98-a3a4-564df6bb00c5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\triangle-rasterizer-demo\tinyobjloader">
+      <UniqueIdentifier>{d62fdce2-ff88-439a-b2f3-e8308a77fd3d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\triangle-rasterizer-demo\trd\Exceptions">
+      <UniqueIdentifier>{799e06ea-e374-4db0-94b1-24ea9a5a3d83}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\triangle-rasterizer-demo\main.cpp">
@@ -144,6 +150,9 @@
     </ClCompile>
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdFrameTimer.cpp">
       <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\triangle-rasterizer-demo\tinyobjloader\tiny_obj_loader.cc">
+      <Filter>Source Files\triangle-rasterizer-demo\tinyobjloader</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -300,9 +309,6 @@
     <ClInclude Include="src\tf\src\tfTimer.hpp">
       <Filter>Source Files\tf</Filter>
     </ClInclude>
-    <ClInclude Include="src\triangle-rasterizer-demo\trd\trdExternalLibraryException.hpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
-    </ClInclude>
     <ClInclude Include="src\triangle-rasterizer-demo\font8x8\font8x8_basic.h">
       <Filter>Source Files\triangle-rasterizer-demo\font8x8</Filter>
     </ClInclude>
@@ -389,6 +395,15 @@
     </ClInclude>
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdFrameTimer.hpp">
       <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\triangle-rasterizer-demo\tinyobjloader\tiny_obj_loader.h">
+      <Filter>Source Files\triangle-rasterizer-demo\tinyobjloader</Filter>
+    </ClInclude>
+    <ClInclude Include="src\triangle-rasterizer-demo\trd\trdExternalLibraryException.hpp">
+      <Filter>Source Files\triangle-rasterizer-demo\trd\Exceptions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\triangle-rasterizer-demo\trd\trdUnsupportedFileException.hpp">
+      <Filter>Source Files\triangle-rasterizer-demo\trd\Exceptions</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

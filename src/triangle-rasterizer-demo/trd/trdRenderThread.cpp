@@ -67,7 +67,7 @@ void trd::RenderThread::threadFunction()
 	Shader                 shader;
 
 	rasterizer.setInterlace(m_threadIndex, m_settings.getNumThreads());
-	rasterizer.setCullFaceMode(tr::CullFaceMode::Back);
+	rasterizer.setCullFaceMode(tr::CullFaceMode::Front);
 	rasterizer.setPrimitive(tr::Primitive::Triangles);
 	rasterizer.setDepthTest(true);
 

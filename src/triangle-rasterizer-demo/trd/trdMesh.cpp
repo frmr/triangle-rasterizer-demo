@@ -1,53 +1,66 @@
 #include "trdMesh.hpp"
+#include "trdExternalLibraryException.hpp"
+#include "trdUnsupportedFileException.hpp"
+#include "tiny_obj_loader.h"
 
-trd::Mesh::Mesh(const tf::String& filename, const TextureMap& textureMap) :
-	m_vertices(defineVertices()),
-	m_texture(textureMap.get("data/textures/test.png"))
+trd::Mesh::Mesh(const tf::String& filename, const TextureMap& textureMap)
 {
 	if (m_texture->isInitialized())
 		m_texture->getWidth();
+
+	loadObj("data/meshes/test.obj", textureMap);
 }
 
-std::vector<tr::Vertex> trd::Mesh::defineVertices()
-{	
-	return {
+void trd::Mesh::loadObj(const tf::String& filename, const TextureMap& textureMap)
+{
+	m_vertices.clear();
+	m_texture = nullptr;
 
- 		// Front
-		tr::Vertex(Vector4( 2.0f,  2.0f,  2.0f, 1.0f), Vector3(0.0f, 0.0f,  1.0f), Vector2(2.0f, 0.0f)),
-		tr::Vertex(Vector4( 2.0f, -2.0f,  2.0f, 1.0f), Vector3(0.0f, 0.0f,  1.0f), Vector2(2.0f, 2.0f)),
-		tr::Vertex(Vector4(-2.0f, -2.0f,  2.0f, 1.0f), Vector3(0.0f, 0.0f,  1.0f), Vector2(0.0f, 2.0f)),
+	tinyobj::attrib_t                attributes;
+	std::vector<tinyobj::shape_t>    shapes;
+	std::vector<tinyobj::material_t> materials;
 
- 		tr::Vertex(Vector4(-2.0f,  2.0f,  2.0f, 1.0f), Vector3(0.0f, 0.0f,  1.0f), Vector2(0.0f, 0.0f)),
-		tr::Vertex(Vector4( 2.0f,  2.0f,  2.0f, 1.0f), Vector3(0.0f, 0.0f,  1.0f), Vector2(2.0f, 0.0f)),
-		tr::Vertex(Vector4(-2.0f, -2.0f,  2.0f, 1.0f), Vector3(0.0f, 0.0f,  1.0f), Vector2(0.0f, 2.0f)),
+	std::string                      warning;
+	std::string                      error;
 
- 		// Top
-		tr::Vertex(Vector4(-2.0f,  2.0f,  2.0f, 1.0f), Vector3(0.0f, 1.0f,  0.0f), Vector2(0.0f, 0.0f)),
-		tr::Vertex(Vector4(-2.0f,  2.0f, -2.0f, 1.0f), Vector3(0.0f, 1.0f,  0.0f), Vector2(1.0f, 0.0f)),
-		tr::Vertex(Vector4( 2.0f,  2.0f,  2.0f, 1.0f), Vector3(0.0f, 1.0f,  0.0f), Vector2(0.0f, 1.0f)),
+	if (!tinyobj::LoadObj(&attributes, &shapes, &materials, &warning, &error, filename.c_str()))
+	{
+		throw ExternalLibraryException("trd::Mesh::loadObj(): " + error);
+	}
 
- 		tr::Vertex(Vector4(-2.0f,  2.0f, -2.0f, 1.0f), Vector3(0.0f, 1.0f,  0.0f), Vector2(1.0f, 0.0f)),
-		tr::Vertex(Vector4( 2.0f,  2.0f, -2.0f, 1.0f), Vector3(0.0f, 1.0f,  0.0f), Vector2(1.0f, 1.0f)),
-		tr::Vertex(Vector4( 2.0f,  2.0f,  2.0f, 1.0f), Vector3(0.0f, 1.0f,  0.0f), Vector2(0.0f, 1.0f)),
+	if (!shapes.empty() && !materials.empty())
+	{
+		for (const unsigned char numFaceVertices : shapes.front().mesh.num_face_vertices)
+		{
+			if (numFaceVertices != 3)
+			{
+				throw UnsupportedFileException("trd::Mesh::loadObj(): Only triangular faces are support");
+			}
+		}
 
- 		// Right	
-		tr::Vertex(Vector4( 2.0f,  2.0f, -2.0f, 1.0f), Vector3(1.0f, 0.0f,  0.0f), Vector2(1.0f, 0.0f)),
-		tr::Vertex(Vector4( 2.0f, -2.0f, -2.0f, 1.0f), Vector3(1.0f, 0.0f,  0.0f), Vector2(1.0f, 1.0f)),
-		tr::Vertex(Vector4( 2.0f,  2.0f,  2.0f, 1.0f), Vector3(1.0f, 0.0f,  0.0f), Vector2(0.0f, 0.0f)),
+		for (const auto vertex : shapes.front().mesh.indices)
+		{
+			m_vertices.emplace_back(
+				Vector4(
+					attributes.vertices[size_t(vertex.vertex_index) * 3 + 0],
+					attributes.vertices[size_t(vertex.vertex_index) * 3 + 1],
+					attributes.vertices[size_t(vertex.vertex_index) * 3 + 2],
+					1.0f
+				),
+				Vector3(
+					attributes.normals[size_t(vertex.normal_index) * 3 + 0],
+					attributes.normals[size_t(vertex.normal_index) * 3 + 1],
+					attributes.normals[size_t(vertex.normal_index) * 3 + 2]
+				),
+				Vector2(
+					attributes.texcoords[size_t(vertex.texcoord_index) * 2 + 0],
+					attributes.texcoords[size_t(vertex.texcoord_index) * 2 + 1]
+				)
+			);
+		}
 
- 		tr::Vertex(Vector4( 2.0f,  2.0f,  2.0f, 1.0f), Vector3(1.0f, 0.0f,  0.0f), Vector2(0.0f, 0.0f)),
-		tr::Vertex(Vector4( 2.0f, -2.0f, -2.0f, 1.0f), Vector3(1.0f, 0.0f,  0.0f), Vector2(1.0f, 1.0f)),
-		tr::Vertex(Vector4( 2.0f, -2.0f,  2.0f, 1.0f), Vector3(1.0f, 0.0f,  0.0f), Vector2(0.0f, 1.0f)),
-
- 		// Back	
-		tr::Vertex(Vector4(-2.0f, -2.0f, -2.0f, 1.0f), Vector3(0.0f, 0.0f, -1.0f), Vector2(1.0f, 1.0f)),
-		tr::Vertex(Vector4( 2.0f, -2.0f, -2.0f, 1.0f), Vector3(0.0f, 0.0f, -1.0f), Vector2(0.0f, 1.0f)),
-		tr::Vertex(Vector4( 2.0f,  2.0f, -2.0f, 1.0f), Vector3(0.0f, 0.0f, -1.0f), Vector2(0.0f, 0.0f)),
-
- 		tr::Vertex(Vector4(-2.0f, -2.0f, -2.0f, 1.0f), Vector3(0.0f, 0.0f, -1.0f), Vector2(1.0f, 1.0f)),
-		tr::Vertex(Vector4( 2.0f,  2.0f, -2.0f, 1.0f), Vector3(0.0f, 0.0f, -1.0f), Vector2(0.0f, 0.0f)),
-		tr::Vertex(Vector4(-2.0f,  2.0f, -2.0f, 1.0f), Vector3(0.0f, 0.0f, -1.0f), Vector2(1.0f, 0.0f)),
-	};
+		m_texture = textureMap.get(materials.front().diffuse_texname);
+	}
 }
 
 void trd::Mesh::draw(tr::Rasterizer<Shader>& rasterizer, Shader& shader, tr::ColorBuffer& colorBuffer, tr::DepthBuffer& depthBuffer) const
