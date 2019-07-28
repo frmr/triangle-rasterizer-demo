@@ -8,10 +8,10 @@ trd::ControlledCamera::ControlledCamera(const ScreenSize& screenSize, const floa
 void trd::ControlledCamera::update(const InputState& inputState, const float deltaTime)
 {
 	constexpr float  movementSpeed    = 0.01f;
-	constexpr float  mouseSensitivity = 1.0f;
+	constexpr float  mouseSensitivity = 0.1f;
 
-	m_rotation.x -= inputState.getMouseChangeY() * mouseSensitivity;
-	m_rotation.y -= inputState.getMouseChangeX() * mouseSensitivity;
+	m_rotation.x -= inputState.getMouseChangeY() * mouseSensitivity * deltaTime;
+	m_rotation.y -= inputState.getMouseChangeX() * mouseSensitivity * deltaTime;
 
 	m_rotation.x = std::clamp(m_rotation.x, -90.0f, 90.0f);
 
@@ -31,10 +31,10 @@ void trd::ControlledCamera::update(const InputState& inputState, const float del
 
 	if (inputState.getKeyState(Key::MoveForward ).held) { movementVector -= forwardVector; }
 	if (inputState.getKeyState(Key::MoveBackward).held) { movementVector += forwardVector; }
-	if (inputState.getKeyState(Key::MoveLeft    ).held) { movementVector -= rightVector; }
-	if (inputState.getKeyState(Key::MoveRight   ).held) { movementVector += rightVector; }
-	if (inputState.getKeyState(Key::MoveUp      ).held) { movementVector += upVector; }
-	if (inputState.getKeyState(Key::MoveDown    ).held) { movementVector -= upVector; }
+	if (inputState.getKeyState(Key::MoveLeft    ).held) { movementVector -= rightVector;   }
+	if (inputState.getKeyState(Key::MoveRight   ).held) { movementVector += rightVector;   }
+	if (inputState.getKeyState(Key::MoveUp      ).held) { movementVector += upVector;      }
+	if (inputState.getKeyState(Key::MoveDown    ).held) { movementVector -= upVector;      }
 
 	if (movementVector.length() > 0.0f)
 	{
