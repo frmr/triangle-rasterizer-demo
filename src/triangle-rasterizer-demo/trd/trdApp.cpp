@@ -41,6 +41,7 @@ void trd::App::updateInputs(const float deltaTime)
 	if (reinitWindow)
 	{
 		initWindow();
+		m_window.getInputState();
 	}
 }
 
