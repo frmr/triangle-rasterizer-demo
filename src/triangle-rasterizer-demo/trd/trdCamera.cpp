@@ -1,15 +1,17 @@
 #include "trdCamera.hpp"
 
-trd::Camera::Camera(const ScreenSize& screenSize, const float near, const float far)
+trd::Camera::Camera(const ScreenSize& screenSize, const uint8_t fov, const float near, const float far)
 {
-	setPerspective(screenSize, near, far);
+	setPerspective(screenSize, fov, near, far);
 }
 
-void trd::Camera::setPerspective(const ScreenSize& screenSize, const float near, const float far)
+void trd::Camera::setPerspective(const ScreenSize& screenSize, const uint8_t fov, const float near, const float far)
 {
-	const float aspectRatio = float(screenSize.width) / float(screenSize.height);
+	const float aspectRatio = float(screenSize.height) / float(screenSize.width);
+	const float width       = near * std::tanf(degreesToRadians(float(fov) / 2.0f));
+	const float height      = width * aspectRatio;
 
-	setPerspective(-aspectRatio, aspectRatio, -1.0f, 1.0f, near, far);
+	setPerspective(-width, width, -height, height, near, far);
 }
 
 void trd::Camera::translate(const Vector3& translation)
@@ -64,4 +66,11 @@ void trd::Camera::setPerspective(const float left, const float right, const floa
 	m_projectionMatrix[10] = -(far + near) / (far - near);	
 	m_projectionMatrix[11] = -1.0f;	
 	m_projectionMatrix[14] = -(2.0f * far * near) / (far - near);
+}
+
+float trd::Camera::degreesToRadians(const float degrees)
+{
+	constexpr float pi = 3.141592f;
+
+	return degrees / 180.0f * pi;
 }

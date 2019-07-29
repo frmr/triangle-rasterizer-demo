@@ -16,6 +16,7 @@ namespace trd
 		void          init(const ScreenSize& screenSize, const bool fullscreen);
 		void          copyAndRender(tr::ColorBuffer& colorBuffer);
 		InputState    getInputState();
+		void          flushEvents();
 
 	private:
 		void          initSdl();

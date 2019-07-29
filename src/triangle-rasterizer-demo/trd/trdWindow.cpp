@@ -67,6 +67,11 @@ trd::InputState trd::Window::getInputState()
 	return m_inputState;
 }
 
+void trd::Window::flushEvents()
+{
+	m_inputState.update();
+}
+
 void trd::Window::initSdl()
 {
 	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS) < 0)

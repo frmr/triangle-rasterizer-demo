@@ -6,6 +6,7 @@ trd::Settings::Settings() :
 	m_fullscreen(false),
 	m_renderMode(RenderMode::Lit),
 	m_numThreads(std::thread::hardware_concurrency()),
+	m_fovIndex(2),
 	m_textureMode(TextureMode::Perspective),
 	m_instructionsEnabled(true),
 	m_frameRateEnabled(true),
@@ -15,6 +16,10 @@ trd::Settings::Settings() :
 	m_screenSizes.push_back({1024, 768});
 	m_screenSizes.push_back({1920, 1080}); // Read custom resolution from file
 
+	m_fovs.push_back(60);
+	m_fovs.push_back(90);
+	m_fovs.push_back(110);
+
 	//if (screenWidth <= 0 || screenHeight <= 0)
 	//{
 	//	return 0;
@@ -22,13 +27,15 @@ trd::Settings::Settings() :
 
 }
 
-void trd::Settings::update(const InputState& inputState, bool& reinitWindow)
+void trd::Settings::update(const InputState& inputState, bool& reinitWindow, bool& reinitCamera)
 {
 	reinitWindow = false;
+	reinitCamera = false;
 
 	if (inputState.getKeyState(Key::ChangeSetting1).pressed) { cycleScreenSize();           reinitWindow = true; }
 	if (inputState.getKeyState(Key::ChangeSetting2).pressed) { toggleFullscreen();          reinitWindow = true; }
 	if (inputState.getKeyState(Key::ChangeSetting3).pressed) { cycleNumThreads();                                }
+	if (inputState.getKeyState(Key::ChangeSetting4).pressed) { cycleFov();                  reinitCamera = true; }
 	if (inputState.getKeyState(Key::ChangeSetting5).pressed) { cycleRenderMode();                                }
 	if (inputState.getKeyState(Key::ChangeSetting6).pressed) { cycleTextureMode();                               }
 	if (inputState.getKeyState(Key::ChangeSetting7).pressed) { toggleBilinearFiltering();                        }
@@ -61,6 +68,11 @@ void trd::Settings::cycleNumThreads()
 	m_numThreads = m_numThreads % std::thread::hardware_concurrency() + 1;
 }
 
+void trd::Settings::cycleFov()
+{
+	++m_fovIndex %= m_fovs.size();
+}
+
 void trd::Settings::cycleTextureMode()
 {
 	switch (m_textureMode)
@@ -88,7 +100,7 @@ void trd::Settings::toggleBilinearFiltering()
 
 trd::ScreenSize trd::Settings::getScreenSize() const
 {
-	return m_screenSizes[m_screenSizeIndex];
+	return m_screenSizes.at(m_screenSizeIndex);
 }
 
 bool trd::Settings::getFullscreen() const
@@ -104,6 +116,11 @@ trd::RenderMode trd::Settings::getRenderMode() const
 unsigned int trd::Settings::getNumThreads() const
 {
 	return m_numThreads;
+}
+
+uint8_t trd::Settings::getFov() const
+{
+	return m_fovs.at(m_fovIndex);
 }
 
 trd::TextureMode trd::Settings::getTextureMode() const

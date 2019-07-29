@@ -1,8 +1,13 @@
 #include "trdControlledCamera.hpp"
 
-trd::ControlledCamera::ControlledCamera(const ScreenSize& screenSize, const float near, const float far) :
-	Camera(screenSize, near, far)
+trd::ControlledCamera::ControlledCamera(const ScreenSize& screenSize, const uint8_t fov) :
+	Camera(screenSize, fov, s_near, s_far)
 {
+}
+
+void trd::ControlledCamera::setPerspective(const ScreenSize& screenSize, const uint8_t fov)
+{
+	Camera::setPerspective(screenSize, fov, s_near, s_far);
 }
 
 void trd::ControlledCamera::update(const InputState& inputState, const float deltaTime)
@@ -40,11 +45,4 @@ void trd::ControlledCamera::update(const InputState& inputState, const float del
 	{
 		translate(movementVector.normalize() * movementSpeed * deltaTime);
 	}
-}
-
-float trd::ControlledCamera::degreesToRadians(const float degrees)
-{
-	constexpr float pi = 3.141592f;
-
-	return degrees / 180.0f * pi;
 }

@@ -10,7 +10,7 @@ trd::App::App() :
 	m_running(false),
 	m_colorBuffer(),
 	m_depthBuffer(),
-	m_camera(m_settings.getScreenSize(), 1.0f, 100.0f)
+	m_camera(m_settings.getScreenSize(), m_settings.getFov())
 {
 	initWindow();
 	m_running = true;
@@ -19,7 +19,7 @@ trd::App::App() :
 void trd::App::initWindow()
 {
 	m_window.init(m_settings.getScreenSize(), m_settings.getFullscreen());
-	m_camera.setPerspective(m_settings.getScreenSize(), 1.0f, 100.0f);
+	m_camera.setPerspective(m_settings.getScreenSize(), m_settings.getFov());
 
 	m_colorBuffer = tr::ColorBuffer(m_settings.getScreenSize().width, m_settings.getScreenSize().height);
 	m_depthBuffer = tr::DepthBuffer(m_settings.getScreenSize().width, m_settings.getScreenSize().height);
@@ -29,19 +29,25 @@ void trd::App::updateInputs(const float deltaTime)
 {
 	const InputState inputState = m_window.getInputState();
 	bool             reinitWindow;
+	bool             reinitCamera;
 
 	if (inputState.getKeyState(Key::Quit).pressed || inputState.getQuit())
 	{
 		m_running = false;
 	}
 
+	m_settings.update(inputState, reinitWindow, reinitCamera);
 	m_camera.update(inputState, deltaTime);
-	m_settings.update(inputState, reinitWindow);
 
 	if (reinitWindow)
 	{
 		initWindow();
-		m_window.getInputState();
+		m_window.flushEvents();
+	}
+
+	if (reinitCamera)
+	{
+		m_camera.setPerspective(m_settings.getScreenSize(), m_settings.getFov());
 	}
 }
 

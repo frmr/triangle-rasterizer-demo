@@ -13,12 +13,13 @@ namespace trd
 	public:
 		                        Settings();
 
-		void                    update(const InputState& inputState, bool& reinitWindow);
+		void                    update(const InputState& inputState, bool& reinitWindow, bool& reinitCamera);
 
 		ScreenSize              getScreenSize() const;
 		bool                    getFullscreen() const;
 		RenderMode              getRenderMode() const;
 		unsigned int            getNumThreads() const;
+		uint8_t                 getFov() const;
 		TextureMode             getTextureMode() const;
 		bool                    getInstructionsEnabled() const;
 		bool                    getFrameRateEnabled() const;
@@ -29,6 +30,7 @@ namespace trd
 		void                    toggleFullscreen();
 		void                    cycleRenderMode();
 		void                    cycleNumThreads();
+		void                    cycleFov();
 		void                    cycleTextureMode();
 		void                    toggleInstructionsEnabled();
 		void                    toggleFrameRateEnabled();
@@ -40,6 +42,8 @@ namespace trd
 		bool                    m_fullscreen;
 		RenderMode              m_renderMode;
 		unsigned int            m_numThreads;
+		std::vector<uint8_t>    m_fovs;
+		size_t                  m_fovIndex;
 		trd::TextureMode        m_textureMode;
 		bool                    m_instructionsEnabled;
 		bool                    m_frameRateEnabled;
