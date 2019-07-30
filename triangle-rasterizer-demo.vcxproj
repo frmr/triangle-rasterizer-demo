@@ -188,7 +188,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS;_SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>X:\produce\triangle-rasterizer-demo\src\triangle-rasterizer-demo\tinyobjloader;src\triangle-rasterizer\src\matrix;src\triangle-rasterizer-demo\font8x8;src\triangle-rasterizer\src\tr;src\tf\src;C:\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src\triangle-rasterizer-demo\tinyobjloader;src\triangle-rasterizer\src\matrix;src\triangle-rasterizer-demo\font8x8;src\triangle-rasterizer\src\tr;src\tf\src;C:\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
@@ -214,7 +214,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS;_SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>X:\produce\triangle-rasterizer-demo\src\triangle-rasterizer-demo\tinyobjloader;src\triangle-rasterizer\src\matrix;src\triangle-rasterizer-demo\font8x8;src\triangle-rasterizer\src\tr;src\tf\src;C:\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src\triangle-rasterizer-demo\tinyobjloader;src\triangle-rasterizer\src\matrix;src\triangle-rasterizer-demo\font8x8;src\triangle-rasterizer\src\tr;src\tf\src;C:\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
