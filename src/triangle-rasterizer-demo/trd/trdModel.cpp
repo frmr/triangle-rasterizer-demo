@@ -27,29 +27,32 @@ void trd::Model::draw(const Camera& camera, tr::Rasterizer<Shader>& rasterizer, 
 void trd::Model::translate(const Vector3& translation)
 {
 	m_position += translation;
-
-	m_matrix.translate(translation);
+	recalculateMatrix();
 }
 
 void trd::Model::rotate(const Vector3& rotation)
 {
 	m_rotation += rotation;
-
-	m_matrix.rotateX(rotation.x);
-	m_matrix.rotateY(rotation.y);
-	m_matrix.rotateZ(rotation.z);
+	recalculateMatrix();
 }
 
 void trd::Model::setPosition(const Vector3& position)
 {
-	m_matrix.identity();
-	rotate(m_rotation);
-	translate(position);
+	m_position = position;
+	recalculateMatrix();
 }
 
 void trd::Model::setRotation(const Vector3& rotation)
 {
+	m_rotation = rotation;
+	recalculateMatrix();
+}
+
+void trd::Model::recalculateMatrix()
+{
 	m_matrix.identity();
-	rotate(rotation);
-	translate(m_position);
+	m_matrix.rotateX(m_rotation.x);
+	m_matrix.rotateY(m_rotation.y);
+	m_matrix.rotateZ(m_rotation.z);
+	m_matrix.translate(m_position);
 }

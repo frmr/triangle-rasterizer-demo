@@ -22,6 +22,9 @@ namespace trd
 		void              setRotation(const Vector3& rotation);
 
 	private:
+		void              recalculateMatrix();
+
+	private:
 		const Mesh* const m_mesh;
 		Matrix4           m_matrix;
 		Vector3           m_position;
