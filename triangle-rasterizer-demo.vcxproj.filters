@@ -26,9 +26,6 @@
     <Filter Include="Source Files\tf">
       <UniqueIdentifier>{fd312a9a-72a9-4e81-acd5-a7d4473b7aa8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\triangle-rasterizer-demo\font8x8">
-      <UniqueIdentifier>{5970f378-041f-4ad8-abfb-62f7b1ca0322}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\triangle-rasterizer-demo\trd\Lights">
       <UniqueIdentifier>{34cf7320-0feb-4063-9230-d904df74c79a}</UniqueIdentifier>
     </Filter>
@@ -309,9 +306,6 @@
     <ClInclude Include="src\tf\src\tfTimer.hpp">
       <Filter>Source Files\tf</Filter>
     </ClInclude>
-    <ClInclude Include="src\triangle-rasterizer-demo\font8x8\font8x8_basic.h">
-      <Filter>Source Files\triangle-rasterizer-demo\font8x8</Filter>
-    </ClInclude>
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdTextRenderer.hpp">
       <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
     </ClInclude>
@@ -403,6 +397,9 @@
       <Filter>Source Files\triangle-rasterizer-demo\trd\Exceptions</Filter>
     </ClInclude>
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdModel.hpp">
+      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\triangle-rasterizer-demo\trd\trdFont.hpp">
       <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
     </ClInclude>
   </ItemGroup>

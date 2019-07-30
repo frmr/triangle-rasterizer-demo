@@ -1,5 +1,5 @@
 #include "trdTextRenderer.hpp"
-#include "font8x8_basic.h"
+#include "trdFont.hpp"
 
 void trd::TextRenderer::drawText(const std::vector<tf::String>& lines, const tr::Color& color, const ScreenPos& position, const TextAlign& alignment, tr::ColorBuffer& buffer)
 {
@@ -11,9 +11,9 @@ void trd::TextRenderer::drawText(const std::vector<tf::String>& lines, const tr:
 	{
 		size_t x = (alignment == TextAlign::Left) ? position.x : position.x + textWidth - line.size() * s_fontWidth;
 
-		for (const char character : line)
+		for (const unsigned char character : line)
 		{
-			for (const char row : font8x8_basic[character])
+			for (const unsigned char row : trd::font[character])
 			{
 				for (size_t column = 0; column < s_fontWidth; ++column)
 				{
