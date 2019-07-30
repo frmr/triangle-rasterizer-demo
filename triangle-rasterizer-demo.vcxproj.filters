@@ -402,5 +402,8 @@
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdFont.hpp">
       <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
     </ClInclude>
+    <ClInclude Include="src\tf\src\tfUnreachableException.hpp">
+      <Filter>Source Files\tf</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -73,6 +73,7 @@
     <ClInclude Include="src\tf\src\tfUnorderedMap.hpp" />
     <ClInclude Include="src\tf\src\tfUnorderedMultimap.hpp" />
     <ClInclude Include="src\tf\src\tfUnorderedSet.hpp" />
+    <ClInclude Include="src\tf\src\tfUnreachableException.hpp" />
     <ClInclude Include="src\tf\src\tfVector.hpp" />
     <ClInclude Include="src\tf\src\tfWait.hpp" />
     <ClInclude Include="src\triangle-rasterizer-demo\tinyobjloader\tiny_obj_loader.h" />
