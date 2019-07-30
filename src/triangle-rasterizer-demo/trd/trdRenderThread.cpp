@@ -52,12 +52,9 @@ void trd::RenderThread::kill()
 
 	m_continueConditionVariable.notify_one();
 
-	try
+	if (m_thread.joinable())
 	{
 		m_thread.join();
-	}
-	catch (const std::system_error&)
-	{
 	}
 }
 
