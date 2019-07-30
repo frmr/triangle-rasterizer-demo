@@ -23,8 +23,8 @@ const std::map<int, trd::Key> trd::InputState::m_keyMapping = {
 
 trd::InputState::InputState() :
 	m_keys(),
-	m_mouseChangeX(0.0f),
-	m_mouseChangeY(0.0f),
+	m_mouseChangeX(0),
+	m_mouseChangeY(0),
 	m_quit(false)
 {
 	for (const auto& keyPair : m_keyMapping)
@@ -40,8 +40,8 @@ void trd::InputState::update()
 	resetPressedKeys();
 
 	m_quit         = false;
-	m_mouseChangeX = 0.0f;
-	m_mouseChangeY = 0.0f;
+	m_mouseChangeX = 0;
+	m_mouseChangeY = 0;
 
  	while (SDL_PollEvent(&event))
 	{
@@ -93,12 +93,12 @@ trd::DigitalInput trd::InputState::getKeyState(const Key key) const
 	}
 }
 
-float trd::InputState::getMouseChangeX() const
+int32_t trd::InputState::getMouseChangeX() const
 {
 	return m_mouseChangeX;
 }
 
-float trd::InputState::getMouseChangeY() const
+int32_t trd::InputState::getMouseChangeY() const
 {
 	return m_mouseChangeY;
 }

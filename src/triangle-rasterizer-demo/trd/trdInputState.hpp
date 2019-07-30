@@ -14,8 +14,8 @@ namespace trd
 		void                            update();
 		bool                            getQuit() const;
 		DigitalInput                    getKeyState(const Key key) const;
-		float                           getMouseChangeX() const;
-		float                           getMouseChangeY() const;
+		int32_t                         getMouseChangeX() const;
+		int32_t                         getMouseChangeY() const;
 
 	private:
 		void                            resetPressedKeys();
@@ -23,8 +23,8 @@ namespace trd
 	private:
 		static const std::map<int, Key> m_keyMapping;
 		std::map<Key, DigitalInput>     m_keys;
-		float                           m_mouseChangeX;
-		float                           m_mouseChangeY;
+		int32_t                         m_mouseChangeX;
+		int32_t                         m_mouseChangeY;
 		bool                            m_quit;
 	};
 }
