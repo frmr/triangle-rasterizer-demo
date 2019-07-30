@@ -5,7 +5,8 @@ trd::Shader::Shader() :
 	m_texture(nullptr),
 	m_textureFiltering(false),
 	m_renderMode(trd::RenderMode::Lit),
-	m_useTexture(true)
+	m_useTexture(true),
+	m_bilinearFiltering(false)
 {
 }
 
