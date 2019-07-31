@@ -11,15 +11,15 @@ namespace trd
 	class Mesh
 	{
 	public:
-		                               Mesh(const tf::String& filename, const trd::TextureMap& textureMap);
+		                        Mesh(const tf::String& filename, const trd::TextureMap& textureMap);
 
-		void                           draw(tr::Rasterizer<Shader>& rasterizer, Shader& shader, tr::ColorBuffer& colorBuffer, tr::DepthBuffer& depthBuffer) const;
-
-	private:
-		void                           loadObj(const tf::String& filename, const TextureMap& textureMap);
+		void                    draw(tr::Rasterizer<Shader>& rasterizer, Shader& shader, tr::ColorBuffer& colorBuffer, tr::DepthBuffer& depthBuffer) const;
 
 	private:
-		std::vector<tr::Vertex>        m_vertices;
-		const tr::Texture*             m_texture;
+		void                    loadObj(const tf::String& filename, const TextureMap& textureMap);
+
+	private:
+		std::vector<tr::Vertex> m_vertices;
+		const tr::Texture*      m_texture;
 	};
 }

@@ -55,9 +55,6 @@
     <ClCompile Include="src\triangle-rasterizer\src\tr\trTexture.cpp">
       <Filter>Source Files\triangle-rasterizer\tr</Filter>
     </ClCompile>
-    <ClCompile Include="src\triangle-rasterizer\src\tr\trVertex.cpp">
-      <Filter>Source Files\triangle-rasterizer\tr</Filter>
-    </ClCompile>
     <ClCompile Include="src\triangle-rasterizer\src\matrix\Matrices.cpp">
       <Filter>Source Files\triangle-rasterizer\matrix</Filter>
     </ClCompile>
@@ -151,6 +148,9 @@
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdModel.cpp">
       <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
     </ClCompile>
+    <ClCompile Include="src\triangle-rasterizer\src\tr\trTransformedVertex.cpp">
+      <Filter>Source Files\triangle-rasterizer\tr</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdApp.hpp">
@@ -202,9 +202,6 @@
       <Filter>Source Files\triangle-rasterizer\tr</Filter>
     </ClInclude>
     <ClInclude Include="src\triangle-rasterizer\src\tr\trTextureWrappingMode.hpp">
-      <Filter>Source Files\triangle-rasterizer\tr</Filter>
-    </ClInclude>
-    <ClInclude Include="src\triangle-rasterizer\src\tr\trVertex.hpp">
       <Filter>Source Files\triangle-rasterizer\tr</Filter>
     </ClInclude>
     <ClInclude Include="src\triangle-rasterizer\src\tr\trVertexClipBitMasks.hpp">
@@ -404,6 +401,12 @@
     </ClInclude>
     <ClInclude Include="src\tf\src\tfUnreachableException.hpp">
       <Filter>Source Files\tf</Filter>
+    </ClInclude>
+    <ClInclude Include="src\triangle-rasterizer\src\tr\trTransformedVertex.hpp">
+      <Filter>Source Files\triangle-rasterizer\tr</Filter>
+    </ClInclude>
+    <ClInclude Include="src\triangle-rasterizer\src\tr\trVertex.hpp">
+      <Filter>Source Files\triangle-rasterizer\tr</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

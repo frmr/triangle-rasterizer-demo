@@ -37,7 +37,7 @@ void trd::Mesh::loadObj(const tf::String& filename, const TextureMap& textureMap
 
 		for (const auto vertex : shapes.front().mesh.indices)
 		{
-			m_vertices.emplace_back(
+			m_vertices.push_back({
 				Vector4(
 					attributes.vertices[size_t(vertex.vertex_index) * 3 + 0],
 					attributes.vertices[size_t(vertex.vertex_index) * 3 + 1],
@@ -53,7 +53,7 @@ void trd::Mesh::loadObj(const tf::String& filename, const TextureMap& textureMap
 					attributes.texcoords[size_t(vertex.texcoord_index) * 2 + 0],
 					attributes.texcoords[size_t(vertex.texcoord_index) * 2 + 1]
 				)
-			);
+			});
 		}
 
 		m_texture = textureMap.get(materials.front().diffuse_texname);

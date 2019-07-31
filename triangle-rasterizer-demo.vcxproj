@@ -46,7 +46,7 @@
     <ClCompile Include="src\triangle-rasterizer\src\tr\trDefaultShader.cpp" />
     <ClCompile Include="src\triangle-rasterizer\src\tr\trDepthShader.cpp" />
     <ClCompile Include="src\triangle-rasterizer\src\tr\trTexture.cpp" />
-    <ClCompile Include="src\triangle-rasterizer\src\tr\trVertex.cpp" />
+    <ClCompile Include="src\triangle-rasterizer\src\tr\trTransformedVertex.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\tf\src\tfBinaryFile.hpp" />
@@ -131,6 +131,7 @@
     <ClInclude Include="src\triangle-rasterizer\src\tr\trTexture.hpp" />
     <ClInclude Include="src\triangle-rasterizer\src\tr\trTextureMode.hpp" />
     <ClInclude Include="src\triangle-rasterizer\src\tr\trTextureWrappingMode.hpp" />
+    <ClInclude Include="src\triangle-rasterizer\src\tr\trTransformedVertex.hpp" />
     <ClInclude Include="src\triangle-rasterizer\src\tr\trVertex.hpp" />
     <ClInclude Include="src\triangle-rasterizer\src\tr\trVertexClipBitMasks.hpp" />
   </ItemGroup>
