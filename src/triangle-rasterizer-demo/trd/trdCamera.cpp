@@ -59,12 +59,12 @@ void trd::Camera::setPerspective(const float left, const float right, const floa
 {
 	m_projectionMatrix.identity();
 
-	m_projectionMatrix[0]  = (2.0f * near) / (right - left);	
-	m_projectionMatrix[5]  = (2.0f * near) / (top - bottom);	
-	m_projectionMatrix[8]  = (right + left) / (right - left);	
-	m_projectionMatrix[9]  = (top + bottom) / (top - bottom);	
-	m_projectionMatrix[10] = -(far + near) / (far - near);	
-	m_projectionMatrix[11] = -1.0f;	
+	m_projectionMatrix[0]  = (2.0f * near) / (right - left);
+	m_projectionMatrix[5]  = (2.0f * near) / (top - bottom);
+	m_projectionMatrix[8]  = (right + left) / (right - left);
+	m_projectionMatrix[9]  = (top + bottom) / (top - bottom);
+	m_projectionMatrix[10] = -(far + near) / (far - near);
+	m_projectionMatrix[11] = -1.0f;
 	m_projectionMatrix[14] = -(2.0f * far * near) / (far - near);
 }
 
