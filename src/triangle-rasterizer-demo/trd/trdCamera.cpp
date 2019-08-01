@@ -66,6 +66,7 @@ void trd::Camera::setPerspective(const float left, const float right, const floa
 	m_projectionMatrix[10] = -(far + near) / (far - near);
 	m_projectionMatrix[11] = -1.0f;
 	m_projectionMatrix[14] = -(2.0f * far * near) / (far - near);
+	m_projectionMatrix[15] = 0.0f;
 }
 
 float trd::Camera::degreesToRadians(const float degrees)
