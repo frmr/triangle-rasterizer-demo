@@ -7,12 +7,12 @@ namespace trd
 	class Light
 	{
 	protected:
-		        Light(const Vector3& color);
+		               Light(const Vector3& color);
 
 	public:
-		Vector3 getColor() const;
+		const Vector3& getColor() const;
 
 	private:
-		Vector3 m_color;
+		Vector3        m_color;
 	};
 }

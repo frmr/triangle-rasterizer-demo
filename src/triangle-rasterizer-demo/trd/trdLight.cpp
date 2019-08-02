@@ -5,7 +5,7 @@ trd::Light::Light(const Vector3& color) :
 {
 }
 
-Vector3 trd::Light::getColor() const
+const Vector3& trd::Light::getColor() const
 {
 	return m_color;
 }

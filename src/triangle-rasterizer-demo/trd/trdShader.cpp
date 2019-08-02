@@ -59,7 +59,7 @@ void trd::Shader::draw(const Vector4& screenPosition, const Vector4& worldPositi
 
 				const float length = fragToLightVec.length();
 
-				fragToLightVec /= length;
+				fragToLightVec *= 1.0f / length; // Looks strange but it's just an optimization
 
 				const float intensity = fragToLightVec.dot(normal);
 
