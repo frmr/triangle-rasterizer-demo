@@ -10,7 +10,7 @@ trd::Shader::Shader() :
 {
 }
 
-void trd::Shader::draw(const Vector4& screenPosition, const Vector4& worldPosition, const Vector3& normal, const Vector2& textureCoord, tr::Color& color, float& depth) const
+void trd::Shader::draw(const Vector4& screenPosition, const Vector3& worldPosition, const Vector3& normal, const Vector2& textureCoord, tr::Color& color, float& depth) const
 {
 	depth = screenPosition.z;
 
@@ -25,14 +25,13 @@ void trd::Shader::draw(const Vector4& screenPosition, const Vector4& worldPositi
 
 		if (m_renderMode == RenderMode::Lit)
 		{
-			const Vector4 colorFloat = color.toVector() / 255.0f;
-			Vector4       postLightColor(0.0f, 0.0f, 0.0f, colorFloat.w);
+			const Vector4 colorFloat4 = color.toVector();
+			const Vector3 colorFloat(colorFloat4.x, colorFloat4.y, colorFloat4.z);
+			Vector3       postLightColor(0.0f, 0.0f, 0.0f);
 
 			for (const AmbientLight& light : m_lights.getAmbientLights())
 			{
-				postLightColor.x += colorFloat.x * light.getColor().x;
-				postLightColor.y += colorFloat.y * light.getColor().y;
-				postLightColor.z += colorFloat.z * light.getColor().z;
+				postLightColor += colorFloat * light.getColor();
 			}
 
 			for (const DirectionalLight& light : m_lights.getDirectionalLights())
@@ -43,19 +42,13 @@ void trd::Shader::draw(const Vector4& screenPosition, const Vector4& worldPositi
 
 				if (intensity > 0.0f)
 				{
-					postLightColor.x += colorFloat.x * light.getColor().x * intensity;
-					postLightColor.y += colorFloat.y * light.getColor().y * intensity;
-					postLightColor.z += colorFloat.z * light.getColor().z * intensity;
+					postLightColor += colorFloat * light.getColor() * intensity;
 				}
 			}
 
 			for (const PointLight& light : m_lights.getPointLights())
 			{
-				Vector3 fragToLightVec(
-					light.getPosition().x - worldPosition.x,
-					light.getPosition().y - worldPosition.y,
-					light.getPosition().z - worldPosition.z
-				);
+				Vector3 fragToLightVec = light.getPosition() - worldPosition;
 
 				const float length = fragToLightVec.length();
 
@@ -68,18 +61,18 @@ void trd::Shader::draw(const Vector4& screenPosition, const Vector4& worldPositi
 				if (intensity > 0.0f)
 				{
 					const float attenuation = length * light.getAttenuation();
-					
+
 					postLightColor.x += colorFloat.x * std::max((light.getColor().x - attenuation), 0.0f) * intensity;
 					postLightColor.y += colorFloat.y * std::max((light.getColor().y - attenuation), 0.0f) * intensity;
 					postLightColor.z += colorFloat.z * std::max((light.getColor().z - attenuation), 0.0f) * intensity;
 				}
 			}
 
-			postLightColor.x = std::min(postLightColor.x, 1.0f);
-			postLightColor.y = std::min(postLightColor.y, 1.0f);
-			postLightColor.z = std::min(postLightColor.z, 1.0f);
-			
-			color = postLightColor * 255.0f;
+			postLightColor.x = std::min(postLightColor.x, 255.0f);
+			postLightColor.y = std::min(postLightColor.y, 255.0f);
+			postLightColor.z = std::min(postLightColor.z, 255.0f);
+
+			color = postLightColor;
 		}
 	}
 }
