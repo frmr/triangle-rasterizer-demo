@@ -63,6 +63,11 @@ void trd::Window::copyAndRender(tr::ColorBuffer& colorBuffer)
 
 trd::InputState trd::Window::getInputState()
 {
+	if ((SDL_GetWindowFlags(m_sdlWindow) & SDL_WINDOW_INPUT_FOCUS) == 0)
+	{
+		flushEvents();
+	}
+
 	m_inputState.update();
 	return m_inputState;
 }
