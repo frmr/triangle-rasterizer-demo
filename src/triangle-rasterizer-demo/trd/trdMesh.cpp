@@ -50,8 +50,8 @@ void trd::Mesh::loadObj(const tf::String& filename, const TextureMap& textureMap
 					attributes.normals[size_t(vertex.normal_index) * 3 + 2]
 				),
 				Vector2(
-					attributes.texcoords[size_t(vertex.texcoord_index) * 2 + 0],
-					attributes.texcoords[size_t(vertex.texcoord_index) * 2 + 1]
+					       attributes.texcoords[size_t(vertex.texcoord_index) * 2 + 0],
+					1.0f - attributes.texcoords[size_t(vertex.texcoord_index) * 2 + 1]
 				)
 			});
 		}
