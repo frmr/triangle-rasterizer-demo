@@ -14,7 +14,7 @@ namespace trd
 	public:
 		                  Model(const tf::String& meshFilename, const MeshMap& meshMap, const Vector3& position, const Vector3& rotation, const bool fullBright);
 
-		void              draw(const Camera& camera, tr::Rasterizer<Shader>& rasterizer, Shader& shader, tr::ColorBuffer& colorBuffer, tr::DepthBuffer& depthBuffer) const;
+		void              draw(tr::Rasterizer<Shader>& rasterizer, Shader& shader, tr::ColorBuffer& colorBuffer, tr::DepthBuffer& depthBuffer) const;
 
 		void              translate(const Vector3& translation);
 		void              rotate(const Vector3& rotation);

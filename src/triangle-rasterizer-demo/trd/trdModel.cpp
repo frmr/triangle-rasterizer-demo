@@ -3,13 +3,15 @@
 trd::Model::Model(const tf::String& meshFilename, const MeshMap& meshMap, const Vector3& position, const Vector3& rotation, const bool fullBright) :
 	m_mesh(meshMap.get(meshFilename)),
 	m_matrix(),
+	m_position(position),
+	m_rotation(rotation),
 	m_fullBright(fullBright)
 {
+	recalculateMatrix();
 }
 
-void trd::Model::draw(const Camera& camera, tr::Rasterizer<Shader>& rasterizer, Shader& shader, tr::ColorBuffer& colorBuffer, tr::DepthBuffer& depthBuffer) const
+void trd::Model::draw(tr::Rasterizer<Shader>& rasterizer, Shader& shader, tr::ColorBuffer& colorBuffer, tr::DepthBuffer& depthBuffer) const
 {
-	rasterizer.setProjectionViewMatrix(camera.getProjectionViewMatrix());
 	rasterizer.setModelMatrix(m_matrix);
 
 	const RenderMode originalRenderMode = shader.getRenderMode();
