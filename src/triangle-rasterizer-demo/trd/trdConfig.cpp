@@ -22,7 +22,8 @@ size_t trd::Config::getSizeT(const tf::String& keyName) const
 {
 	try
 	{
-		return std::stoull(getString(keyName));
+		const tf::String value = getString(keyName);
+		return value.empty() ? 0 : std::stoull(getString(keyName));
 	}
 	catch (const std::exception&)
 	{
@@ -34,7 +35,8 @@ float trd::Config::getFloat(const tf::String& keyName) const
 {
 	try
 	{
-		return std::stof(getString(keyName));
+		const tf::String value = getString(keyName);
+		return value.empty() ? 0.0f : std::stof(value);
 	}
 	catch (const std::exception&)
 	{
