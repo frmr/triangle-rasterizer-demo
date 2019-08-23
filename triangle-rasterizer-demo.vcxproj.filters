@@ -17,9 +17,6 @@
     <Filter Include="Source Files\triangle-rasterizer\tr">
       <UniqueIdentifier>{fc1fa494-d2cb-4cf0-bf69-2f561d34ad9f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\triangle-rasterizer\lodepng">
-      <UniqueIdentifier>{822d0781-5e23-4d07-bca5-fa82604b128f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\triangle-rasterizer\matrix">
       <UniqueIdentifier>{991f4640-111c-4b1d-ba93-7bcfe02d3e00}</UniqueIdentifier>
     </Filter>
@@ -41,6 +38,9 @@
     <Filter Include="Source Files\triangle-rasterizer-demo\trd\Exceptions">
       <UniqueIdentifier>{799e06ea-e374-4db0-94b1-24ea9a5a3d83}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\triangle-rasterizer-demo\lodepng">
+      <UniqueIdentifier>{ccd339c0-d0a6-4ee9-bac0-81fdaf97f30d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\triangle-rasterizer-demo\main.cpp">
@@ -57,9 +57,6 @@
     </ClCompile>
     <ClCompile Include="src\triangle-rasterizer\src\matrix\Matrices.cpp">
       <Filter>Source Files\triangle-rasterizer\matrix</Filter>
-    </ClCompile>
-    <ClCompile Include="src\triangle-rasterizer\src\lodepng\lodepng.cpp">
-      <Filter>Source Files\triangle-rasterizer\lodepng</Filter>
     </ClCompile>
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdApp.cpp">
       <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
@@ -151,6 +148,9 @@
     <ClCompile Include="src\triangle-rasterizer\src\tr\trTransformedVertex.cpp">
       <Filter>Source Files\triangle-rasterizer\tr</Filter>
     </ClCompile>
+    <ClCompile Include="src\triangle-rasterizer-demo\lodepng\lodepng.cpp">
+      <Filter>Source Files\triangle-rasterizer-demo\lodepng</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdApp.hpp">
@@ -218,9 +218,6 @@
     </ClInclude>
     <ClInclude Include="src\triangle-rasterizer\src\matrix\Vectors.h">
       <Filter>Source Files\triangle-rasterizer\matrix</Filter>
-    </ClInclude>
-    <ClInclude Include="src\triangle-rasterizer\src\lodepng\lodepng.h">
-      <Filter>Source Files\triangle-rasterizer\lodepng</Filter>
     </ClInclude>
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdSettings.hpp">
       <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
@@ -407,6 +404,9 @@
     </ClInclude>
     <ClInclude Include="src\triangle-rasterizer\src\tr\trVertex.hpp">
       <Filter>Source Files\triangle-rasterizer\tr</Filter>
+    </ClInclude>
+    <ClInclude Include="src\triangle-rasterizer-demo\lodepng\lodepng.h">
+      <Filter>Source Files\triangle-rasterizer-demo\lodepng</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
