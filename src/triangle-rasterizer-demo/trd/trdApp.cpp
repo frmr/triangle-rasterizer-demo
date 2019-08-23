@@ -5,7 +5,8 @@
 #include <thread>
 
 trd::App::App() :
-	m_settings(),
+	m_config(),
+	m_settings(m_config.getCustomScreenSize()),
 	m_window(),
 	m_running(false),
 	m_colorBuffer(),
@@ -37,7 +38,7 @@ void trd::App::updateInputs(const float deltaTime)
 	}
 
 	m_settings.update(inputState, reinitWindow, reinitCamera);
-	m_camera.update(inputState, deltaTime);
+	m_camera.update(inputState, m_config.getMouseSensitivity(), deltaTime);
 
 	if (reinitWindow)
 	{

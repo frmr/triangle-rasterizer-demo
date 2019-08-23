@@ -1,7 +1,7 @@
 #include "trdSettings.hpp"
 #include <thread>
 
-trd::Settings::Settings() :
+trd::Settings::Settings(const ScreenSize& customScreenSize) :
 	m_screenSizeIndex(0),
 	m_fullscreen(false),
 	m_renderMode(RenderMode::Lit),
@@ -12,19 +12,17 @@ trd::Settings::Settings() :
 	m_frameRateEnabled(true),
 	m_bilinearFiltering(false)
 {
-	m_screenSizes.push_back({640,  480});
-	m_screenSizes.push_back({1024, 768});
-	m_screenSizes.push_back({1920, 1080}); // Read custom resolution from file
+	m_screenSizes.push_back({  640,  480 });
+	m_screenSizes.push_back({ 1024,  768 });
+
+	if (customScreenSize.width > 0 && customScreenSize.height > 0)
+	{
+		m_screenSizes.push_back(customScreenSize);
+	}
 
 	m_fovs.push_back(60);
 	m_fovs.push_back(90);
 	m_fovs.push_back(110);
-
-	//if (screenWidth <= 0 || screenHeight <= 0)
-	//{
-	//	return 0;
-	//}
-
 }
 
 void trd::Settings::update(const InputState& inputState, bool& reinitWindow, bool& reinitCamera)

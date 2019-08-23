@@ -10,10 +10,9 @@ void trd::ControlledCamera::setPerspective(const ScreenSize& screenSize, const u
 	Camera::setPerspective(screenSize, fov, s_near, s_far);
 }
 
-void trd::ControlledCamera::update(const InputState& inputState, const float deltaTime)
+void trd::ControlledCamera::update(const InputState& inputState, const float mouseSensitivity, const float deltaTime)
 {
 	constexpr float  movementSpeed    = 0.01f;
-	constexpr float  mouseSensitivity = 0.1f;
 
 	m_rotation.x -= float(inputState.getMouseChangeY()) * mouseSensitivity * deltaTime;
 	m_rotation.y -= float(inputState.getMouseChangeX()) * mouseSensitivity * deltaTime;

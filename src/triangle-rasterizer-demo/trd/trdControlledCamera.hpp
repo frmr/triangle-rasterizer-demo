@@ -11,7 +11,7 @@ namespace trd
 		                       ControlledCamera(const ScreenSize& screenSize, const uint8_t fov);
 
 		void                   setPerspective(const ScreenSize& screenSize, const uint8_t fov);
-		void                   update(const InputState& inputState, const float deltaTime);
+		void                   update(const InputState& inputState, const float mouseSensitivity, const float deltaTime);
 
 	private:
 		static constexpr float s_near = 0.1f;
