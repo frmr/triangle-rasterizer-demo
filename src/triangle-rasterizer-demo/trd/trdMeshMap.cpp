@@ -1,21 +1,20 @@
 #include "trdMeshMap.hpp"
 
-trd::MeshMap::MeshMap(const TextureMap& textureMap)
+trd::MeshMap::MeshMap(TextureMap& textureMap) :
+	m_textureMap(textureMap)
 {
-	add("data/meshes/test.obj",         textureMap);
-	add("data/meshes/earth.obj",        textureMap);
-	add("data/meshes/sofa.obj",         textureMap);
-	add("data/meshes/chair.obj",        textureMap);
-	add("data/meshes/window.obj",       textureMap);
-	add("data/meshes/coffee-table.obj", textureMap);
 }
 
-const trd::Mesh* trd::MeshMap::get(const tf::String& filename) const
+const trd::Mesh* trd::MeshMap::get(const tf::String& filename)
 {
-	return m_meshes.at(filename).get();
-}
+	const auto iterator = m_meshes.find(filename);
 
-void trd::MeshMap::add(const tf::String& filename, const TextureMap& textureMap)
-{
-	m_meshes.emplace(filename, new trd::Mesh(filename, textureMap));
+	if (iterator == m_meshes.end())
+	{
+		return m_meshes.emplace(filename, new trd::Mesh(filename, m_textureMap)).first->second.get();
+	}
+	else
+	{
+		return iterator->second.get();
+	}
 }

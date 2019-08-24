@@ -3,12 +3,12 @@
 #include "trdUnsupportedFileException.hpp"
 #include "tiny_obj_loader.h"
 
-trd::Mesh::Mesh(const tf::String& filename, const TextureMap& textureMap)
+trd::Mesh::Mesh(const tf::String& filename, TextureMap& textureMap)
 {
 	loadObj(filename, textureMap);
 }
 
-void trd::Mesh::loadObj(const tf::String& filename, const TextureMap& textureMap)
+void trd::Mesh::loadObj(const tf::String& filename, TextureMap& textureMap)
 {
 	m_vertices.clear();
 	m_texture = nullptr;
