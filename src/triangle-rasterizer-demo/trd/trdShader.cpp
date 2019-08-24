@@ -19,6 +19,10 @@ void trd::Shader::draw(const Vector4& screenPosition, const Vector3& worldPositi
 		const uint8_t depthChannel = 255 - uint8_t((screenPosition.z + 1.0f) * 127.0f);
 		color = tr::Color(depthChannel, depthChannel, depthChannel, 255);
 	}
+	else if (m_renderMode == RenderMode::Normals)
+	{
+		color = tr::Color(uint8_t(std::fabsf(normal.x) * 255.0f), uint8_t(std::fabsf(normal.y) * 255.0f), uint8_t(std::fabsf(normal.z) * 255.0f), 255);
+	}
 	else
 	{
 		color = m_useTexture ? m_texture->getAt(textureCoord.x, textureCoord.y, m_bilinearFiltering, tr::TextureWrappingMode::Repeat) : tr::Color(255, 255, 255, 255);

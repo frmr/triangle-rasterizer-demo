@@ -57,7 +57,8 @@ void trd::Settings::cycleRenderMode()
 	{
 	case RenderMode::Lit:         m_renderMode = RenderMode::FullBright; break;
 	case RenderMode::FullBright:  m_renderMode = RenderMode::Depth;      break;
-	case RenderMode::Depth:       m_renderMode = RenderMode::Lit;        break;
+	case RenderMode::Depth:       m_renderMode = RenderMode::Normals;    break;
+	case RenderMode::Normals:     m_renderMode = RenderMode::Lit;        break;
 	}
 }
 

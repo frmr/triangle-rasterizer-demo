@@ -24,6 +24,7 @@ tf::String trd::Instructions::convertRenderModeToString(const RenderMode renderM
 	case RenderMode::Lit:         return "Lit";
 	case RenderMode::FullBright:  return "Full bright";
 	case RenderMode::Depth:       return "Depth";
+	case RenderMode::Normals:     return "Normals";
 	default:                      return "";
 	}
 }
