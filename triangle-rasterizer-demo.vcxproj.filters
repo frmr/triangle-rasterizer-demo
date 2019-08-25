@@ -160,6 +160,9 @@
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdConfig.cpp">
       <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
     </ClCompile>
+    <ClCompile Include="src\tf\src\tfCsvFile.cpp">
+      <Filter>Source Files\tf</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdApp.hpp">

@@ -12,6 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\tf\src\tfBinaryFile.cpp" />
+    <ClCompile Include="src\tf\src\tfCsvFile.cpp" />
     <ClCompile Include="src\tf\src\tfIniFile.cpp" />
     <ClCompile Include="src\tf\src\tfIniSection.cpp" />
     <ClCompile Include="src\tf\src\tfLogger.cpp" />
