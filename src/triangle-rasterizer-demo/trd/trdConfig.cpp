@@ -48,7 +48,7 @@ tf::String trd::Config::getString(const tf::String& keyName) const
 {
 	try
 	{
-		return GetValue(keyName);
+		return getValue(keyName);
 	}
 	catch (const std::exception&)
 	{

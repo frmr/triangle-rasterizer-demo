@@ -24,9 +24,9 @@ void trd::FrameTimer::draw(const ScreenSize& screenSize, tr::ColorBuffer& buffer
 
 void trd::FrameTimer::update()
 {
-	m_frameTime = float(m_frameTimer.GetMilliseconds());
+	m_frameTime = float(m_frameTimer.getMilliseconds());
 
-	m_frameTimer.Reset();
+	m_frameTimer.reset();
 
 	m_cumulativeFrameTime += m_frameTime;
 	++m_frameCount;
