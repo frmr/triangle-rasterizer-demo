@@ -5,315 +5,219 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Source Files\triangle-rasterizer">
-      <UniqueIdentifier>{167d616e-42ee-41ae-b91c-2620156347ca}</UniqueIdentifier>
+    <Filter Include="Source Files\lodepng">
+      <UniqueIdentifier>{ccd339c0-d0a6-4ee9-bac0-81fdaf97f30d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\triangle-rasterizer-demo">
-      <UniqueIdentifier>{adc5d10b-7bf1-4d06-b766-d71503546986}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\triangle-rasterizer-demo\trd">
-      <UniqueIdentifier>{71f47e90-3e14-4dfc-abc0-8bab870cd609}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\triangle-rasterizer\tr">
-      <UniqueIdentifier>{fc1fa494-d2cb-4cf0-bf69-2f561d34ad9f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\triangle-rasterizer\matrix">
-      <UniqueIdentifier>{991f4640-111c-4b1d-ba93-7bcfe02d3e00}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\triangle-rasterizer-demo\trd\Lights">
-      <UniqueIdentifier>{34cf7320-0feb-4063-9230-d904df74c79a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\triangle-rasterizer-demo\trd\enums">
-      <UniqueIdentifier>{a0cc3e9b-5fa2-49a0-9c0a-68279ce8ce73}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\triangle-rasterizer-demo\trd\Cameras">
-      <UniqueIdentifier>{a53edc92-2e2b-4b98-a3a4-564df6bb00c5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\triangle-rasterizer-demo\tinyobjloader">
+    <Filter Include="Source Files\tinyobjloader">
       <UniqueIdentifier>{d62fdce2-ff88-439a-b2f3-e8308a77fd3d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\triangle-rasterizer-demo\trd\Exceptions">
-      <UniqueIdentifier>{799e06ea-e374-4db0-94b1-24ea9a5a3d83}</UniqueIdentifier>
+    <Filter Include="Source Files\trd">
+      <UniqueIdentifier>{71f47e90-3e14-4dfc-abc0-8bab870cd609}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\triangle-rasterizer-demo\lodepng">
-      <UniqueIdentifier>{ccd339c0-d0a6-4ee9-bac0-81fdaf97f30d}</UniqueIdentifier>
+    <Filter Include="Source Files\trd\Lights">
+      <UniqueIdentifier>{34cf7320-0feb-4063-9230-d904df74c79a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\trd\enums">
+      <UniqueIdentifier>{a0cc3e9b-5fa2-49a0-9c0a-68279ce8ce73}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\trd\Cameras">
+      <UniqueIdentifier>{a53edc92-2e2b-4b98-a3a4-564df6bb00c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\trd\Exceptions">
+      <UniqueIdentifier>{799e06ea-e374-4db0-94b1-24ea9a5a3d83}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\triangle-rasterizer-demo\main.cpp">
-      <Filter>Source Files\triangle-rasterizer-demo</Filter>
-    </ClCompile>
-    <ClCompile Include="src\triangle-rasterizer\src\tr\trDefaultShader.cpp">
-      <Filter>Source Files\triangle-rasterizer\tr</Filter>
-    </ClCompile>
-    <ClCompile Include="src\triangle-rasterizer\src\tr\trDepthShader.cpp">
-      <Filter>Source Files\triangle-rasterizer\tr</Filter>
-    </ClCompile>
-    <ClCompile Include="src\triangle-rasterizer\src\tr\trTexture.cpp">
-      <Filter>Source Files\triangle-rasterizer\tr</Filter>
-    </ClCompile>
-    <ClCompile Include="src\triangle-rasterizer\src\matrix\Matrices.cpp">
-      <Filter>Source Files\triangle-rasterizer\matrix</Filter>
-    </ClCompile>
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdApp.cpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
+      <Filter>Source Files\trd</Filter>
     </ClCompile>
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdSettings.cpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
+      <Filter>Source Files\trd</Filter>
     </ClCompile>
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdTextRenderer.cpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
+      <Filter>Source Files\trd</Filter>
     </ClCompile>
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdInstructions.cpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
+      <Filter>Source Files\trd</Filter>
     </ClCompile>
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdMesh.cpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
+      <Filter>Source Files\trd</Filter>
     </ClCompile>
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdTextureMap.cpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
+      <Filter>Source Files\trd</Filter>
     </ClCompile>
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdMeshMap.cpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
+      <Filter>Source Files\trd</Filter>
     </ClCompile>
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdShader.cpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
+      <Filter>Source Files\trd</Filter>
     </ClCompile>
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdRenderManager.cpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
+      <Filter>Source Files\trd</Filter>
     </ClCompile>
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdRenderThread.cpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
+      <Filter>Source Files\trd</Filter>
     </ClCompile>
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdScene.cpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
+      <Filter>Source Files\trd</Filter>
     </ClCompile>
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdWindow.cpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
+      <Filter>Source Files\trd</Filter>
     </ClCompile>
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdInputState.cpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
+      <Filter>Source Files\trd</Filter>
     </ClCompile>
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdDirectionalLight.cpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd\Lights</Filter>
+      <Filter>Source Files\trd\Lights</Filter>
     </ClCompile>
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdLight.cpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd\Lights</Filter>
+      <Filter>Source Files\trd\Lights</Filter>
     </ClCompile>
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdLights.cpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd\Lights</Filter>
+      <Filter>Source Files\trd\Lights</Filter>
     </ClCompile>
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdCamera.cpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd\Cameras</Filter>
+      <Filter>Source Files\trd\Cameras</Filter>
     </ClCompile>
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdControlledCamera.cpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd\Cameras</Filter>
+      <Filter>Source Files\trd\Cameras</Filter>
     </ClCompile>
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdAmbientLight.cpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd\Lights</Filter>
+      <Filter>Source Files\trd\Lights</Filter>
     </ClCompile>
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdPointLight.cpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd\Lights</Filter>
+      <Filter>Source Files\trd\Lights</Filter>
     </ClCompile>
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdFrameTimer.cpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
+      <Filter>Source Files\trd</Filter>
     </ClCompile>
     <ClCompile Include="src\triangle-rasterizer-demo\tinyobjloader\tiny_obj_loader.cc">
-      <Filter>Source Files\triangle-rasterizer-demo\tinyobjloader</Filter>
+      <Filter>Source Files\tinyobjloader</Filter>
     </ClCompile>
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdModel.cpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
-    </ClCompile>
-    <ClCompile Include="src\triangle-rasterizer\src\tr\trTransformedVertex.cpp">
-      <Filter>Source Files\triangle-rasterizer\tr</Filter>
+      <Filter>Source Files\trd</Filter>
     </ClCompile>
     <ClCompile Include="src\triangle-rasterizer-demo\lodepng\lodepng.cpp">
-      <Filter>Source Files\triangle-rasterizer-demo\lodepng</Filter>
+      <Filter>Source Files\lodepng</Filter>
     </ClCompile>
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdConfig.cpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
+      <Filter>Source Files\trd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\triangle-rasterizer-demo\main.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdApp.hpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
-    </ClInclude>
-    <ClInclude Include="src\triangle-rasterizer\src\tr\trBlendMode.hpp">
-      <Filter>Source Files\triangle-rasterizer\tr</Filter>
-    </ClInclude>
-    <ClInclude Include="src\triangle-rasterizer\src\tr\trBuffer.hpp">
-      <Filter>Source Files\triangle-rasterizer\tr</Filter>
-    </ClInclude>
-    <ClInclude Include="src\triangle-rasterizer\src\tr\trColor.hpp">
-      <Filter>Source Files\triangle-rasterizer\tr</Filter>
-    </ClInclude>
-    <ClInclude Include="src\triangle-rasterizer\src\tr\trColorBuffer.hpp">
-      <Filter>Source Files\triangle-rasterizer\tr</Filter>
-    </ClInclude>
-    <ClInclude Include="src\triangle-rasterizer\src\tr\trCoord.hpp">
-      <Filter>Source Files\triangle-rasterizer\tr</Filter>
-    </ClInclude>
-    <ClInclude Include="src\triangle-rasterizer\src\tr\trCullFaceMode.hpp">
-      <Filter>Source Files\triangle-rasterizer\tr</Filter>
-    </ClInclude>
-    <ClInclude Include="src\triangle-rasterizer\src\tr\trDefaultShader.hpp">
-      <Filter>Source Files\triangle-rasterizer\tr</Filter>
-    </ClInclude>
-    <ClInclude Include="src\triangle-rasterizer\src\tr\trDepthBuffer.hpp">
-      <Filter>Source Files\triangle-rasterizer\tr</Filter>
-    </ClInclude>
-    <ClInclude Include="src\triangle-rasterizer\src\tr\trDepthShader.hpp">
-      <Filter>Source Files\triangle-rasterizer\tr</Filter>
-    </ClInclude>
-    <ClInclude Include="src\triangle-rasterizer\src\tr\trEdgeInfo.hpp">
-      <Filter>Source Files\triangle-rasterizer\tr</Filter>
-    </ClInclude>
-    <ClInclude Include="src\triangle-rasterizer\src\tr\trError.hpp">
-      <Filter>Source Files\triangle-rasterizer\tr</Filter>
-    </ClInclude>
-    <ClInclude Include="src\triangle-rasterizer\src\tr\trPrimitive.hpp">
-      <Filter>Source Files\triangle-rasterizer\tr</Filter>
-    </ClInclude>
-    <ClInclude Include="src\triangle-rasterizer\src\tr\trRasterizer.hpp">
-      <Filter>Source Files\triangle-rasterizer\tr</Filter>
-    </ClInclude>
-    <ClInclude Include="src\triangle-rasterizer\src\tr\trTexture.hpp">
-      <Filter>Source Files\triangle-rasterizer\tr</Filter>
-    </ClInclude>
-    <ClInclude Include="src\triangle-rasterizer\src\tr\trTextureMode.hpp">
-      <Filter>Source Files\triangle-rasterizer\tr</Filter>
-    </ClInclude>
-    <ClInclude Include="src\triangle-rasterizer\src\tr\trTextureWrappingMode.hpp">
-      <Filter>Source Files\triangle-rasterizer\tr</Filter>
-    </ClInclude>
-    <ClInclude Include="src\triangle-rasterizer\src\tr\trVertexClipBitMasks.hpp">
-      <Filter>Source Files\triangle-rasterizer\tr</Filter>
-    </ClInclude>
-    <ClInclude Include="src\triangle-rasterizer\src\tr\tr.hpp">
-      <Filter>Source Files\triangle-rasterizer\tr</Filter>
-    </ClInclude>
-    <ClInclude Include="src\triangle-rasterizer\src\tr\trAxis.hpp">
-      <Filter>Source Files\triangle-rasterizer\tr</Filter>
-    </ClInclude>
-    <ClInclude Include="src\triangle-rasterizer\src\matrix\Matrices.h">
-      <Filter>Source Files\triangle-rasterizer\matrix</Filter>
-    </ClInclude>
-    <ClInclude Include="src\triangle-rasterizer\src\matrix\Vectors.h">
-      <Filter>Source Files\triangle-rasterizer\matrix</Filter>
+      <Filter>Source Files\trd</Filter>
     </ClInclude>
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdSettings.hpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
+      <Filter>Source Files\trd</Filter>
     </ClInclude>
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdTextRenderer.hpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
+      <Filter>Source Files\trd</Filter>
     </ClInclude>
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdScreenPos.hpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
+      <Filter>Source Files\trd</Filter>
     </ClInclude>
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdInstructions.hpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
+      <Filter>Source Files\trd</Filter>
     </ClInclude>
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdScreenSize.hpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
+      <Filter>Source Files\trd</Filter>
     </ClInclude>
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdMesh.hpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
+      <Filter>Source Files\trd</Filter>
     </ClInclude>
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdTextureMap.hpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
+      <Filter>Source Files\trd</Filter>
     </ClInclude>
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdMeshMap.hpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
+      <Filter>Source Files\trd</Filter>
     </ClInclude>
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdRenderMode.hpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
+      <Filter>Source Files\trd</Filter>
     </ClInclude>
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdShader.hpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
+      <Filter>Source Files\trd</Filter>
     </ClInclude>
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdRenderManager.hpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
+      <Filter>Source Files\trd</Filter>
     </ClInclude>
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdRenderThread.hpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
+      <Filter>Source Files\trd</Filter>
     </ClInclude>
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdScene.hpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
+      <Filter>Source Files\trd</Filter>
     </ClInclude>
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdWindow.hpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
+      <Filter>Source Files\trd</Filter>
     </ClInclude>
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdInputState.hpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
+      <Filter>Source Files\trd</Filter>
     </ClInclude>
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdDigitalInput.hpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
+      <Filter>Source Files\trd</Filter>
     </ClInclude>
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdDirectionalLight.hpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd\Lights</Filter>
+      <Filter>Source Files\trd\Lights</Filter>
     </ClInclude>
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdLight.hpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd\Lights</Filter>
+      <Filter>Source Files\trd\Lights</Filter>
     </ClInclude>
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdLights.hpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd\Lights</Filter>
+      <Filter>Source Files\trd\Lights</Filter>
     </ClInclude>
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdCamera.hpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd\Cameras</Filter>
+      <Filter>Source Files\trd\Cameras</Filter>
     </ClInclude>
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdControlledCamera.hpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd\Cameras</Filter>
+      <Filter>Source Files\trd\Cameras</Filter>
     </ClInclude>
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdAmbientLight.hpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd\Lights</Filter>
+      <Filter>Source Files\trd\Lights</Filter>
     </ClInclude>
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdKey.hpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd\enums</Filter>
+      <Filter>Source Files\trd\enums</Filter>
     </ClInclude>
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdCorner.hpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd\enums</Filter>
+      <Filter>Source Files\trd\enums</Filter>
     </ClInclude>
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdPointLight.hpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd\Lights</Filter>
+      <Filter>Source Files\trd\Lights</Filter>
     </ClInclude>
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdTextAlign.hpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd\enums</Filter>
+      <Filter>Source Files\trd\enums</Filter>
     </ClInclude>
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdTextureMode.hpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd\enums</Filter>
+      <Filter>Source Files\trd\enums</Filter>
     </ClInclude>
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdFrameTimer.hpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
+      <Filter>Source Files\trd</Filter>
     </ClInclude>
     <ClInclude Include="src\triangle-rasterizer-demo\tinyobjloader\tiny_obj_loader.h">
-      <Filter>Source Files\triangle-rasterizer-demo\tinyobjloader</Filter>
+      <Filter>Source Files\tinyobjloader</Filter>
     </ClInclude>
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdExternalLibraryException.hpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd\Exceptions</Filter>
+      <Filter>Source Files\trd\Exceptions</Filter>
     </ClInclude>
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdUnsupportedFileException.hpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd\Exceptions</Filter>
+      <Filter>Source Files\trd\Exceptions</Filter>
     </ClInclude>
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdModel.hpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
+      <Filter>Source Files\trd</Filter>
     </ClInclude>
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdFont.hpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
-    </ClInclude>
-    <ClInclude Include="src\triangle-rasterizer\src\tr\trTransformedVertex.hpp">
-      <Filter>Source Files\triangle-rasterizer\tr</Filter>
-    </ClInclude>
-    <ClInclude Include="src\triangle-rasterizer\src\tr\trVertex.hpp">
-      <Filter>Source Files\triangle-rasterizer\tr</Filter>
+      <Filter>Source Files\trd</Filter>
     </ClInclude>
     <ClInclude Include="src\triangle-rasterizer-demo\lodepng\lodepng.h">
-      <Filter>Source Files\triangle-rasterizer-demo\lodepng</Filter>
+      <Filter>Source Files\lodepng</Filter>
     </ClInclude>
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdConfig.hpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
+      <Filter>Source Files\trd</Filter>
     </ClInclude>
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdInvalidFileException.hpp">
-      <Filter>Source Files\triangle-rasterizer-demo\trd\Exceptions</Filter>
+      <Filter>Source Files\trd\Exceptions</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

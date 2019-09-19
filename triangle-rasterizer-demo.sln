@@ -7,10 +7,14 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "triangle-rasterizer-demo", 
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tf", "src\tf\tf.vcxitems", "{874DF6DA-4313-45AE-A9E4-2E0EAFE46DDB}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "triangle-rasterizer", "src\triangle-rasterizer\triangle-rasterizer.vcxitems", "{4B5233E8-76A0-484C-BFCC-069ADC5470F2}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		src\triangle-rasterizer\triangle-rasterizer.vcxitems*{4b5233e8-76a0-484c-bfcc-069adc5470f2}*SharedItemsImports = 9
 		src\tf\tf.vcxitems*{874df6da-4313-45ae-a9e4-2e0eafe46ddb}*SharedItemsImports = 9
 		src\tf\tf.vcxitems*{9d405f52-3447-4dd9-a717-fa4d9d4141fe}*SharedItemsImports = 4
+		src\triangle-rasterizer\triangle-rasterizer.vcxitems*{9d405f52-3447-4dd9-a717-fa4d9d4141fe}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
