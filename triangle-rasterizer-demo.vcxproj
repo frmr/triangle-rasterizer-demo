@@ -11,15 +11,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\tf\src\tfBinaryFile.cpp" />
-    <ClCompile Include="src\tf\src\tfCsvFile.cpp" />
-    <ClCompile Include="src\tf\src\tfIniFile.cpp" />
-    <ClCompile Include="src\tf\src\tfIniSection.cpp" />
-    <ClCompile Include="src\tf\src\tfLogger.cpp" />
-    <ClCompile Include="src\tf\src\tfString.cpp" />
-    <ClCompile Include="src\tf\src\tfStringW.cpp" />
-    <ClCompile Include="src\tf\src\tfTextFile.cpp" />
-    <ClCompile Include="src\tf\src\tfTimer.cpp" />
     <ClCompile Include="src\triangle-rasterizer-demo\lodepng\lodepng.cpp" />
     <ClCompile Include="src\triangle-rasterizer-demo\main.cpp" />
     <ClCompile Include="src\triangle-rasterizer-demo\tinyobjloader\tiny_obj_loader.cc" />
@@ -53,35 +44,6 @@
     <ClCompile Include="src\triangle-rasterizer\src\tr\trTransformedVertex.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\tf\src\tfBinaryFile.hpp" />
-    <ClInclude Include="src\tf\src\tfCsvFile.hpp" />
-    <ClInclude Include="src\tf\src\tfCsvLine.hpp" />
-    <ClInclude Include="src\tf\src\tfFileContentException.hpp" />
-    <ClInclude Include="src\tf\src\tfFileIoException.hpp" />
-    <ClInclude Include="src\tf\src\tfIniFile.hpp" />
-    <ClInclude Include="src\tf\src\tfIniSection.hpp" />
-    <ClInclude Include="src\tf\src\tfList.hpp" />
-    <ClInclude Include="src\tf\src\tfLock.hpp" />
-    <ClInclude Include="src\tf\src\tfLogger.hpp" />
-    <ClInclude Include="src\tf\src\tfMap.hpp" />
-    <ClInclude Include="src\tf\src\tfMultiMap.hpp" />
-    <ClInclude Include="src\tf\src\tfMultiset.hpp" />
-    <ClInclude Include="src\tf\src\tfQueue.hpp" />
-    <ClInclude Include="src\tf\src\tfRandomRange.hpp" />
-    <ClInclude Include="src\tf\src\tfSeekOrigin.hpp" />
-    <ClInclude Include="src\tf\src\tfSet.hpp" />
-    <ClInclude Include="src\tf\src\tfString.hpp" />
-    <ClInclude Include="src\tf\src\tfStringBase.hpp" />
-    <ClInclude Include="src\tf\src\tfStringW.hpp" />
-    <ClInclude Include="src\tf\src\tfTextFile.hpp" />
-    <ClInclude Include="src\tf\src\tfThread.hpp" />
-    <ClInclude Include="src\tf\src\tfTimer.hpp" />
-    <ClInclude Include="src\tf\src\tfUnorderedMap.hpp" />
-    <ClInclude Include="src\tf\src\tfUnorderedMultimap.hpp" />
-    <ClInclude Include="src\tf\src\tfUnorderedSet.hpp" />
-    <ClInclude Include="src\tf\src\tfUnreachableException.hpp" />
-    <ClInclude Include="src\tf\src\tfVector.hpp" />
-    <ClInclude Include="src\tf\src\tfWait.hpp" />
     <ClInclude Include="src\triangle-rasterizer-demo\lodepng\lodepng.h" />
     <ClInclude Include="src\triangle-rasterizer-demo\tinyobjloader\tiny_obj_loader.h" />
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdAmbientLight.hpp" />
@@ -168,6 +130,7 @@
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
   <ImportGroup Label="Shared">
+    <Import Project="src\tf\tf.vcxitems" Label="Shared" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />

@@ -20,9 +20,6 @@
     <Filter Include="Source Files\triangle-rasterizer\matrix">
       <UniqueIdentifier>{991f4640-111c-4b1d-ba93-7bcfe02d3e00}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\tf">
-      <UniqueIdentifier>{fd312a9a-72a9-4e81-acd5-a7d4473b7aa8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\triangle-rasterizer-demo\trd\Lights">
       <UniqueIdentifier>{34cf7320-0feb-4063-9230-d904df74c79a}</UniqueIdentifier>
     </Filter>
@@ -60,24 +57,6 @@
     </ClCompile>
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdApp.cpp">
       <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
-    </ClCompile>
-    <ClCompile Include="src\tf\src\tfLogger.cpp">
-      <Filter>Source Files\tf</Filter>
-    </ClCompile>
-    <ClCompile Include="src\tf\src\tfString.cpp">
-      <Filter>Source Files\tf</Filter>
-    </ClCompile>
-    <ClCompile Include="src\tf\src\tfStringW.cpp">
-      <Filter>Source Files\tf</Filter>
-    </ClCompile>
-    <ClCompile Include="src\tf\src\tfTextFile.cpp">
-      <Filter>Source Files\tf</Filter>
-    </ClCompile>
-    <ClCompile Include="src\tf\src\tfBinaryFile.cpp">
-      <Filter>Source Files\tf</Filter>
-    </ClCompile>
-    <ClCompile Include="src\tf\src\tfTimer.cpp">
-      <Filter>Source Files\tf</Filter>
     </ClCompile>
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdSettings.cpp">
       <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
@@ -151,17 +130,8 @@
     <ClCompile Include="src\triangle-rasterizer-demo\lodepng\lodepng.cpp">
       <Filter>Source Files\triangle-rasterizer-demo\lodepng</Filter>
     </ClCompile>
-    <ClCompile Include="src\tf\src\tfIniSection.cpp">
-      <Filter>Source Files\tf</Filter>
-    </ClCompile>
-    <ClCompile Include="src\tf\src\tfIniFile.cpp">
-      <Filter>Source Files\tf</Filter>
-    </ClCompile>
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdConfig.cpp">
       <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
-    </ClCompile>
-    <ClCompile Include="src\tf\src\tfCsvFile.cpp">
-      <Filter>Source Files\tf</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -233,84 +203,6 @@
     </ClInclude>
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdSettings.hpp">
       <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
-    </ClInclude>
-    <ClInclude Include="src\tf\src\tfCsvLine.hpp">
-      <Filter>Source Files\tf</Filter>
-    </ClInclude>
-    <ClInclude Include="src\tf\src\tfFileContentException.hpp">
-      <Filter>Source Files\tf</Filter>
-    </ClInclude>
-    <ClInclude Include="src\tf\src\tfFileIoException.hpp">
-      <Filter>Source Files\tf</Filter>
-    </ClInclude>
-    <ClInclude Include="src\tf\src\tfList.hpp">
-      <Filter>Source Files\tf</Filter>
-    </ClInclude>
-    <ClInclude Include="src\tf\src\tfLock.hpp">
-      <Filter>Source Files\tf</Filter>
-    </ClInclude>
-    <ClInclude Include="src\tf\src\tfLogger.hpp">
-      <Filter>Source Files\tf</Filter>
-    </ClInclude>
-    <ClInclude Include="src\tf\src\tfMap.hpp">
-      <Filter>Source Files\tf</Filter>
-    </ClInclude>
-    <ClInclude Include="src\tf\src\tfMultiMap.hpp">
-      <Filter>Source Files\tf</Filter>
-    </ClInclude>
-    <ClInclude Include="src\tf\src\tfMultiset.hpp">
-      <Filter>Source Files\tf</Filter>
-    </ClInclude>
-    <ClInclude Include="src\tf\src\tfQueue.hpp">
-      <Filter>Source Files\tf</Filter>
-    </ClInclude>
-    <ClInclude Include="src\tf\src\tfRandomRange.hpp">
-      <Filter>Source Files\tf</Filter>
-    </ClInclude>
-    <ClInclude Include="src\tf\src\tfSeekOrigin.hpp">
-      <Filter>Source Files\tf</Filter>
-    </ClInclude>
-    <ClInclude Include="src\tf\src\tfSet.hpp">
-      <Filter>Source Files\tf</Filter>
-    </ClInclude>
-    <ClInclude Include="src\tf\src\tfString.hpp">
-      <Filter>Source Files\tf</Filter>
-    </ClInclude>
-    <ClInclude Include="src\tf\src\tfStringBase.hpp">
-      <Filter>Source Files\tf</Filter>
-    </ClInclude>
-    <ClInclude Include="src\tf\src\tfStringW.hpp">
-      <Filter>Source Files\tf</Filter>
-    </ClInclude>
-    <ClInclude Include="src\tf\src\tfTextFile.hpp">
-      <Filter>Source Files\tf</Filter>
-    </ClInclude>
-    <ClInclude Include="src\tf\src\tfThread.hpp">
-      <Filter>Source Files\tf</Filter>
-    </ClInclude>
-    <ClInclude Include="src\tf\src\tfUnorderedMap.hpp">
-      <Filter>Source Files\tf</Filter>
-    </ClInclude>
-    <ClInclude Include="src\tf\src\tfUnorderedMultimap.hpp">
-      <Filter>Source Files\tf</Filter>
-    </ClInclude>
-    <ClInclude Include="src\tf\src\tfUnorderedSet.hpp">
-      <Filter>Source Files\tf</Filter>
-    </ClInclude>
-    <ClInclude Include="src\tf\src\tfVector.hpp">
-      <Filter>Source Files\tf</Filter>
-    </ClInclude>
-    <ClInclude Include="src\tf\src\tfWait.hpp">
-      <Filter>Source Files\tf</Filter>
-    </ClInclude>
-    <ClInclude Include="src\tf\src\tfBinaryFile.hpp">
-      <Filter>Source Files\tf</Filter>
-    </ClInclude>
-    <ClInclude Include="src\tf\src\tfCsvFile.hpp">
-      <Filter>Source Files\tf</Filter>
-    </ClInclude>
-    <ClInclude Include="src\tf\src\tfTimer.hpp">
-      <Filter>Source Files\tf</Filter>
     </ClInclude>
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdTextRenderer.hpp">
       <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
@@ -408,9 +300,6 @@
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdFont.hpp">
       <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>
     </ClInclude>
-    <ClInclude Include="src\tf\src\tfUnreachableException.hpp">
-      <Filter>Source Files\tf</Filter>
-    </ClInclude>
     <ClInclude Include="src\triangle-rasterizer\src\tr\trTransformedVertex.hpp">
       <Filter>Source Files\triangle-rasterizer\tr</Filter>
     </ClInclude>
@@ -419,12 +308,6 @@
     </ClInclude>
     <ClInclude Include="src\triangle-rasterizer-demo\lodepng\lodepng.h">
       <Filter>Source Files\triangle-rasterizer-demo\lodepng</Filter>
-    </ClInclude>
-    <ClInclude Include="src\tf\src\tfIniFile.hpp">
-      <Filter>Source Files\tf</Filter>
-    </ClInclude>
-    <ClInclude Include="src\tf\src\tfIniSection.hpp">
-      <Filter>Source Files\tf</Filter>
     </ClInclude>
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdConfig.hpp">
       <Filter>Source Files\triangle-rasterizer-demo\trd</Filter>

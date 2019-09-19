@@ -5,7 +5,13 @@ VisualStudioVersion = 16.0.29102.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "triangle-rasterizer-demo", "triangle-rasterizer-demo.vcxproj", "{9D405F52-3447-4DD9-A717-FA4D9D4141FE}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tf", "src\tf\tf.vcxitems", "{874DF6DA-4313-45AE-A9E4-2E0EAFE46DDB}"
+EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		src\tf\tf.vcxitems*{874df6da-4313-45ae-a9e4-2e0eafe46ddb}*SharedItemsImports = 9
+		src\tf\tf.vcxitems*{9d405f52-3447-4dd9-a717-fa4d9d4141fe}*SharedItemsImports = 4
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
 		Release|x64 = Release|x64
