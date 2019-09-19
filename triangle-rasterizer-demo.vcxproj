@@ -37,11 +37,6 @@
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdTextRenderer.cpp" />
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdTextureMap.cpp" />
     <ClCompile Include="src\triangle-rasterizer-demo\trd\trdWindow.cpp" />
-    <ClCompile Include="src\triangle-rasterizer\src\matrix\Matrices.cpp" />
-    <ClCompile Include="src\triangle-rasterizer\src\tr\trDefaultShader.cpp" />
-    <ClCompile Include="src\triangle-rasterizer\src\tr\trDepthShader.cpp" />
-    <ClCompile Include="src\triangle-rasterizer\src\tr\trTexture.cpp" />
-    <ClCompile Include="src\triangle-rasterizer\src\tr\trTransformedVertex.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\triangle-rasterizer-demo\lodepng\lodepng.h" />
@@ -81,29 +76,6 @@
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdTextureMode.hpp" />
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdUnsupportedFileException.hpp" />
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdWindow.hpp" />
-    <ClInclude Include="src\triangle-rasterizer\src\matrix\Matrices.h" />
-    <ClInclude Include="src\triangle-rasterizer\src\matrix\Vectors.h" />
-    <ClInclude Include="src\triangle-rasterizer\src\tr\tr.hpp" />
-    <ClInclude Include="src\triangle-rasterizer\src\tr\trAxis.hpp" />
-    <ClInclude Include="src\triangle-rasterizer\src\tr\trBlendMode.hpp" />
-    <ClInclude Include="src\triangle-rasterizer\src\tr\trBuffer.hpp" />
-    <ClInclude Include="src\triangle-rasterizer\src\tr\trColor.hpp" />
-    <ClInclude Include="src\triangle-rasterizer\src\tr\trColorBuffer.hpp" />
-    <ClInclude Include="src\triangle-rasterizer\src\tr\trCoord.hpp" />
-    <ClInclude Include="src\triangle-rasterizer\src\tr\trCullFaceMode.hpp" />
-    <ClInclude Include="src\triangle-rasterizer\src\tr\trDefaultShader.hpp" />
-    <ClInclude Include="src\triangle-rasterizer\src\tr\trDepthBuffer.hpp" />
-    <ClInclude Include="src\triangle-rasterizer\src\tr\trDepthShader.hpp" />
-    <ClInclude Include="src\triangle-rasterizer\src\tr\trEdgeInfo.hpp" />
-    <ClInclude Include="src\triangle-rasterizer\src\tr\trError.hpp" />
-    <ClInclude Include="src\triangle-rasterizer\src\tr\trPrimitive.hpp" />
-    <ClInclude Include="src\triangle-rasterizer\src\tr\trRasterizer.hpp" />
-    <ClInclude Include="src\triangle-rasterizer\src\tr\trTexture.hpp" />
-    <ClInclude Include="src\triangle-rasterizer\src\tr\trTextureMode.hpp" />
-    <ClInclude Include="src\triangle-rasterizer\src\tr\trTextureWrappingMode.hpp" />
-    <ClInclude Include="src\triangle-rasterizer\src\tr\trTransformedVertex.hpp" />
-    <ClInclude Include="src\triangle-rasterizer\src\tr\trVertex.hpp" />
-    <ClInclude Include="src\triangle-rasterizer\src\tr\trVertexClipBitMasks.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
