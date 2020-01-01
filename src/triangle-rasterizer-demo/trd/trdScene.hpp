@@ -24,7 +24,6 @@ namespace trd
 		MeshMap            m_meshMap;
 		std::vector<Model> m_opaqueModels;
 		std::vector<Model> m_translucentModels;
-		Model              m_earth;
 		Lights             m_lights;
 	};
 }

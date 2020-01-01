@@ -2,8 +2,7 @@
 
 trd::Scene::Scene() :
 	m_textureMap(),
-	m_meshMap(m_textureMap),
-	m_earth("data/meshes/earth.obj", m_meshMap, Vector3(), Vector3(), true)
+	m_meshMap(m_textureMap)
 {
 	createScene();
 }
@@ -22,28 +21,23 @@ void trd::Scene::draw(const Camera& camera, tr::Rasterizer<Shader>& rasterizer, 
 	{
 		model.draw(rasterizer, shader, colorBuffer, depthBuffer);
 	}
-
-	m_earth.draw(rasterizer, shader, colorBuffer, depthBuffer);
 }
 
 void trd::Scene::update(const Vector3& cameraPosition, const float deltaTime)
 {
-	m_earth.setPosition(cameraPosition);
+	
 }
 
 void trd::Scene::createScene()
 {
-	m_opaqueModels.emplace_back("data/meshes/sofa.obj",	        m_meshMap, Vector3(0.0f, 0.0f,  0.0f), Vector3(0.0f,   0.0f, 0.0f), false);
-	m_opaqueModels.emplace_back("data/meshes/chair.obj",        m_meshMap, Vector3(1.6f, 0.0f,  1.8f), Vector3(0.0f,  90.0f, 0.0f), false);
-	m_opaqueModels.emplace_back("data/meshes/chair.obj",        m_meshMap, Vector3(1.6f, 0.0f, -1.8f), Vector3(0.0f, 270.0f, 0.0f), false);
-	m_opaqueModels.emplace_back("data/meshes/window.obj",       m_meshMap, Vector3(3.0f, 0.0f,  0.0f), Vector3(0.0f,   0.0f, 0.0f), false);
-	m_opaqueModels.emplace_back("data/meshes/coffee-table.obj", m_meshMap, Vector3(1.6f, 0.0f,  0.0f), Vector3(0.0f,  90.0f, 0.0f), false);
-
-	m_opaqueModels.emplace_back("data/meshes/sofa.obj",	        m_meshMap, Vector3(0.0f, 0.0f,  6.0f), Vector3(0.0f,   0.0f, 0.0f), false);
-	m_opaqueModels.emplace_back("data/meshes/chair.obj",        m_meshMap, Vector3(1.6f, 0.0f,  7.8f), Vector3(0.0f,  90.0f, 0.0f), false);
-	m_opaqueModels.emplace_back("data/meshes/chair.obj",        m_meshMap, Vector3(1.6f, 0.0f,  4.2f), Vector3(0.0f, 270.0f, 0.0f), false);
-	m_opaqueModels.emplace_back("data/meshes/window.obj",       m_meshMap, Vector3(3.0f, 0.0f,  6.0f), Vector3(0.0f,   0.0f, 0.0f), false);
-	m_opaqueModels.emplace_back("data/meshes/coffee-table.obj", m_meshMap, Vector3(1.6f, 0.0f,  6.0f), Vector3(0.0f,  90.0f, 0.0f), false);
+	m_opaqueModels.emplace_back("data/dome/dome.obj",             m_meshMap, Vector3(), Vector3(), false);
+	m_opaqueModels.emplace_back("data/ceiling/ceiling.obj",       m_meshMap, Vector3(), Vector3(), false);
+	m_opaqueModels.emplace_back("data/trim/trim.obj",             m_meshMap, Vector3(), Vector3(), false);
+	m_opaqueModels.emplace_back("data/wall/wall.obj",             m_meshMap, Vector3(), Vector3(), false);
+	m_opaqueModels.emplace_back("data/step-top/step-top.obj",     m_meshMap, Vector3(), Vector3(), false);
+	m_opaqueModels.emplace_back("data/step-front/step-front.obj", m_meshMap, Vector3(), Vector3(), false);
+	m_opaqueModels.emplace_back("data/floor/floor.obj",           m_meshMap, Vector3(), Vector3(), false);
+	m_opaqueModels.emplace_back("data/columns/columns.obj",       m_meshMap, Vector3(), Vector3(), false);
 	
 	m_lights.addLight(AmbientLight(Vector3(0.25f, 0.25f, 0.25f)));
 	m_lights.addLight(DirectionalLight(Vector3(1.0f, 1.0f, 1.0f), Vector3(-2.0f, 0.0f, 0.0f)));
