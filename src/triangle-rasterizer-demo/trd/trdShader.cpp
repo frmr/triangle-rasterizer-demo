@@ -60,7 +60,7 @@ void trd::Shader::draw(const Vector4& screenPosition, const Vector3& worldPositi
 
 				const float intensity = fragToLightVec.dot(normal);
 
-				assert(intensity >= -1.0f && intensity <= 1.0f);
+				//assert(intensity >= -1.0f && intensity <= 1.0f);
 
 				if (intensity > 0.0f)
 				{
