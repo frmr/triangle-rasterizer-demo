@@ -5,6 +5,7 @@ trd::Model::Model(const tf::String& meshFilename, MeshMap& meshMap, const Vector
 	m_matrix(),
 	m_position(position),
 	m_rotation(rotation),
+	m_scale(1.0f),
 	m_fullBright(fullBright)
 {
 	recalculateMatrix();
@@ -38,6 +39,12 @@ void trd::Model::rotate(const Vector3& rotation)
 	recalculateMatrix();
 }
 
+void trd::Model::scale(const float scale)
+{
+	m_scale += scale;
+	recalculateMatrix();
+}
+
 void trd::Model::setPosition(const Vector3& position)
 {
 	m_position = position;
@@ -50,9 +57,16 @@ void trd::Model::setRotation(const Vector3& rotation)
 	recalculateMatrix();
 }
 
+void trd::Model::setScale(const float scale)
+{
+	m_scale = scale;
+	recalculateMatrix();
+}
+
 void trd::Model::recalculateMatrix()
 {
 	m_matrix.identity();
+	m_matrix.scale(m_scale);
 	m_matrix.rotateX(m_rotation.x);
 	m_matrix.rotateY(m_rotation.y);
 	m_matrix.rotateZ(m_rotation.z);

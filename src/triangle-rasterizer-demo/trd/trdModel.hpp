@@ -18,8 +18,10 @@ namespace trd
 
 		void              translate(const Vector3& translation);
 		void              rotate(const Vector3& rotation);
+		void              scale(const float scale);
 		void              setPosition(const Vector3& position);
 		void              setRotation(const Vector3& rotation);
+		void              setScale(const float scale);
 
 	private:
 		void              recalculateMatrix();
@@ -29,6 +31,7 @@ namespace trd
 		Matrix4           m_matrix;
 		Vector3           m_position;
 		Vector3           m_rotation;
+		float             m_scale;
 		bool              m_fullBright;
 	};
 }
