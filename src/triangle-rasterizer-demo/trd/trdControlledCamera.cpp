@@ -12,7 +12,7 @@ void trd::ControlledCamera::setPerspective(const ScreenSize& screenSize, const u
 
 void trd::ControlledCamera::update(const InputState& inputState, const float mouseSensitivity, const float deltaTime)
 {
-	constexpr float  movementSpeed    = 0.01f;
+	constexpr float movementSpeed = 0.01f;
 
 	m_rotation.x -= float(inputState.getMouseChangeY()) * mouseSensitivity * deltaTime;
 	m_rotation.y -= float(inputState.getMouseChangeX()) * mouseSensitivity * deltaTime;
