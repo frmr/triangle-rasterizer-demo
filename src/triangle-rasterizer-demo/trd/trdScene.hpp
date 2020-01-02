@@ -23,8 +23,7 @@ namespace trd
 	private:
 		TextureMap         m_textureMap;
 		MeshMap            m_meshMap;
-		std::vector<Model> m_opaqueModels;
-		std::vector<Model> m_translucentModels;
+		std::vector<Model> m_models;
 		HologramManager    m_hologramManager;
 		Lights             m_lights;
 	};

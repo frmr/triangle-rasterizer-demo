@@ -62,6 +62,7 @@
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdLights.hpp" />
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdMesh.hpp" />
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdMeshMap.hpp" />
+    <ClInclude Include="src\triangle-rasterizer-demo\trd\trdMissingFileException.hpp" />
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdModel.hpp" />
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdPointLight.hpp" />
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdRenderManager.hpp" />

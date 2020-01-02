@@ -14,7 +14,7 @@ void trd::FrameTimer::draw(const ScreenSize& screenSize, tr::ColorBuffer& buffer
 	if (m_averageFrameTime > 0.0f)
 	{
 		const std::vector<tf::String> lines = {
-			std::to_string(int(1000.0f / m_averageFrameTime)) + " FPS",
+			toString(1000.0f / m_averageFrameTime, 2) + " FPS",
 			toString(m_averageFrameTime, 2) + " MS "
 		};
 
