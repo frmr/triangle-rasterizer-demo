@@ -1,5 +1,6 @@
 #pragma once
 
+#include "trBlendMode.hpp"
 #include "trTexture.hpp"
 #include "trdRenderMode.hpp"
 #include "trdLights.hpp"
@@ -18,6 +19,7 @@ namespace trd
 		void               setRenderMode(const RenderMode& renderMode);
 		void               setUseTexture(const bool useTexture);
 		void               setBilinearFiltering(const bool bilinearFiltering);
+		void               setBlendMode(const tr::BlendMode blendMode);
 		void               setLights(const Lights& lights);
 
 		RenderMode         getRenderMode() const;
@@ -28,6 +30,7 @@ namespace trd
 		RenderMode         m_renderMode;
 		bool               m_useTexture;
 		bool               m_bilinearFiltering;
+		tr::BlendMode      m_blendMode;
 		Lights             m_lights;
 	};
 }

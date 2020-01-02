@@ -6,7 +6,8 @@ trd::Shader::Shader() :
 	m_textureFiltering(false),
 	m_renderMode(trd::RenderMode::Lit),
 	m_useTexture(true),
-	m_bilinearFiltering(false)
+	m_bilinearFiltering(false),
+	m_blendMode(tr::BlendMode::None)
 {
 }
 
@@ -25,17 +26,24 @@ void trd::Shader::draw(const Vector4& screenPosition, const Vector3& worldPositi
 	}
 	else
 	{
-		color = m_useTexture ? m_texture->getAt(textureCoord.x, textureCoord.y, m_bilinearFiltering, tr::TextureWrappingMode::Repeat) : tr::Color(255, 255, 255, 255);
+		const tr::Color textureColor       = m_useTexture ? m_texture->getAt(textureCoord.x, textureCoord.y, m_bilinearFiltering, tr::TextureWrappingMode::Repeat) : tr::Color(255, 255, 255, 255);
+		const Vector4   bufferColorFloat4  = color.toVector();
+		const Vector4   textureColorFloat4 = textureColor.toVector();
+		const float     normalizedAlpha    = textureColorFloat4.w / 255.0f;
+		Vector3         preBlendColorFloat3;
+
+		if (textureColor.a == 0)
+		{
+			return;
+		}
 
 		if (m_renderMode == RenderMode::Lit)
 		{
-			const Vector4 colorFloat4 = color.toVector();
-			const Vector3 colorFloat(colorFloat4.x, colorFloat4.y, colorFloat4.z);
-			Vector3       postLightColor(0.0f, 0.0f, 0.0f);
+			const Vector3   textureColorFloat(textureColorFloat4.z, textureColorFloat4.y, textureColorFloat4.x);
 
 			for (const AmbientLight& light : m_lights.getAmbientLights())
 			{
-				postLightColor += colorFloat * light.getColor();
+				preBlendColorFloat3 += textureColorFloat * light.getColor();
 			}
 
 			for (const DirectionalLight& light : m_lights.getDirectionalLights())
@@ -46,7 +54,7 @@ void trd::Shader::draw(const Vector4& screenPosition, const Vector3& worldPositi
 
 				if (intensity > 0.0f)
 				{
-					postLightColor += colorFloat * light.getColor() * intensity;
+					preBlendColorFloat3 += textureColorFloat * light.getColor() * intensity;
 				}
 			}
 
@@ -66,17 +74,32 @@ void trd::Shader::draw(const Vector4& screenPosition, const Vector3& worldPositi
 				{
 					const float attenuation = length * light.getAttenuation();
 
-					postLightColor.x += colorFloat.x * std::max((light.getColor().x - attenuation), 0.0f) * intensity;
-					postLightColor.y += colorFloat.y * std::max((light.getColor().y - attenuation), 0.0f) * intensity;
-					postLightColor.z += colorFloat.z * std::max((light.getColor().z - attenuation), 0.0f) * intensity;
+					preBlendColorFloat3.x += textureColorFloat.x * std::max((light.getColor().x - attenuation), 0.0f) * intensity;
+					preBlendColorFloat3.y += textureColorFloat.y * std::max((light.getColor().y - attenuation), 0.0f) * intensity;
+					preBlendColorFloat3.z += textureColorFloat.z * std::max((light.getColor().z - attenuation), 0.0f) * intensity;
 				}
 			}
 
-			postLightColor.x = std::min(postLightColor.x, 255.0f);
-			postLightColor.y = std::min(postLightColor.y, 255.0f);
-			postLightColor.z = std::min(postLightColor.z, 255.0f);
+			preBlendColorFloat3.x = std::min(preBlendColorFloat3.x, 255.0f);
+			preBlendColorFloat3.y = std::min(preBlendColorFloat3.y, 255.0f);
+			preBlendColorFloat3.z = std::min(preBlendColorFloat3.z, 255.0f);
+		}
+		else
+		{
+			preBlendColorFloat3 = Vector3(textureColorFloat4.x, textureColorFloat4.y, textureColorFloat4.z);
+		}
 
-			color = postLightColor;
+		if (m_blendMode == tr::BlendMode::WeightedAverage)
+		{
+			color = Vector3(
+				preBlendColorFloat3.x * normalizedAlpha + bufferColorFloat4.x * (1.0f - normalizedAlpha),
+				preBlendColorFloat3.y * normalizedAlpha + bufferColorFloat4.y * (1.0f - normalizedAlpha),
+				preBlendColorFloat3.z * normalizedAlpha + bufferColorFloat4.z * (1.0f - normalizedAlpha)
+			);
+		}
+		else
+		{
+			color = preBlendColorFloat3;
 		}
 	}
 }
@@ -104,6 +127,11 @@ void trd::Shader::setUseTexture(const bool useTexture)
 void trd::Shader::setBilinearFiltering(const bool bilinearFiltering)
 {
 	m_bilinearFiltering = bilinearFiltering;
+}
+
+void trd::Shader::setBlendMode(const tr::BlendMode blendMode)
+{
+	m_blendMode = blendMode;
 }
 
 void trd::Shader::setLights(const Lights& lights)

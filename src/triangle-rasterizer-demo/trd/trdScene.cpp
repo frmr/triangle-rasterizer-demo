@@ -17,11 +17,14 @@ void trd::Scene::draw(const Camera& camera, tr::Rasterizer<Shader>& rasterizer, 
 	shader.setLights(lights);
 	rasterizer.setProjectionViewMatrix(camera.getProjectionViewMatrix());
 
+	shader.setBlendMode(tr::BlendMode::None);
+
 	for (const Model& model : m_models)
 	{
 		model.draw(rasterizer, shader, colorBuffer, depthBuffer);
 	}
 
+	shader.setBlendMode(tr::BlendMode::WeightedAverage);
 	m_hologramManager.drawHologram(rasterizer, shader, colorBuffer, depthBuffer);
 }
 
