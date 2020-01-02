@@ -39,6 +39,11 @@ void trd::FrameTimer::update()
 	}
 }
 
+float trd::FrameTimer::getFrameTime() const
+{
+	return m_frameTime;
+}
+
 float trd::FrameTimer::getDeltaTime() const
 {
 	return m_frameTime;

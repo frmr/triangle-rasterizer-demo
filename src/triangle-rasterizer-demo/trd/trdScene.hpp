@@ -5,6 +5,7 @@
 #include "trdModel.hpp"
 #include "trdMeshMap.hpp"
 #include "trdLights.hpp"
+#include "trdHologramManager.hpp"
 
 namespace trd
 {
@@ -14,7 +15,7 @@ namespace trd
 		                   Scene();
 
 		void               draw(const Camera& camera, tr::Rasterizer<Shader>& rasterizer, Shader& shader, tr::ColorBuffer& colorBuffer, tr::DepthBuffer& depthBuffer) const;
-		void               update(const Vector3& cameraPosition, const float deltaTime);
+		void               update(const Vector3& cameraPosition, const float frameTime, const float deltaTime);
 
 	private:
 		void               createScene();
@@ -24,6 +25,7 @@ namespace trd
 		MeshMap            m_meshMap;
 		std::vector<Model> m_opaqueModels;
 		std::vector<Model> m_translucentModels;
+		HologramManager    m_hologramManager;
 		Lights             m_lights;
 	};
 }

@@ -67,7 +67,7 @@ void trd::App::mainLoop()
 		frameTimer.update();
 		updateInputs(frameTimer.getDeltaTime());
 
-		scene.update(m_camera.getPosition(), frameTimer.getDeltaTime());
+		scene.update(m_camera.getPosition(), frameTimer.getFrameTime(), frameTimer.getDeltaTime());
 		renderManager.draw(m_camera, m_colorBuffer, m_depthBuffer);
 
 		if (m_settings.getInstructionsEnabled())

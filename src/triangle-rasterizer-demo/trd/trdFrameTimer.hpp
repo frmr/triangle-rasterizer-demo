@@ -12,6 +12,7 @@ namespace trd
 
 		void              draw(const ScreenSize& screenSize, tr::ColorBuffer& buffer) const;
 		void              update();
+		float             getFrameTime() const;
 		float             getDeltaTime() const;
 
 	private:

@@ -2,7 +2,8 @@
 
 trd::Scene::Scene() :
 	m_textureMap(),
-	m_meshMap(m_textureMap)
+	m_meshMap(m_textureMap),
+	m_hologramManager(m_meshMap)
 {
 	createScene();
 }
@@ -21,11 +22,13 @@ void trd::Scene::draw(const Camera& camera, tr::Rasterizer<Shader>& rasterizer, 
 	{
 		model.draw(rasterizer, shader, colorBuffer, depthBuffer);
 	}
+
+	m_hologramManager.drawHologram(rasterizer, shader, colorBuffer, depthBuffer);
 }
 
-void trd::Scene::update(const Vector3& cameraPosition, const float deltaTime)
+void trd::Scene::update(const Vector3& cameraPosition, const float frameTime, const float deltaTime)
 {
-	
+	m_hologramManager.update(frameTime);
 }
 
 void trd::Scene::createScene()
