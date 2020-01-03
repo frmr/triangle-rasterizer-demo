@@ -17,7 +17,7 @@ void trd::Scene::draw(const Camera& camera, tr::Rasterizer<Shader>& rasterizer, 
 	shader.setLights(lights);
 	rasterizer.setProjectionViewMatrix(camera.getProjectionViewMatrix());
 	rasterizer.setCullFaceMode(tr::CullFaceMode::Front);
-	shader.setBlendMode(tr::BlendMode::None);
+	shader.setAlpha(1.0f);
 
 	for (const Model& model : m_models)
 	{

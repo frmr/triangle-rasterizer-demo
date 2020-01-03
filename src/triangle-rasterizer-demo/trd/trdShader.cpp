@@ -7,7 +7,7 @@ trd::Shader::Shader() :
 	m_renderMode(trd::RenderMode::Lit),
 	m_useTexture(true),
 	m_bilinearFiltering(false),
-	m_blendMode(tr::BlendMode::None)
+	m_alpha(1.0f)
 {
 }
 
@@ -29,7 +29,6 @@ void trd::Shader::draw(const Vector4& screenPosition, const Vector3& worldPositi
 		const tr::Color textureColor       = m_useTexture ? m_texture->getAt(textureCoord.x, textureCoord.y, m_bilinearFiltering, tr::TextureWrappingMode::Repeat) : tr::Color(255, 255, 255, 255);
 		const Vector4   bufferColorFloat4  = color.toVector();
 		const Vector4   textureColorFloat4 = textureColor.toVector();
-		const float     normalizedAlpha    = textureColorFloat4.w / 255.0f;
 		Vector3         preBlendColorFloat3;
 
 		if (textureColor.a == 0)
@@ -39,7 +38,7 @@ void trd::Shader::draw(const Vector4& screenPosition, const Vector3& worldPositi
 
 		if (m_renderMode == RenderMode::Lit)
 		{
-			const Vector3   textureColorFloat(textureColorFloat4.z, textureColorFloat4.y, textureColorFloat4.x);
+			const Vector3 textureColorFloat(textureColorFloat4.z, textureColorFloat4.y, textureColorFloat4.x);
 
 			for (const AmbientLight& light : m_lights.getAmbientLights())
 			{
@@ -89,12 +88,12 @@ void trd::Shader::draw(const Vector4& screenPosition, const Vector3& worldPositi
 			preBlendColorFloat3 = Vector3(textureColorFloat4.x, textureColorFloat4.y, textureColorFloat4.z);
 		}
 
-		if (m_blendMode == tr::BlendMode::WeightedAverage)
+		if (m_alpha < 1.0f)
 		{
 			color = Vector3(
-				preBlendColorFloat3.x * normalizedAlpha + bufferColorFloat4.x * (1.0f - normalizedAlpha),
-				preBlendColorFloat3.y * normalizedAlpha + bufferColorFloat4.y * (1.0f - normalizedAlpha),
-				preBlendColorFloat3.z * normalizedAlpha + bufferColorFloat4.z * (1.0f - normalizedAlpha)
+				preBlendColorFloat3.x * m_alpha + bufferColorFloat4.x * (1.0f - m_alpha),
+				preBlendColorFloat3.y * m_alpha + bufferColorFloat4.y * (1.0f - m_alpha),
+				preBlendColorFloat3.z * m_alpha + bufferColorFloat4.z * (1.0f - m_alpha)
 			);
 		}
 		else
@@ -129,9 +128,9 @@ void trd::Shader::setBilinearFiltering(const bool bilinearFiltering)
 	m_bilinearFiltering = bilinearFiltering;
 }
 
-void trd::Shader::setBlendMode(const tr::BlendMode blendMode)
+void trd::Shader::setAlpha(const float alpha)
 {
-	m_blendMode = blendMode;
+	m_alpha = alpha;
 }
 
 void trd::Shader::setLights(const Lights& lights)

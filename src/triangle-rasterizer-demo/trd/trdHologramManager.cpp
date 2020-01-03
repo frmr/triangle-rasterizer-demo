@@ -5,14 +5,15 @@
 
 trd::HologramManager::HologramManager(MeshMap& meshMap) :
 	m_height(0.0f),
-	m_scale(0.0f)
+	m_scale(0.0f),
+	m_alpha(0.0f)
 {
 	loadModels(meshMap);
 }
 
 void trd::HologramManager::drawHologram(const Vector3& cameraPosition, tr::Rasterizer<Shader>& rasterizer, Shader& shader, tr::ColorBuffer& colorBuffer, tr::DepthBuffer& depthBuffer) const
 {
-	shader.setBlendMode(tr::BlendMode::WeightedAverage);
+	shader.setAlpha(m_alpha);
 	rasterizer.setCullFaceMode(tr::CullFaceMode::None);
 	m_holograms[m_index].draw(cameraPosition, true, rasterizer, shader, colorBuffer, depthBuffer);
 }
@@ -73,6 +74,8 @@ void trd::HologramManager::updateHologram()
 	constexpr float maxHeight         = 5.0f;
 	constexpr float minScale          = 0.0f;
 	constexpr float maxScale          = 2.0f;
+	constexpr float minAlpha          = 0.0f;
+	constexpr float maxAlpha          = 0.8f;
 	constexpr float delayPeriod       = 1000.0f;
 	constexpr float scalePeriod       = 1000.0f;
 	constexpr float displayPeriod     = 5000.0f;
@@ -95,26 +98,30 @@ void trd::HologramManager::updateHologram()
 	{
 		m_height = minHeight;
 		m_scale  = minScale;
+		m_alpha  = 0.0f;
 	}
 	else if (fractional < scaleUpRatio)
 	{
 		const float ratio  = (fractional - delayRatio) / (scaleUpRatio - delayRatio);
 
 		m_height = minHeight + (maxHeight - minHeight) * ratio;
-		m_scale  = minScale + (maxScale - minScale) * ratio;
+		m_scale  = minScale  + (maxScale  - minScale)  * ratio;
+		m_alpha  = minAlpha  + (maxAlpha  - minAlpha)  * ratio;
 		
 	}
 	else if (fractional < displayRatio)
 	{
 		m_height = maxHeight;
 		m_scale  = maxScale;
+		m_alpha  = maxAlpha;
 	}
 	else if (fractional < scaleDownRatio)
 	{
 		const float ratio = (fractional - displayRatio) / (scaleDownRatio - displayRatio);
 
 		m_height = maxHeight - (maxHeight - minHeight) * ratio;
-		m_scale  = maxScale - (maxScale - minScale) * ratio;
+		m_scale  = maxScale  - (maxScale  - minScale ) * ratio;
+		m_alpha  = maxAlpha  - (maxAlpha  - minAlpha ) * ratio;
 	}
 
 	m_holograms[m_index].setPosition(Vector3(0.0f, m_height, 0.0f));

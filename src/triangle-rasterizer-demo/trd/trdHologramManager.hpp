@@ -25,5 +25,6 @@ namespace trd
 		size_t               m_index;
 		float                m_height;
 		float                m_scale;
+		float                m_alpha;
 	};
 }
