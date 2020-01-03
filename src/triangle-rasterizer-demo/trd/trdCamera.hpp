@@ -3,11 +3,10 @@
 #include "Matrices.h"
 #include "trdScreenSize.hpp"
 #include "trColorBuffer.hpp"
-#include "trdTextRenderer.hpp"
 
 namespace trd
 {
-	class Camera : public TextRenderer
+	class Camera
 	{
 	public:
 		             Camera(const ScreenSize& screenSize, const uint8_t fov, const float near, const float far);
@@ -21,8 +20,6 @@ namespace trd
 		Vector2      getRotation() const;
 
 		Matrix4      getProjectionViewMatrix() const;
-
-		void         drawParameters(const ScreenSize& screenSize, tr::ColorBuffer& buffer) const;
 
 	protected:
 		void         setPerspective(const float left, const float right, const float bottom, const float top, const float near, const float far);

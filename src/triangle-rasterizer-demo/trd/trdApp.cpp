@@ -79,7 +79,6 @@ void trd::App::mainLoop()
 			frameTimer.draw(m_settings.getScreenSize(), m_colorBuffer);
 		}
 
-		m_camera.drawParameters(m_settings.getScreenSize(), m_colorBuffer);
 		m_window.copyAndRender(m_colorBuffer);
 	}
 }
