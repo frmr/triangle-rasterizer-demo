@@ -54,13 +54,12 @@ void trd::App::updateInputs(const float deltaTime)
 
 void trd::App::mainLoop()
 {
-	Instructions instructions;
-	FrameTimer   frameTimer;
-
-	m_camera.translate(Vector3(0.0f, 0.0f, 4.0f));
-
+	Instructions  instructions;
+	FrameTimer    frameTimer;
 	Scene         scene;
 	RenderManager renderManager(m_settings, scene);
+
+	m_camera.translate(Vector3(0.0f, 6.0f, 10.0f));
 
 	while (m_running)
 	{
