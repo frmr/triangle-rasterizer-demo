@@ -30,15 +30,15 @@ void trd::Settings::update(const InputState& inputState, bool& reinitWindow, boo
 	reinitWindow = false;
 	reinitCamera = false;
 
-	if (inputState.getKeyState(Key::ChangeSetting1).pressed) { cycleScreenSize();           reinitWindow = true; }
-	if (inputState.getKeyState(Key::ChangeSetting2).pressed) { toggleFullscreen();          reinitWindow = true; }
-	if (inputState.getKeyState(Key::ChangeSetting3).pressed) { cycleNumThreads();                                }
-	if (inputState.getKeyState(Key::ChangeSetting4).pressed) { cycleFov();                  reinitCamera = true; }
-	if (inputState.getKeyState(Key::ChangeSetting5).pressed) { cycleRenderMode();                                }
-	if (inputState.getKeyState(Key::ChangeSetting6).pressed) { cycleTextureMode();                               }
-	if (inputState.getKeyState(Key::ChangeSetting7).pressed) { toggleBilinearFiltering();                        }
-	if (inputState.getKeyState(Key::ChangeSetting8).pressed) { toggleInstructionsEnabled();                      }
-	if (inputState.getKeyState(Key::ChangeSetting9).pressed) { toggleFrameRateEnabled();                         }
+	if (inputState.getKeyState(Key::ChangeSettingResolution        ).pressed) { cycleScreenSize();           reinitWindow = true; }
+	if (inputState.getKeyState(Key::ChangeSettingThreads           ).pressed) { cycleNumThreads();                                }
+	if (inputState.getKeyState(Key::ChangeSettingHorizontalFov     ).pressed) { cycleFov();                  reinitCamera = true; }
+	if (inputState.getKeyState(Key::ChangeSettingFragmentShaderMode).pressed) { cycleRenderMode();                                }
+	if (inputState.getKeyState(Key::ChangeSettingTextureMapping    ).pressed) { cycleTextureMode();                               }
+	if (inputState.getKeyState(Key::ChangeSettingBilinearFiltering ).pressed) { toggleBilinearFiltering();                        }
+	if (inputState.getKeyState(Key::ChangeSettingInstructions      ).pressed) { toggleInstructionsEnabled();                      }
+	if (inputState.getKeyState(Key::ChangeSettingFrameRateCounter  ).pressed) { toggleFrameRateEnabled();                         }
+	if (inputState.getKeyState(Key::ChangeSettingFullscreen        ).pressed) { toggleFullscreen();          reinitWindow = true; }
 }
 
 void trd::Settings::cycleScreenSize()

@@ -3,22 +3,23 @@
 #include <stdexcept>
 
 const std::map<int, trd::Key> trd::InputState::m_keyMapping = {
-	{ SDLK_ESCAPE, Key::Quit           },
-	{ SDLK_w,      Key::MoveForward    },
-	{ SDLK_a,      Key::MoveLeft       },
-	{ SDLK_s,      Key::MoveBackward   },
-	{ SDLK_d,      Key::MoveRight      },
-	{ SDLK_SPACE,  Key::MoveUp         },
-	{ SDLK_LCTRL,  Key::MoveDown       },
-	{ SDLK_1,      Key::ChangeSetting1 },
-	{ SDLK_2,      Key::ChangeSetting2 },
-	{ SDLK_3,      Key::ChangeSetting3 },
-	{ SDLK_4,      Key::ChangeSetting4 },
-	{ SDLK_5,      Key::ChangeSetting5 },
-	{ SDLK_6,      Key::ChangeSetting6 },
-	{ SDLK_7,      Key::ChangeSetting7 },
-	{ SDLK_8,      Key::ChangeSetting8 },
-	{ SDLK_9,      Key::ChangeSetting9 }
+	{ SDLK_ESCAPE, Key::Quit                            },
+	{ SDLK_w,      Key::MoveForward                     },
+	{ SDLK_a,      Key::MoveLeft                        },
+	{ SDLK_s,      Key::MoveBackward                    },
+	{ SDLK_d,      Key::MoveRight                       },
+	{ SDLK_SPACE,  Key::MoveUp                          },
+	{ SDLK_LCTRL,  Key::MoveDown                        },
+	{ SDLK_p,      Key::ChangeSettingPauseAnimation     },
+	{ SDLK_r,      Key::ChangeSettingResolution         },
+	{ SDLK_t,      Key::ChangeSettingThreads            },
+	{ SDLK_h,      Key::ChangeSettingHorizontalFov      },
+	{ SDLK_f,      Key::ChangeSettingFragmentShaderMode },
+	{ SDLK_m,      Key::ChangeSettingTextureMapping     },
+	{ SDLK_b,      Key::ChangeSettingBilinearFiltering  },
+	{ SDLK_i,      Key::ChangeSettingInstructions       },
+	{ SDLK_c,      Key::ChangeSettingFrameRateCounter   },
+	{ SDLK_F11,    Key::ChangeSettingFullscreen         }
 };
 
 trd::InputState::InputState() :

@@ -11,14 +11,15 @@ namespace trd
 		MoveRight,
 		MoveUp,
 		MoveDown,
-		ChangeSetting1,
-		ChangeSetting2,
-		ChangeSetting3,
-		ChangeSetting4,
-		ChangeSetting5,
-		ChangeSetting6,
-		ChangeSetting7,
-		ChangeSetting8,
-		ChangeSetting9
+		ChangeSettingPauseAnimation,
+		ChangeSettingResolution,
+		ChangeSettingThreads,
+		ChangeSettingHorizontalFov,
+		ChangeSettingFragmentShaderMode,
+		ChangeSettingTextureMapping,
+		ChangeSettingBilinearFiltering,
+		ChangeSettingInstructions,
+		ChangeSettingFrameRateCounter,
+		ChangeSettingFullscreen
 	};
 }
