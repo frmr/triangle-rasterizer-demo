@@ -36,15 +36,62 @@ void trd::TextRenderer::drawText(const std::vector<tf::String>& lines, const tr:
 
 void trd::TextRenderer::drawText(const std::vector<tf::String>& lines, const tr::Color& color, const Corner corner, const ScreenSize& screenSize, tr::ColorBuffer& buffer)
 {
-	const size_t textHeight = lines.size() * (s_fontHeight + s_spacing);
-	const size_t textWidth  = calculateTextWidth(lines);
+	const size_t    textHeight  = lines.size() * (s_fontHeight + s_spacing) - s_spacing;
+	const size_t    textWidth   = calculateTextWidth(lines);
+	const ScreenPos screenBounds = { screenSize.width - 1, screenSize.height - 1 };
+
+	size_t top, left, bottom, right;
 
 	switch (corner)
 	{
-	case Corner::TopLeft:     drawText(lines, color, { s_spacing,                                s_spacing },                      TextAlign::Left,  buffer); break;
-	case Corner::TopRight:    drawText(lines, color, { screenSize.width - textWidth - s_spacing, s_spacing },                      TextAlign::Right, buffer); break;
-	case Corner::BottomLeft:  drawText(lines, color, { s_spacing,                                screenSize.height - textHeight }, TextAlign::Left,  buffer); break;
-	case Corner::BottomRight: drawText(lines, color, { screenSize.width - textWidth - s_spacing, screenSize.height - textHeight }, TextAlign::Right, buffer); break;
+	case Corner::TopLeft:
+		top    = 0;
+		left   = 0;
+		bottom = textHeight + s_spacing * 2;
+		right  = textWidth  + s_spacing * 2;
+		break;
+	case Corner::TopRight:
+		top    = 0;
+		left   = screenBounds.x - textWidth - s_spacing * 2;
+		bottom = textHeight + s_spacing * 2;
+		right  = screenBounds.x;
+		break;
+	case Corner::BottomLeft:
+		top    = screenBounds.y - textHeight - s_spacing * 2;
+		left   = 0;
+		bottom = screenBounds.y;
+		right  = textWidth + s_spacing * 2;
+		break;
+	case Corner::BottomRight:
+		top    = screenBounds.y - textHeight - s_spacing * 2;
+		left   = screenBounds.x - textWidth - s_spacing * 2;
+		bottom = screenBounds.y;
+		right  = screenBounds.x;
+		break;
+	}
+
+	for (size_t y = top; y <= bottom; ++y)
+	{
+		for (size_t x = left; x <= right; ++x)
+		{
+			tr::Color& pixel = buffer.at(x, y);
+
+			pixel.r /= 2;
+			pixel.g /= 2;
+			pixel.b /= 2;
+		}
+	}
+
+	switch (corner)
+	{
+	case Corner::TopLeft:
+	case Corner::BottomLeft:
+		drawText(lines, color, { left + s_spacing, top + s_spacing }, TextAlign::Left, buffer);
+		break;
+	case Corner::TopRight:
+	case Corner::BottomRight:
+		drawText(lines, color, { left + s_spacing, top + s_spacing }, TextAlign::Right, buffer);
+		break;
 	}
 }
 
