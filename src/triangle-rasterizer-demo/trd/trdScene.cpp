@@ -45,6 +45,7 @@ void trd::Scene::createScene()
 	m_models.emplace_back("data/step-front/step-front.obj", m_meshMap, Vector3(), Vector3(), false);
 	m_models.emplace_back("data/floor/floor.obj",           m_meshMap, Vector3(), Vector3(), false);
 	m_models.emplace_back("data/columns/columns.obj",       m_meshMap, Vector3(), Vector3(), false);
+	m_models.emplace_back("data/projector/projector.obj",   m_meshMap, Vector3(), Vector3(), false);
 	
 	m_lights.addLight(AmbientLight(Vector3(0.2f, 0.2f, 0.2f)));
 }
