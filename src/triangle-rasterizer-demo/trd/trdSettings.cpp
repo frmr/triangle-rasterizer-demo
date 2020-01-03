@@ -2,6 +2,7 @@
 #include <thread>
 
 trd::Settings::Settings(const ScreenSize& customScreenSize) :
+	m_pauseAnimation(false),
 	m_screenSizeIndex(0),
 	m_fullscreen(false),
 	m_renderMode(RenderMode::Lit),
@@ -30,6 +31,7 @@ void trd::Settings::update(const InputState& inputState, bool& reinitWindow, boo
 	reinitWindow = false;
 	reinitCamera = false;
 
+	if (inputState.getKeyState(Key::ChangeSettingPauseAnimation    ).pressed) { togglePauseAnimation();                           }
 	if (inputState.getKeyState(Key::ChangeSettingResolution        ).pressed) { cycleScreenSize();           reinitWindow = true; }
 	if (inputState.getKeyState(Key::ChangeSettingThreads           ).pressed) { cycleNumThreads();                                }
 	if (inputState.getKeyState(Key::ChangeSettingHorizontalFov     ).pressed) { cycleFov();                  reinitCamera = true; }
@@ -39,6 +41,11 @@ void trd::Settings::update(const InputState& inputState, bool& reinitWindow, boo
 	if (inputState.getKeyState(Key::ChangeSettingInstructions      ).pressed) { toggleInstructionsEnabled();                      }
 	if (inputState.getKeyState(Key::ChangeSettingFrameRateCounter  ).pressed) { toggleFrameRateEnabled();                         }
 	if (inputState.getKeyState(Key::ChangeSettingFullscreen        ).pressed) { toggleFullscreen();          reinitWindow = true; }
+}
+
+void trd::Settings::togglePauseAnimation()
+{
+	m_pauseAnimation = !m_pauseAnimation;
 }
 
 void trd::Settings::cycleScreenSize()
@@ -95,6 +102,11 @@ void trd::Settings::toggleFrameRateEnabled()
 void trd::Settings::toggleBilinearFiltering()
 {
 	m_bilinearFiltering = !m_bilinearFiltering;
+}
+
+bool trd::Settings::getPauseAnimation() const
+{
+	return m_pauseAnimation;
 }
 
 trd::ScreenSize trd::Settings::getScreenSize() const

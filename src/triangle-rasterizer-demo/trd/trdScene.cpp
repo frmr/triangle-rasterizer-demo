@@ -27,9 +27,12 @@ void trd::Scene::draw(const Camera& camera, tr::Rasterizer<Shader>& rasterizer, 
 	m_hologramManager.drawHologram(camera.getPosition(), rasterizer, shader, colorBuffer, depthBuffer);
 }
 
-void trd::Scene::update(const Vector3& cameraPosition, const float frameTime, const float deltaTime)
+void trd::Scene::update(const Vector3& cameraPosition, const bool pauseAnimation, const float frameTime, const float deltaTime)
 {
-	m_hologramManager.update(frameTime);
+	if (!pauseAnimation)
+	{
+		m_hologramManager.update(frameTime);
+	}
 }
 
 void trd::Scene::createScene()

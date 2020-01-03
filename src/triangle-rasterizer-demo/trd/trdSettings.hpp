@@ -15,6 +15,7 @@ namespace trd
 
 		void                    update(const InputState& inputState, bool& reinitWindow, bool& reinitCamera);
 
+		bool                    getPauseAnimation() const;
 		ScreenSize              getScreenSize() const;
 		bool                    getFullscreen() const;
 		RenderMode              getRenderMode() const;
@@ -26,6 +27,7 @@ namespace trd
 		bool                    getBilinearFiltering() const;
 
 	private:
+		void                    togglePauseAnimation();
 		void                    cycleScreenSize();
 		void                    toggleFullscreen();
 		void                    cycleRenderMode();
@@ -37,6 +39,7 @@ namespace trd
 		void                    toggleBilinearFiltering();
 
 	private:
+		bool                    m_pauseAnimation;
 		std::vector<ScreenSize> m_screenSizes;
 		size_t                  m_screenSizeIndex;
 		bool                    m_fullscreen;

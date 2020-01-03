@@ -15,7 +15,7 @@ namespace trd
 		                   Scene();
 
 		void               draw(const Camera& camera, tr::Rasterizer<Shader>& rasterizer, Shader& shader, tr::ColorBuffer& colorBuffer, tr::DepthBuffer& depthBuffer) const;
-		void               update(const Vector3& cameraPosition, const float frameTime, const float deltaTime);
+		void               update(const Vector3& cameraPosition, const bool animationsPaused, const float frameTime, const float deltaTime);
 
 	private:
 		void               createScene();
