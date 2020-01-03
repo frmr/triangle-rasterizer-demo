@@ -1,7 +1,23 @@
 # Triangle Rasterizer Demo
 
 ## Description
-Demonstration of the features of the [triangle-rasterizer](https://github.com/frmr/triangle-rasterizer) library
+This demo features:
+* Alpha blending
+* Per-pixel colored lighting
+* Decals
+* Multithreaded scan-line interleave
+
+It uses the [triangle-rasterizer](https://github.com/frmr/triangle-rasterizer) library, which features:
+* Scan-line triangle rasterization
+* Z-buffer
+* Affine and perspective-correct texture mapping
+* Texture repeat/clamp
+* Bilinear texture filtering
+* Backface culling
+* Position/normal interpolation
+* Triange/strip/fan
+* Scan-line interleave
+* Render to texture
 
 ## Instructions
 | Key | Action |
