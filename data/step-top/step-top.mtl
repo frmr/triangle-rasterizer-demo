@@ -1,6 +1,4 @@
-# Material Count: 1
-
-newmtl Material.013
+newmtl step-top
 Ns 323.999994
 Ka 1.000000 1.000000 1.000000
 Kd 0.800000 0.800000 0.800000
