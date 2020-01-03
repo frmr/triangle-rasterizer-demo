@@ -11,7 +11,7 @@ trd::Model::Model(const tf::String& meshFilename, MeshMap& meshMap, const Vector
 	recalculateMatrix();
 }
 
-void trd::Model::draw(tr::Rasterizer<Shader>& rasterizer, Shader& shader, tr::ColorBuffer& colorBuffer, tr::DepthBuffer& depthBuffer) const
+void trd::Model::draw(const Vector3& cameraPosition, const bool sort, tr::Rasterizer<Shader>& rasterizer, Shader& shader, tr::ColorBuffer& colorBuffer, tr::DepthBuffer& depthBuffer) const
 {
 	rasterizer.setModelMatrix(m_matrix);
 
@@ -22,7 +22,7 @@ void trd::Model::draw(tr::Rasterizer<Shader>& rasterizer, Shader& shader, tr::Co
 		shader.setRenderMode(RenderMode::FullBright);
 	}
 
-	m_mesh->draw(rasterizer, shader, colorBuffer, depthBuffer);
+	m_mesh->draw(cameraPosition, sort, rasterizer, shader, colorBuffer, depthBuffer);
 
 	shader.setRenderMode(originalRenderMode);
 }

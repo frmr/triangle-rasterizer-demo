@@ -16,16 +16,15 @@ void trd::Scene::draw(const Camera& camera, tr::Rasterizer<Shader>& rasterizer, 
 
 	shader.setLights(lights);
 	rasterizer.setProjectionViewMatrix(camera.getProjectionViewMatrix());
-
+	rasterizer.setCullFaceMode(tr::CullFaceMode::Front);
 	shader.setBlendMode(tr::BlendMode::None);
 
 	for (const Model& model : m_models)
 	{
-		model.draw(rasterizer, shader, colorBuffer, depthBuffer);
+		model.draw(camera.getPosition(), false, rasterizer, shader, colorBuffer, depthBuffer);
 	}
 
-	shader.setBlendMode(tr::BlendMode::WeightedAverage);
-	m_hologramManager.drawHologram(rasterizer, shader, colorBuffer, depthBuffer);
+	m_hologramManager.drawHologram(camera.getPosition(), rasterizer, shader, colorBuffer, depthBuffer);
 }
 
 void trd::Scene::update(const Vector3& cameraPosition, const float frameTime, const float deltaTime)

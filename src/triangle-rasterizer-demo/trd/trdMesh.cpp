@@ -11,6 +11,7 @@ trd::Mesh::Mesh(const tf::String& filename, TextureMap& textureMap)
 void trd::Mesh::loadObj(const tf::String& filename, TextureMap& textureMap)
 {
 	m_vertices.clear();
+	m_faceMidPoints.clear();
 	m_texture = nullptr;
 
 	tinyobj::attrib_t                attributes;
@@ -56,12 +57,61 @@ void trd::Mesh::loadObj(const tf::String& filename, TextureMap& textureMap)
 			});
 		}
 
+		for (size_t vertexIndex = 0; vertexIndex < m_vertices.size(); vertexIndex += 3)
+		{
+			const Vector4& position0 = m_vertices[vertexIndex + 0].position;
+			const Vector4& position1 = m_vertices[vertexIndex + 1].position;
+			const Vector4& position2 = m_vertices[vertexIndex + 2].position;
+
+			m_faceMidPoints.push_back(Vector4(
+				(position0.x + position1.x + position2.x) / 3.0f,
+				(position0.y + position1.y + position2.y) / 3.0f,
+				(position0.z + position1.z + position2.z) / 3.0f,
+				1.0f
+			));
+		}
+
 		m_texture = textureMap.get(materials.front().diffuse_texname);
 	}
 }
 
-void trd::Mesh::draw(tr::Rasterizer<Shader>& rasterizer, Shader& shader, tr::ColorBuffer& colorBuffer, tr::DepthBuffer& depthBuffer) const
+void trd::Mesh::draw(const Vector3& cameraPosition, const bool sort, tr::Rasterizer<Shader>& rasterizer, Shader& shader, tr::ColorBuffer& colorBuffer, tr::DepthBuffer& depthBuffer) const
 {
 	shader.setTexture(m_texture);
-	rasterizer.draw(m_vertices, shader, colorBuffer, depthBuffer);
+
+	if (sort)
+	{
+		std::multimap<float, size_t> faceDistanceIndexMap;
+		const Matrix4                modelMatrix = rasterizer.getModelMatrix();
+
+		for (int i = 0; i < m_faceMidPoints.size(); ++i)
+		{
+			const Vector4 transformedMidPoint    = modelMatrix * m_faceMidPoints[i];
+			const Vector3 cameraToMidPointVector = Vector3(transformedMidPoint.x, transformedMidPoint.y, transformedMidPoint.z) - cameraPosition;
+			const Vector3 squaredVector          = cameraToMidPointVector * cameraToMidPointVector;
+			const float   squaredDistance        = squaredVector.x + squaredVector.y + squaredVector.z;
+
+			faceDistanceIndexMap.emplace(squaredDistance, i);
+		}
+
+		std::vector<tr::Vertex> sortedFaceVertices;
+
+		sortedFaceVertices.reserve(m_vertices.size());
+
+		for (auto it = faceDistanceIndexMap.rbegin(); it != faceDistanceIndexMap.rend(); it++)
+		{
+			const auto& distanceIndexPair    = *it;
+			const size_t unsortedVertexIndex = distanceIndexPair.second * 3;
+
+			sortedFaceVertices.push_back(m_vertices[unsortedVertexIndex + 0]);
+			sortedFaceVertices.push_back(m_vertices[unsortedVertexIndex + 1]);
+			sortedFaceVertices.push_back(m_vertices[unsortedVertexIndex + 2]);
+		}
+
+		rasterizer.draw(sortedFaceVertices, shader, colorBuffer, depthBuffer);
+	}
+	else
+	{
+		rasterizer.draw(m_vertices, shader, colorBuffer, depthBuffer);
+	}
 }

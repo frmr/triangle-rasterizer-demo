@@ -13,13 +13,14 @@ namespace trd
 	public:
 		                        Mesh(const tf::String& filename, trd::TextureMap& textureMap);
 
-		void                    draw(tr::Rasterizer<Shader>& rasterizer, Shader& shader, tr::ColorBuffer& colorBuffer, tr::DepthBuffer& depthBuffer) const;
+		void                    draw(const Vector3& cameraPosition, const bool sort, tr::Rasterizer<Shader>& rasterizer, Shader& shader, tr::ColorBuffer& colorBuffer, tr::DepthBuffer& depthBuffer) const;
 
 	private:
 		void                    loadObj(const tf::String& filename, TextureMap& textureMap);
 
 	private:
 		std::vector<tr::Vertex> m_vertices;
+		std::vector<Vector4>    m_faceMidPoints;
 		const tr::Texture*      m_texture;
 	};
 }

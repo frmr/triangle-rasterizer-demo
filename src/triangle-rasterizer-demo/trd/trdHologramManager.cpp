@@ -10,9 +10,11 @@ trd::HologramManager::HologramManager(MeshMap& meshMap) :
 	loadModels(meshMap);
 }
 
-void trd::HologramManager::drawHologram(tr::Rasterizer<Shader>& rasterizer, Shader& shader, tr::ColorBuffer& colorBuffer, tr::DepthBuffer& depthBuffer) const
+void trd::HologramManager::drawHologram(const Vector3& cameraPosition, tr::Rasterizer<Shader>& rasterizer, Shader& shader, tr::ColorBuffer& colorBuffer, tr::DepthBuffer& depthBuffer) const
 {
-	m_holograms[m_index].draw(rasterizer, shader, colorBuffer, depthBuffer);
+	shader.setBlendMode(tr::BlendMode::WeightedAverage);
+	rasterizer.setCullFaceMode(tr::CullFaceMode::None);
+	m_holograms[m_index].draw(cameraPosition, true, rasterizer, shader, colorBuffer, depthBuffer);
 }
 
 void trd::HologramManager::update(const float frameTime)
