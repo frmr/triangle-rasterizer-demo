@@ -4,6 +4,7 @@
 #include <filesystem>
 
 trd::HologramManager::HologramManager(MeshMap& meshMap) :
+	m_interpolationRatio(0.0f),
 	m_height(0.0f),
 	m_scale(0.0f),
 	m_alpha(0.0f)
@@ -13,6 +14,20 @@ trd::HologramManager::HologramManager(MeshMap& meshMap) :
 
 void trd::HologramManager::drawHologram(const Vector3& cameraPosition, tr::Rasterizer<Shader>& rasterizer, Shader& shader, tr::ColorBuffer& colorBuffer, tr::DepthBuffer& depthBuffer) const
 {
+	rasterizer.setCullFaceMode(tr::CullFaceMode::Front);
+	rasterizer.setDepthBias(-0.001f);
+
+	shader.setAlpha(std::powf(m_lightColors[m_index].z * m_interpolationRatio, 3.0f));
+	m_lightModels.at(LightComponent::Red).draw(cameraPosition, false, rasterizer, shader, colorBuffer, depthBuffer);
+
+	shader.setAlpha(std::powf(m_lightColors[m_index].y * m_interpolationRatio, 3.0f));
+	m_lightModels.at(LightComponent::Green).draw(cameraPosition, false, rasterizer, shader, colorBuffer, depthBuffer);
+
+	shader.setAlpha(std::powf(m_lightColors[m_index].x * m_interpolationRatio, 3.0f));
+	m_lightModels.at(LightComponent::Blue).draw(cameraPosition, false, rasterizer, shader, colorBuffer, depthBuffer);
+
+	rasterizer.setDepthBias(0.0f);
+
 	shader.setAlpha(m_alpha);
 	rasterizer.setCullFaceMode(tr::CullFaceMode::None);
 	m_holograms[m_index].draw(cameraPosition, true, rasterizer, shader, colorBuffer, depthBuffer);
@@ -34,6 +49,19 @@ trd::PointLight trd::HologramManager::getLight() const
 }
 
 void trd::HologramManager::loadModels(MeshMap& meshMap)
+{
+	loadHologramModels(meshMap);
+	loadLightModels(meshMap);
+}
+
+void trd::HologramManager::loadLightModels(MeshMap& meshMap)
+{
+	m_lightModels.emplace(LightComponent::Red,   Model("data/projector-red/projector-red.obj",     meshMap, Vector3(), Vector3(), true));
+	m_lightModels.emplace(LightComponent::Green, Model("data/projector-green/projector-green.obj", meshMap, Vector3(), Vector3(), true));
+	m_lightModels.emplace(LightComponent::Blue,  Model("data/projector-blue/projector-blue.obj",   meshMap, Vector3(), Vector3(), true));
+}
+
+void trd::HologramManager::loadHologramModels(MeshMap& meshMap)
 {
 	constexpr const char* hologramDirectory = "data/holograms";
 
@@ -94,35 +122,14 @@ void trd::HologramManager::updateHologram()
 	fractional = std::modf(progress, &whole);
 	m_index    = size_t(std::round(whole)) % m_holograms.size();
 
-	if (fractional < delayRatio)
-	{
-		m_height = minHeight;
-		m_scale  = minScale;
-		m_alpha  = 0.0f;
-	}
-	else if (fractional < scaleUpRatio)
-	{
-		const float ratio  = (fractional - delayRatio) / (scaleUpRatio - delayRatio);
+	if      (fractional < delayRatio    ) { m_interpolationRatio = 0.0f;                                                          }
+	else if (fractional < scaleUpRatio  ) { m_interpolationRatio = (fractional - delayRatio) / (scaleUpRatio - delayRatio);       }
+	else if (fractional < displayRatio  ) { m_interpolationRatio = 1.0f;                                                          }
+	else if (fractional < scaleDownRatio) { m_interpolationRatio = 1.0f - (fractional - displayRatio) / (scaleDownRatio - displayRatio); }
 
-		m_height = minHeight + (maxHeight - minHeight) * ratio;
-		m_scale  = minScale  + (maxScale  - minScale)  * ratio;
-		m_alpha  = minAlpha  + (maxAlpha  - minAlpha)  * ratio;
-		
-	}
-	else if (fractional < displayRatio)
-	{
-		m_height = maxHeight;
-		m_scale  = maxScale;
-		m_alpha  = maxAlpha;
-	}
-	else if (fractional < scaleDownRatio)
-	{
-		const float ratio = (fractional - displayRatio) / (scaleDownRatio - displayRatio);
-
-		m_height = maxHeight - (maxHeight - minHeight) * ratio;
-		m_scale  = maxScale  - (maxScale  - minScale ) * ratio;
-		m_alpha  = maxAlpha  - (maxAlpha  - minAlpha ) * ratio;
-	}
+	m_height = minHeight + (maxHeight - minHeight) * m_interpolationRatio;
+	m_scale  = minScale  + (maxScale  - minScale)  * m_interpolationRatio;
+	m_alpha  = minAlpha  + (maxAlpha  - minAlpha)  * m_interpolationRatio;
 
 	m_holograms[m_index].setPosition(Vector3(0.0f, m_height, 0.0f));
 	m_holograms[m_index].setRotation(Vector3(0.0f, rotation, 0.0f));

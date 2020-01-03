@@ -228,5 +228,8 @@
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdHologramManager.hpp">
       <Filter>Source Files\trd</Filter>
     </ClInclude>
+    <ClInclude Include="src\triangle-rasterizer-demo\trd\trdLightComponent.hpp">
+      <Filter>Source Files\trd</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

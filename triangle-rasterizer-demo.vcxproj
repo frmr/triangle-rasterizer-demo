@@ -59,6 +59,7 @@
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdInvalidFileException.hpp" />
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdKey.hpp" />
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdLight.hpp" />
+    <ClInclude Include="src\triangle-rasterizer-demo\trd\trdLightComponent.hpp" />
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdLights.hpp" />
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdMesh.hpp" />
     <ClInclude Include="src\triangle-rasterizer-demo\trd\trdMeshMap.hpp" />
