@@ -17,7 +17,7 @@ void trd::Shader::draw(const Vector4& screenPosition, const Vector3& worldPositi
 
 	if (m_renderMode == RenderMode::Depth)
 	{
-		const uint8_t depthChannel = 255 - uint8_t((screenPosition.z + 1.0f) * 127.0f);
+		const uint8_t depthChannel = 255 - uint8_t((std::pow(screenPosition.z + 1.0f, 3.0f) / std::pow(2.0f, 3.0f)) * 255.0f);
 		color = tr::Color(depthChannel, depthChannel, depthChannel, 255);
 	}
 	else if (m_renderMode == RenderMode::Normals)
