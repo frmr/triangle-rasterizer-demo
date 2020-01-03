@@ -29,9 +29,10 @@ void trd::Shader::draw(const Vector4& screenPosition, const Vector3& worldPositi
 		const tr::Color textureColor       = m_useTexture ? m_texture->getAt(textureCoord.x, textureCoord.y, m_bilinearFiltering, tr::TextureWrappingMode::Repeat) : tr::Color(255, 255, 255, 255);
 		const Vector4   bufferColorFloat4  = color.toVector();
 		const Vector4   textureColorFloat4 = textureColor.toVector();
+		const float     alpha              = m_alpha * (textureColorFloat4.w / 255.0f);
 		Vector3         preBlendColorFloat3;
 
-		if (textureColor.a == 0)
+		if (alpha == 0)
 		{
 			return;
 		}
@@ -88,12 +89,12 @@ void trd::Shader::draw(const Vector4& screenPosition, const Vector3& worldPositi
 			preBlendColorFloat3 = Vector3(textureColorFloat4.x, textureColorFloat4.y, textureColorFloat4.z);
 		}
 
-		if (m_alpha < 1.0f)
+		if (alpha < 1.0f)
 		{
 			color = Vector3(
-				preBlendColorFloat3.x * m_alpha + bufferColorFloat4.x * (1.0f - m_alpha),
-				preBlendColorFloat3.y * m_alpha + bufferColorFloat4.y * (1.0f - m_alpha),
-				preBlendColorFloat3.z * m_alpha + bufferColorFloat4.z * (1.0f - m_alpha)
+				preBlendColorFloat3.x * alpha + bufferColorFloat4.x * (1.0f - alpha),
+				preBlendColorFloat3.y * alpha + bufferColorFloat4.y * (1.0f - alpha),
+				preBlendColorFloat3.z * alpha + bufferColorFloat4.z * (1.0f - alpha)
 			);
 		}
 		else
