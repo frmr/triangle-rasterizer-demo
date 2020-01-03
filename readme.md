@@ -1,9 +1,9 @@
 # Triangle Rasterizer Demo
 
-##Description
+## Description
 Demonstration of the features of the [triangle-rasterizer](https://github.com/frmr/triangle-rasterizer) library
 
-##Instructions
+## Instructions
 | Key | Action |
 | --- | ------ |
 | WASD | Move camera |
