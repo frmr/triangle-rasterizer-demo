@@ -20,6 +20,7 @@ namespace trd
 		ChangeSettingBilinearFiltering,
 		ChangeSettingInstructions,
 		ChangeSettingFrameRateCounter,
-		ChangeSettingFullscreen
+		ChangeSettingFullscreen,
+		TakeScreenshot
 	};
 }

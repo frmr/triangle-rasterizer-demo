@@ -7,6 +7,7 @@ void trd::Instructions::draw(const Settings& settings, tr::ColorBuffer& buffer)
 	lines.push_back(tf::String("WASD:  Move camera"));
 	lines.push_back(tf::String("Space: Move camera up"));
 	lines.push_back(tf::String("Ctrl:  Move camera down"));
+	lines.push_back(tf::String("F12:   Take screenshot"));
 	lines.push_back(tf::String(""));
 	lines.push_back(tf::String("P:     Pause animation      {}",    { true ? "Paused" : "Not paused" }));
 	lines.push_back(tf::String("R:     Resolution           {}x{}", { std::to_string(settings.getScreenSize().width), std::to_string(settings.getScreenSize().height) }));

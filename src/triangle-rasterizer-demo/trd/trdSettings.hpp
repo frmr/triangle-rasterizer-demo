@@ -25,6 +25,9 @@ namespace trd
 		bool                    getInstructionsEnabled() const;
 		bool                    getFrameRateEnabled() const;
 		bool                    getBilinearFiltering() const;
+		bool                    getTakeScreenshot() const;
+
+		void                    resetTakeScreenshot();
 
 	private:
 		void                    togglePauseAnimation();
@@ -51,5 +54,6 @@ namespace trd
 		bool                    m_instructionsEnabled;
 		bool                    m_frameRateEnabled;
 		bool                    m_bilinearFiltering;
+		bool                    m_takeScreenshot;
 	};
 }

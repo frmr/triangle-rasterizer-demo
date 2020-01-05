@@ -11,7 +11,8 @@ trd::Settings::Settings(const ScreenSize& customScreenSize) :
 	m_textureMode(TextureMode::Perspective),
 	m_instructionsEnabled(true),
 	m_frameRateEnabled(true),
-	m_bilinearFiltering(false)
+	m_bilinearFiltering(false),
+	m_takeScreenshot(false)
 {
 	m_screenSizes.push_back({  640,  480 });
 	m_screenSizes.push_back({ 1024,  768 });
@@ -41,6 +42,7 @@ void trd::Settings::update(const InputState& inputState, bool& reinitWindow, boo
 	if (inputState.getKeyState(Key::ChangeSettingInstructions      ).pressed) { toggleInstructionsEnabled();                      }
 	if (inputState.getKeyState(Key::ChangeSettingFrameRateCounter  ).pressed) { toggleFrameRateEnabled();                         }
 	if (inputState.getKeyState(Key::ChangeSettingFullscreen        ).pressed) { toggleFullscreen();          reinitWindow = true; }
+	if (inputState.getKeyState(Key::TakeScreenshot                 ).pressed) { m_takeScreenshot = true; }
 }
 
 void trd::Settings::togglePauseAnimation()
@@ -152,4 +154,14 @@ bool trd::Settings::getFrameRateEnabled() const
 bool trd::Settings::getBilinearFiltering() const
 {
 	return m_bilinearFiltering;
+}
+
+bool trd::Settings::getTakeScreenshot() const
+{
+	return m_takeScreenshot;
+}
+
+void trd::Settings::resetTakeScreenshot()
+{
+	m_takeScreenshot = false;
 }

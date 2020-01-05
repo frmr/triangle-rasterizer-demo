@@ -19,7 +19,8 @@ const std::map<int, trd::Key> trd::InputState::m_keyMapping = {
 	{ SDLK_b,      Key::ChangeSettingBilinearFiltering  },
 	{ SDLK_i,      Key::ChangeSettingInstructions       },
 	{ SDLK_c,      Key::ChangeSettingFrameRateCounter   },
-	{ SDLK_F11,    Key::ChangeSettingFullscreen         }
+	{ SDLK_F11,    Key::ChangeSettingFullscreen         },
+	{ SDLK_F12,    Key::TakeScreenshot                  }
 };
 
 trd::InputState::InputState() :

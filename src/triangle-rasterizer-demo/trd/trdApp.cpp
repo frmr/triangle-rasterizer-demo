@@ -2,7 +2,9 @@
 #include "trdInstructions.hpp"
 #include "trdFrameTimer.hpp"
 #include "trdRenderManager.hpp"
+#include "tfTime.hpp"
 #include <thread>
+#include "lodepng.h"
 
 trd::App::App() :
 	m_config(),
@@ -11,7 +13,9 @@ trd::App::App() :
 	m_running(false),
 	m_colorBuffer(),
 	m_depthBuffer(),
-	m_camera(m_settings.getScreenSize(), m_settings.getFov())
+	m_camera(m_settings.getScreenSize(), m_settings.getFov()),
+	m_lastScreenshotTimestamp(0),
+	m_screenshotCount(0)
 {
 	initWindow();
 	m_running = true;
@@ -52,6 +56,40 @@ void trd::App::updateInputs(const float deltaTime)
 	}
 }
 
+void trd::App::saveColorBufferToFile()
+{
+	const int64_t   currentTimestamp = tf::Time().getTimestamp();
+	tr::ColorBuffer rgbaBuffer       = m_colorBuffer;
+
+	// Flip red and blue channels for PNG
+	for (size_t x = 0; x < rgbaBuffer.getWidth(); ++x)
+	{
+		for (size_t y = 0; y < rgbaBuffer.getHeight(); ++y)
+		{
+			tr::Color& pixel = rgbaBuffer.at(x, y);
+
+			uint8_t r = pixel.r;
+
+			pixel.r = pixel.b;
+			pixel.b = r;
+		}
+	}
+
+	if (currentTimestamp == m_lastScreenshotTimestamp)
+	{
+		++m_screenshotCount;
+	}
+	else
+	{
+		m_screenshotCount         = 0;
+		m_lastScreenshotTimestamp = currentTimestamp;
+	}
+
+	const tf::String filename("trd_{}_{}.png", { std::to_string(currentTimestamp), std::to_string(m_screenshotCount) });
+
+	lodepng::encode(filename, (unsigned char*)(&rgbaBuffer.getData()->b), m_settings.getScreenSize().width, m_settings.getScreenSize().height);
+}
+
 void trd::App::mainLoop()
 {
 	Instructions  instructions;
@@ -68,6 +106,12 @@ void trd::App::mainLoop()
 
 		scene.update(m_camera.getPosition(), m_settings.getPauseAnimation(), frameTimer.getFrameTime(), frameTimer.getDeltaTime());
 		renderManager.draw(m_camera, m_colorBuffer, m_depthBuffer);
+
+		if (m_settings.getTakeScreenshot())
+		{
+			saveColorBufferToFile();
+			m_settings.resetTakeScreenshot();
+		}
 
 		if (m_settings.getInstructionsEnabled())
 		{

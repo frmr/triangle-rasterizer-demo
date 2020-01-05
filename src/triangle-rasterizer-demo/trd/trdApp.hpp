@@ -19,6 +19,7 @@ namespace trd
 	private:
 		void             initWindow();
 		void             updateInputs(const float deltaTime);
+		void             saveColorBufferToFile();
 
 	private:
 		const Config     m_config;
@@ -28,5 +29,7 @@ namespace trd
 		tr::ColorBuffer  m_colorBuffer;
 		tr::DepthBuffer  m_depthBuffer;
 		ControlledCamera m_camera;
+		int64_t          m_lastScreenshotTimestamp;
+		int32_t          m_screenshotCount;
 	};
 }
