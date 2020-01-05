@@ -84,7 +84,7 @@ void trd::Mesh::draw(const Vector3& cameraPosition, const bool sort, tr::Rasteri
 		std::multimap<float, size_t> faceDistanceIndexMap;
 		const Matrix4                modelMatrix = rasterizer.getModelMatrix();
 
-		for (int i = 0; i < m_faceMidPoints.size(); ++i)
+		for (size_t i = 0; i < m_faceMidPoints.size(); ++i)
 		{
 			const Vector4 transformedMidPoint    = modelMatrix * m_faceMidPoints[i];
 			const Vector3 cameraToMidPointVector = Vector3(transformedMidPoint.x, transformedMidPoint.y, transformedMidPoint.z) - cameraPosition;
