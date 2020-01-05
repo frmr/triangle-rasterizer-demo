@@ -18,6 +18,8 @@ It uses the [triangle-rasterizer](https://github.com/frmr/triangle-rasterizer) l
 * Triange/strip/fan
 * Scan-line interleave
 * Render to texture
+* Depth bias
+* Customizable fragment shaders
 
 ## Instructions
 | Key | Action |
