@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "trd/trdApp.hpp"
+#include "trdApp.hpp"
 
 int main(int argc, char* argv[])
 {

@@ -87,7 +87,7 @@ void trd::App::saveColorBufferToFile()
 
 	const tf::String filename("trd_{}_{}.png", { std::to_string(currentTimestamp), std::to_string(m_screenshotCount) });
 
-	lodepng::encode(filename, (unsigned char*)(&rgbaBuffer.getData()->b), m_settings.getScreenSize().width, m_settings.getScreenSize().height);
+	lodepng::encode(filename, (unsigned char*)(&rgbaBuffer.getData()->b), (unsigned int)m_settings.getScreenSize().width, (unsigned int)m_settings.getScreenSize().height);
 }
 
 void trd::App::mainLoop()

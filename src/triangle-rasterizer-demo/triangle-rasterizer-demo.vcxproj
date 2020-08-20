@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\trdAmbientLight.cpp" />
+    <ClCompile Include="src\trdApp.cpp" />
+    <ClCompile Include="src\trdCamera.cpp" />
+    <ClCompile Include="src\trdConfig.cpp" />
+    <ClCompile Include="src\trdControlledCamera.cpp" />
+    <ClCompile Include="src\trdDirectionalLight.cpp" />
+    <ClCompile Include="src\trdFrameTimer.cpp" />
+    <ClCompile Include="src\trdHologramManager.cpp" />
+    <ClCompile Include="src\trdInputState.cpp" />
+    <ClCompile Include="src\trdInstructions.cpp" />
+    <ClCompile Include="src\trdLight.cpp" />
+    <ClCompile Include="src\trdLights.cpp" />
+    <ClCompile Include="src\trdMesh.cpp" />
+    <ClCompile Include="src\trdMeshMap.cpp" />
+    <ClCompile Include="src\trdModel.cpp" />
+    <ClCompile Include="src\trdPointLight.cpp" />
+    <ClCompile Include="src\trdRenderManager.cpp" />
+    <ClCompile Include="src\trdRenderThread.cpp" />
+    <ClCompile Include="src\trdScene.cpp" />
+    <ClCompile Include="src\trdSettings.cpp" />
+    <ClCompile Include="src\trdShader.cpp" />
+    <ClCompile Include="src\trdTextRenderer.cpp" />
+    <ClCompile Include="src\trdTextureMap.cpp" />
+    <ClCompile Include="src\trdWindow.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\trdAmbientLight.hpp" />
+    <ClInclude Include="src\trdApp.hpp" />
+    <ClInclude Include="src\trdCamera.hpp" />
+    <ClInclude Include="src\trdConfig.hpp" />
+    <ClInclude Include="src\trdControlledCamera.hpp" />
+    <ClInclude Include="src\trdCorner.hpp" />
+    <ClInclude Include="src\trdDigitalInput.hpp" />
+    <ClInclude Include="src\trdDirectionalLight.hpp" />
+    <ClInclude Include="src\trdExternalLibraryException.hpp" />
+    <ClInclude Include="src\trdFont.hpp" />
+    <ClInclude Include="src\trdFrameTimer.hpp" />
+    <ClInclude Include="src\trdHologramManager.hpp" />
+    <ClInclude Include="src\trdInputState.hpp" />
+    <ClInclude Include="src\trdInstructions.hpp" />
+    <ClInclude Include="src\trdInvalidFileException.hpp" />
+    <ClInclude Include="src\trdKey.hpp" />
+    <ClInclude Include="src\trdLight.hpp" />
+    <ClInclude Include="src\trdLightComponent.hpp" />
+    <ClInclude Include="src\trdLights.hpp" />
+    <ClInclude Include="src\trdMesh.hpp" />
+    <ClInclude Include="src\trdMeshMap.hpp" />
+    <ClInclude Include="src\trdMissingFileException.hpp" />
+    <ClInclude Include="src\trdModel.hpp" />
+    <ClInclude Include="src\trdPointLight.hpp" />
+    <ClInclude Include="src\trdRenderManager.hpp" />
+    <ClInclude Include="src\trdRenderMode.hpp" />
+    <ClInclude Include="src\trdRenderThread.hpp" />
+    <ClInclude Include="src\trdScene.hpp" />
+    <ClInclude Include="src\trdScreenPos.hpp" />
+    <ClInclude Include="src\trdScreenSize.hpp" />
+    <ClInclude Include="src\trdSettings.hpp" />
+    <ClInclude Include="src\trdShader.hpp" />
+    <ClInclude Include="src\trdTextAlign.hpp" />
+    <ClInclude Include="src\trdTextRenderer.hpp" />
+    <ClInclude Include="src\trdTextureMap.hpp" />
+    <ClInclude Include="src\trdTextureMode.hpp" />
+    <ClInclude Include="src\trdUnsupportedFileException.hpp" />
+    <ClInclude Include="src\trdWindow.hpp" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <ProjectGuid>{9D405F52-3447-4DD9-A717-FA4D9D4141FE}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>trianglerasterizerdemo</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+    <Import Project="..\triangle-rasterizer\triangle-rasterizer.vcxitems" Label="Shared" />
+    <Import Project="..\tinyobjloader\tinyobjloader.vcxitems" Label="Shared" />
+    <Import Project="..\lodepng\lodepng.vcxitems" Label="Shared" />
+    <Import Project="..\tf\tf.vcxitems" Label="Shared" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)\bin\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)\bin\$(Configuration)\</IntDir>
+    <CustomBuildAfterTargets>Build</CustomBuildAfterTargets>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)\bin\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)\bin\$(Configuration)\</IntDir>
+    <CustomBuildAfterTargets>Build</CustomBuildAfterTargets>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS;_SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>..\tinyobjloader\src;..\lodepng\src;..\triangle-rasterizer\src\matrix;..\triangle-rasterizer\src\tr;..\tf\src;C:\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\SDL2\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <CustomBuildStep>
+      <Command>copy C:\SDL2\lib\x64\SDL2.dll $(OutDir)</Command>
+      <Outputs>$(OutDir)\SDL2.dll</Outputs>
+    </CustomBuildStep>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS;_SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>..\tinyobjloader\src;..\lodepng\src;..\triangle-rasterizer\src\matrix;..\triangle-rasterizer\src\tr;..\tf\src;C:\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Fast</FloatingPointModel>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\SDL2\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
+    </Link>
+    <CustomBuildStep>
+      <Command>copy C:\SDL2\lib\x64\SDL2.dll $(OutDir)</Command>
+      <Outputs>$(OutDir)\SDL2.dll</Outputs>
+    </CustomBuildStep>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

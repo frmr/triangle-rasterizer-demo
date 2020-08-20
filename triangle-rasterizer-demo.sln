@@ -3,18 +3,26 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29102.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "triangle-rasterizer-demo", "triangle-rasterizer-demo.vcxproj", "{9D405F52-3447-4DD9-A717-FA4D9D4141FE}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "triangle-rasterizer", "src\triangle-rasterizer\triangle-rasterizer.vcxitems", "{4B5233E8-76A0-484C-BFCC-069ADC5470F2}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "triangle-rasterizer-demo", "src\triangle-rasterizer-demo\triangle-rasterizer-demo.vcxproj", "{9D405F52-3447-4DD9-A717-FA4D9D4141FE}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tinyobjloader", "src\tinyobjloader\tinyobjloader.vcxitems", "{091CB998-44F0-4C88-9068-3E595F658896}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lodepng", "src\lodepng\lodepng.vcxitems", "{D3ABC18A-BF1A-4C89-9F1E-93DD92C8DF00}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tf", "src\tf\tf.vcxitems", "{874DF6DA-4313-45AE-A9E4-2E0EAFE46DDB}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "triangle-rasterizer", "src\triangle-rasterizer\triangle-rasterizer.vcxitems", "{4B5233E8-76A0-484C-BFCC-069ADC5470F2}"
-EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		src\tinyobjloader\tinyobjloader.vcxitems*{091cb998-44f0-4c88-9068-3e595f658896}*SharedItemsImports = 9
 		src\triangle-rasterizer\triangle-rasterizer.vcxitems*{4b5233e8-76a0-484c-bfcc-069adc5470f2}*SharedItemsImports = 9
 		src\tf\tf.vcxitems*{874df6da-4313-45ae-a9e4-2e0eafe46ddb}*SharedItemsImports = 9
+		src\lodepng\lodepng.vcxitems*{9d405f52-3447-4dd9-a717-fa4d9d4141fe}*SharedItemsImports = 4
 		src\tf\tf.vcxitems*{9d405f52-3447-4dd9-a717-fa4d9d4141fe}*SharedItemsImports = 4
+		src\tinyobjloader\tinyobjloader.vcxitems*{9d405f52-3447-4dd9-a717-fa4d9d4141fe}*SharedItemsImports = 4
 		src\triangle-rasterizer\triangle-rasterizer.vcxitems*{9d405f52-3447-4dd9-a717-fa4d9d4141fe}*SharedItemsImports = 4
+		src\lodepng\lodepng.vcxitems*{d3abc18a-bf1a-4c89-9f1e-93dd92c8df00}*SharedItemsImports = 9
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
