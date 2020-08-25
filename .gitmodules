@@ -4,3 +4,6 @@
 [submodule "src/tf"]
 	path = src/tf
 	url = https://github.com/frmr/tf
+[submodule "src/sdl"]
+	path = src/sdl
+	url = https://github.com/frmr/SDL
