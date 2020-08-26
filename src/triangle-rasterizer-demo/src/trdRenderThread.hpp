@@ -7,6 +7,7 @@
 #include "trdScene.hpp"
 #include "tr.hpp"
 #include <condition_variable>
+#include <thread>
 
 namespace trd
 {

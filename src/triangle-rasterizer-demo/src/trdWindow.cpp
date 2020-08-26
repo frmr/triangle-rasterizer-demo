@@ -2,6 +2,7 @@
 #include "trdExternalLibraryException.hpp"
 #include "trColor.hpp"
 #include <map>
+#include <cstring>
 
 trd::Window::Window() :
 	m_sdlWindow(nullptr),
