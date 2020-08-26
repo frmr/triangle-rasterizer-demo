@@ -22,7 +22,7 @@ void trd::Shader::draw(const Vector4& screenPosition, const Vector3& worldPositi
 	}
 	else if (m_renderMode == RenderMode::Normals)
 	{
-		color = tr::Color(uint8_t(std::fabsf(normal.x) * 255.0f), uint8_t(std::fabsf(normal.y) * 255.0f), uint8_t(std::fabsf(normal.z) * 255.0f), 255);
+		color = tr::Color(uint8_t(std::abs(normal.x) * 255.0f), uint8_t(std::abs(normal.y) * 255.0f), uint8_t(std::abs(normal.z) * 255.0f), 255);
 	}
 	else
 	{

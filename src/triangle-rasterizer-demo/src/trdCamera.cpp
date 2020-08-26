@@ -8,7 +8,7 @@ trd::Camera::Camera(const ScreenSize& screenSize, const uint8_t fov, const float
 void trd::Camera::setPerspective(const ScreenSize& screenSize, const uint8_t fov, const float near, const float far)
 {
 	const float aspectRatio = float(screenSize.height) / float(screenSize.width);
-	const float width       = near * std::tanf(degreesToRadians(float(fov) / 2.0f));
+	const float width       = near * std::tan(degreesToRadians(float(fov) / 2.0f));
 	const float height      = width * aspectRatio;
 
 	setPerspective(-width, width, -height, height, near, far);

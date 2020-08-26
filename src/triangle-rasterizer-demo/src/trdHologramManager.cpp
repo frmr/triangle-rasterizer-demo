@@ -17,13 +17,13 @@ void trd::HologramManager::drawHologram(const Vector3& cameraPosition, tr::Raste
 	rasterizer.setCullFaceMode(tr::CullFaceMode::Front);
 	rasterizer.setDepthBias(-0.001f);
 
-	shader.setAlpha(std::powf(m_lightColors[m_index].z * m_interpolationRatio, 3.0f));
+	shader.setAlpha(std::pow(m_lightColors[m_index].z * m_interpolationRatio, 3.0f));
 	m_lightModels.at(LightComponent::Red).draw(cameraPosition, false, rasterizer, shader, colorBuffer, depthBuffer);
 
-	shader.setAlpha(std::powf(m_lightColors[m_index].y * m_interpolationRatio, 3.0f));
+	shader.setAlpha(std::pow(m_lightColors[m_index].y * m_interpolationRatio, 3.0f));
 	m_lightModels.at(LightComponent::Green).draw(cameraPosition, false, rasterizer, shader, colorBuffer, depthBuffer);
 
-	shader.setAlpha(std::powf(m_lightColors[m_index].x * m_interpolationRatio, 3.0f));
+	shader.setAlpha(std::pow(m_lightColors[m_index].x * m_interpolationRatio, 3.0f));
 	m_lightModels.at(LightComponent::Blue).draw(cameraPosition, false, rasterizer, shader, colorBuffer, depthBuffer);
 
 	rasterizer.setDepthBias(0.0f);
