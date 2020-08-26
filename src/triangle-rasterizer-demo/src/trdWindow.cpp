@@ -54,7 +54,7 @@ void trd::Window::copyAndRender(tr::ColorBuffer& colorBuffer)
  	SDL_SetRenderTarget(m_sdlRenderer, m_sdlTexture);
 	SDL_LockTexture(m_sdlTexture, NULL, (void**)&pixels, &pitch);
 
- 	memcpy(pixels, colorBuffer.getData(), colorBuffer.getWidth() * colorBuffer.getHeight() * 4);
+ 	std::memcpy(pixels, colorBuffer.getData(), colorBuffer.getWidth() * colorBuffer.getHeight() * 4);
 
  	SDL_UnlockTexture(m_sdlTexture);
 	SDL_RenderCopy(m_sdlRenderer, m_sdlTexture, NULL, NULL);
