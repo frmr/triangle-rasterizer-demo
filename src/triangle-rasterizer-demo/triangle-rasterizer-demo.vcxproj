@@ -29,7 +29,6 @@
     <ClCompile Include="src\trdModel.cpp" />
     <ClCompile Include="src\trdPointLight.cpp" />
     <ClCompile Include="src\trdRenderManager.cpp" />
-    <ClCompile Include="src\trdRenderThread.cpp" />
     <ClCompile Include="src\trdScene.cpp" />
     <ClCompile Include="src\trdSettings.cpp" />
     <ClCompile Include="src\trdShader.cpp" />
@@ -64,7 +63,6 @@
     <ClInclude Include="src\trdPointLight.hpp" />
     <ClInclude Include="src\trdRenderManager.hpp" />
     <ClInclude Include="src\trdRenderMode.hpp" />
-    <ClInclude Include="src\trdRenderThread.hpp" />
     <ClInclude Include="src\trdScene.hpp" />
     <ClInclude Include="src\trdScreenPos.hpp" />
     <ClInclude Include="src\trdScreenSize.hpp" />

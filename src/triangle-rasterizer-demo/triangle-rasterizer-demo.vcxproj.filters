@@ -73,9 +73,6 @@
     <ClCompile Include="src\trdRenderManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\trdRenderThread.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\trdScene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -172,9 +169,6 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="src\trdRenderMode.hpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\trdRenderThread.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="src\trdScene.hpp">

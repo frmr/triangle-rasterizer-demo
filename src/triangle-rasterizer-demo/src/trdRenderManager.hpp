@@ -2,7 +2,8 @@
 
 #include "trdTextureMap.hpp"
 #include "trdModel.hpp"
-#include "trdRenderThread.hpp"
+#include "trdScene.hpp"
+#include "trdSettings.hpp"
 #include <memory>
 
 namespace trd
@@ -10,19 +11,17 @@ namespace trd
 	class RenderManager
 	{
 	public:
-		                                           RenderManager(const Settings& settings, const Scene& scene);
-		                                           ~RenderManager();
+		                       RenderManager(const Settings& settings, const Scene& scene);
 
-		void                                       draw(const Camera& camera, tr::ColorBuffer& colorBuffer, tr::DepthBuffer& depthBuffer);
-
-	private:
-		void                                       initThreads(const size_t numThreads);
-		void                                       killThreads();
-		
+		void                   draw(const Camera& camera, tr::ColorBuffer& colorBuffer, tr::DepthBuffer& depthBuffer);
 
 	private:
-		const Settings&                            m_settings;
-		const Scene&                               m_scene;
-		std::vector<std::unique_ptr<RenderThread>> m_threads;
+		void                   setTextureMode();
+
+	private:
+		const Settings&        m_settings;
+		const Scene&           m_scene;
+		tr::Rasterizer<Shader> m_rasterizer;
+		Shader                 m_shader;
 	};
 }
