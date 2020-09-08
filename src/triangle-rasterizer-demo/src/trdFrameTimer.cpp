@@ -31,7 +31,7 @@ void trd::FrameTimer::update()
 	m_cumulativeFrameTime += m_frameTime;
 	++m_frameCount;
 
-	if (m_cumulativeFrameTime >= 1000)
+	if (m_cumulativeFrameTime >= s_samplePeriod)
 	{
 		m_averageFrameTime    = m_cumulativeFrameTime / m_frameCount;
 		m_cumulativeFrameTime = 0.0f;
