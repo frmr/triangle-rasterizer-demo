@@ -3,6 +3,9 @@
 #include "trTexture.hpp"
 #include "trdRenderMode.hpp"
 #include "trdLights.hpp"
+#include "trQuadMask.hpp"
+#include "trQuadVec2.hpp"
+#include "trQuadVec3.hpp"
 
 namespace trd
 {
@@ -11,7 +14,7 @@ namespace trd
 	public:
 		                   Shader();
 
-		void               draw(const Vector4& screenPosition, const Vector3& worldPosition, const Vector3& normal, const Vector2& textureCoord, tr::Color& color, float& depth) const;
+		void               draw(const tr::QuadMask& mask, const tr::QuadVec3& screenPosition, const tr::QuadVec3& worldPosition, const tr::QuadVec3& normal, const tr::QuadVec2& textureCoord, tr::Color* color, float* depth) const;
 
 		void               setTexture(const tr::Texture* const texture);
 		void               setTextureFiltering(const bool textureFiltering);

@@ -11,28 +11,38 @@ trd::Shader::Shader() :
 {
 }
 
-void trd::Shader::draw(const Vector4& screenPosition, const Vector3& worldPosition, const Vector3& normal, const Vector2& textureCoord, tr::Color& color, float& depth) const
+void trd::Shader::draw(const tr::QuadMask& mask, const tr::QuadVec3& screenPosition, const tr::QuadVec3& worldPosition, const tr::QuadVec3& normal, const tr::QuadVec2& textureCoord, tr::Color* color, float* depth) const
 {
-	depth = screenPosition.z;
+	screenPosition.z.write(depth);
 
-	if (m_renderMode == RenderMode::Depth)
-	{
-		const uint8_t depthChannel = 255 - uint8_t((std::pow(screenPosition.z + 1.0f, 3.0f) / std::pow(2.0f, 3.0f)) * 255.0f);
-		color = tr::Color(depthChannel, depthChannel, depthChannel, 255);
-	}
-	else if (m_renderMode == RenderMode::Normals)
-	{
-		color = tr::Color(uint8_t(std::abs(normal.x) * 255.0f), uint8_t(std::abs(normal.y) * 255.0f), uint8_t(std::abs(normal.z) * 255.0f), 255);
-	}
-	else
-	{
+	//depth = screenPosition.z;
+
+	//if (m_renderMode == RenderMode::Depth)
+	//{
+	//	const uint8_t depthChannel = 255 - uint8_t((std::pow(screenPosition.z + 1.0f, 3.0f) / std::pow(2.0f, 3.0f)) * 255.0f);
+	//	color = tr::Color(depthChannel, depthChannel, depthChannel, 255);
+	//}
+	//else if (m_renderMode == RenderMode::Normals)
+	//{
+
+	//for (size_t i = 0; i < 4; ++i)
+		//color = tr::Color(uint8_t(std::abs(normal.x) * 255.0f), uint8_t(std::abs(normal.y) * 255.0f), uint8_t(std::abs(normal.z) * 255.0f), 255);
+	//}
+	//else
+	//{
+
+	const tr::QuadColor textureColor = m_texture->getAt(textureCoord.x, textureCoord.y);
+
+	textureColor.write(color, mask);
+
+	/*
 		const tr::Color textureColor       = m_useTexture ? m_texture->getAt(textureCoord.x, textureCoord.y, m_bilinearFiltering, tr::TextureWrappingMode::Repeat) : tr::Color(255, 255, 255, 255);
 		const Vector4   bufferColorFloat4  = color.toVector();
 		const Vector4   textureColorFloat4 = textureColor.toVector();
 		const float     alpha              = m_alpha * (textureColorFloat4.w / 255.0f);
 		Vector3         preBlendColorFloat3;
 
-		if (alpha == 0)
+		if (alpha == 0.0f)
 		{
 			return;
 		}
@@ -101,7 +111,13 @@ void trd::Shader::draw(const Vector4& screenPosition, const Vector3& worldPositi
 		{
 			color = preBlendColorFloat3;
 		}
-	}
+
+
+		*/
+
+
+
+	//}
 }
 
 void trd::Shader::setTexture(const tr::Texture* const texture)
