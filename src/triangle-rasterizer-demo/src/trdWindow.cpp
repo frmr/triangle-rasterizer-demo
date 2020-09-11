@@ -88,7 +88,18 @@ void trd::Window::initSdl()
 
 void trd::Window::destroy()
 {
-	SDL_DestroyTexture(m_sdlTexture);
-	SDL_DestroyRenderer(m_sdlRenderer);
-	SDL_DestroyWindow(m_sdlWindow);
+	if (m_sdlTexture)
+	{
+		SDL_DestroyTexture(m_sdlTexture);
+	}
+
+	if (m_sdlRenderer)
+	{
+		SDL_DestroyRenderer(m_sdlRenderer);
+	}
+
+	if (m_sdlWindow)
+	{
+		SDL_DestroyWindow(m_sdlWindow);
+	}
 }
