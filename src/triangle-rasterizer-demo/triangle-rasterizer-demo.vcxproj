@@ -191,9 +191,14 @@
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <CustomBuildStep>
-      <Command>copy C:\SDL2\lib\x64\SDL2.dll $(OutDir)</Command>
-      <Outputs>$(OutDir)\SDL2.dll</Outputs>
+      <Command>
+      </Command>
+      <Outputs>
+      </Outputs>
     </CustomBuildStep>
+    <Manifest>
+      <EnableDpiAwareness>true</EnableDpiAwareness>
+    </Manifest>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug SIMD|x64'">
     <ClCompile>
@@ -215,9 +220,14 @@
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <CustomBuildStep>
-      <Command>copy C:\SDL2\lib\x64\SDL2.dll $(OutDir)</Command>
-      <Outputs>$(OutDir)\SDL2.dll</Outputs>
+      <Command>
+      </Command>
+      <Outputs>
+      </Outputs>
     </CustomBuildStep>
+    <Manifest>
+      <EnableDpiAwareness>true</EnableDpiAwareness>
+    </Manifest>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -247,9 +257,14 @@
       <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
     </Link>
     <CustomBuildStep>
-      <Command>copy C:\SDL2\lib\x64\SDL2.dll $(OutDir)</Command>
-      <Outputs>$(OutDir)\SDL2.dll</Outputs>
+      <Command>
+      </Command>
+      <Outputs>
+      </Outputs>
     </CustomBuildStep>
+    <Manifest>
+      <EnableDpiAwareness>true</EnableDpiAwareness>
+    </Manifest>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release SIMD|x64'">
     <ClCompile>
@@ -279,9 +294,14 @@
       <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
     </Link>
     <CustomBuildStep>
-      <Command>copy C:\SDL2\lib\x64\SDL2.dll $(OutDir)</Command>
-      <Outputs>$(OutDir)\SDL2.dll</Outputs>
+      <Command>
+      </Command>
+      <Outputs>
+      </Outputs>
     </CustomBuildStep>
+    <Manifest>
+      <EnableDpiAwareness>true</EnableDpiAwareness>
+    </Manifest>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
