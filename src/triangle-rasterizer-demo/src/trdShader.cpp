@@ -31,7 +31,7 @@ void trd::Shader::draw(const tr::QuadMask& mask, const tr::QuadVec3& screenPosit
 	//else
 	//{
 
-	const tr::QuadColor textureColor = m_texture->getAt(textureCoord.x, textureCoord.y);
+	const tr::QuadColor textureColor = m_texture->getAt(textureCoord.x, textureCoord.y, mask);
 
 	textureColor.write(color, mask);
 
