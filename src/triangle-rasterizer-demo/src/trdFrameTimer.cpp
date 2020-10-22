@@ -51,7 +51,7 @@ float trd::FrameTimer::getDeltaTime() const
 
 tf::String trd::FrameTimer::toString(const double value, const uint8_t decimalPlaces)
 {
-	tf::String valueString = std::to_string(value);
+	const tf::String valueString = std::to_string(value);
 
 	return valueString.substr(0, valueString.find(".") + decimalPlaces + 1);
 }
