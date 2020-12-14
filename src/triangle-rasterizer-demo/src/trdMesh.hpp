@@ -13,7 +13,7 @@ namespace trd
 	public:
 		                        Mesh(const tf::String& filename, trd::TextureMap& textureMap);
 
-		void                    draw(const Vector3& cameraPosition, const bool sort, tr::Rasterizer<Shader>& rasterizer, Shader& shader, tr::ColorBuffer& colorBuffer, tr::DepthBuffer& depthBuffer) const;
+		void                    queueTriangles(const Vector3& cameraPosition, const bool sort, tr::Rasterizer<Shader>& rasterizer, Shader& shader) const;
 
 	private:
 		void                    loadObj(const tf::String& filename, TextureMap& textureMap);

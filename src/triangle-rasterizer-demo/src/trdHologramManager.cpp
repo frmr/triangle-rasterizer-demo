@@ -12,25 +12,25 @@ trd::HologramManager::HologramManager(MeshMap& meshMap) :
 	loadModels(meshMap);
 }
 
-void trd::HologramManager::drawHologram(const Vector3& cameraPosition, tr::Rasterizer<Shader>& rasterizer, Shader& shader, tr::ColorBuffer& colorBuffer, tr::DepthBuffer& depthBuffer) const
+void trd::HologramManager::queueHologram(const Vector3& cameraPosition, tr::Rasterizer<Shader>& rasterizer, Shader& shader) const
 {
 	rasterizer.setCullFaceMode(tr::CullFaceMode::Front);
 	rasterizer.setDepthBias(-0.001f);
 
 	shader.setAlpha(std::pow(m_lightColors[m_index].z * m_interpolationRatio, 3.0f));
-	m_lightModels.at(LightComponent::Red).draw(cameraPosition, false, rasterizer, shader, colorBuffer, depthBuffer);
+	m_lightModels.at(LightComponent::Red).queueTriangles(cameraPosition, false, rasterizer, shader);
 
 	shader.setAlpha(std::pow(m_lightColors[m_index].y * m_interpolationRatio, 3.0f));
-	m_lightModels.at(LightComponent::Green).draw(cameraPosition, false, rasterizer, shader, colorBuffer, depthBuffer);
+	m_lightModels.at(LightComponent::Green).queueTriangles(cameraPosition, false, rasterizer, shader);
 
 	shader.setAlpha(std::pow(m_lightColors[m_index].x * m_interpolationRatio, 3.0f));
-	m_lightModels.at(LightComponent::Blue).draw(cameraPosition, false, rasterizer, shader, colorBuffer, depthBuffer);
+	m_lightModels.at(LightComponent::Blue).queueTriangles(cameraPosition, false, rasterizer, shader);
 
 	rasterizer.setDepthBias(0.0f);
 
 	shader.setAlpha(m_alpha);
 	rasterizer.setCullFaceMode(tr::CullFaceMode::None);
-	m_holograms[m_index].draw(cameraPosition, true, rasterizer, shader, colorBuffer, depthBuffer);
+	m_holograms[m_index].queueTriangles(cameraPosition, true, rasterizer, shader);
 }
 
 void trd::HologramManager::update(const float frameTime)

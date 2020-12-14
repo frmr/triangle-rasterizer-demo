@@ -75,7 +75,7 @@ void trd::Mesh::loadObj(const tf::String& filename, TextureMap& textureMap)
 	}
 }
 
-void trd::Mesh::draw(const Vector3& cameraPosition, const bool sort, tr::Rasterizer<Shader>& rasterizer, Shader& shader, tr::ColorBuffer& colorBuffer, tr::DepthBuffer& depthBuffer) const
+void trd::Mesh::queueTriangles(const Vector3& cameraPosition, const bool sort, tr::Rasterizer<Shader>& rasterizer, Shader& shader) const
 {
 	shader.setTexture(m_texture);
 
@@ -108,10 +108,10 @@ void trd::Mesh::draw(const Vector3& cameraPosition, const bool sort, tr::Rasteri
 			sortedFaceVertices.push_back(m_vertices[unsortedVertexIndex + 2]);
 		}
 
-		rasterizer.draw(sortedFaceVertices, shader, colorBuffer, depthBuffer);
+		rasterizer.queue(sortedFaceVertices, shader);
 	}
 	else
 	{
-		rasterizer.draw(m_vertices, shader, colorBuffer, depthBuffer);
+		rasterizer.queue(m_vertices, shader);
 	}
 }

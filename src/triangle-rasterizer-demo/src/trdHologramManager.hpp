@@ -12,7 +12,7 @@ namespace trd
 	public:
 		                                HologramManager(MeshMap& meshMap);
 
-		void                            drawHologram(const Vector3& cameraPosition, tr::Rasterizer<Shader>& rasterizer, Shader& shader, tr::ColorBuffer& colorBuffer, tr::DepthBuffer& depthBuffer) const;
+		void                            queueHologram(const Vector3& cameraPosition, tr::Rasterizer<Shader>& rasterizer, Shader& shader) const;
 		void                            update(const float frameTime);
 		PointLight                      getLight() const;
 
