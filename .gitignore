@@ -1,2 +1,5 @@
 .vs
 bin
+src/triangle-rasterizer-demo/x64/Debug SIMD
+src/triangle-rasterizer-demo/x64/Release SIMD
+x64/Release SIMD
