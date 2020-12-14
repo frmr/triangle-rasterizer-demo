@@ -12,6 +12,7 @@ const std::map<int, trd::Key> trd::InputState::m_keyMapping = {
 	{ SDLK_LCTRL,  Key::MoveDown                        },
 	{ SDLK_p,      Key::ChangeSettingPauseAnimation     },
 	{ SDLK_r,      Key::ChangeSettingResolution         },
+	{ SDLK_l,      Key::ChangeSettingTileSize           },
 	{ SDLK_t,      Key::ChangeSettingThreads            },
 	{ SDLK_h,      Key::ChangeSettingHorizontalFov      },
 	{ SDLK_f,      Key::ChangeSettingFragmentShaderMode },

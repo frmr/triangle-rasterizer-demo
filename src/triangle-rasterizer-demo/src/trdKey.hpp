@@ -13,6 +13,7 @@ namespace trd
 		MoveDown,
 		ChangeSettingPauseAnimation,
 		ChangeSettingResolution,
+		ChangeSettingTileSize,
 		ChangeSettingThreads,
 		ChangeSettingHorizontalFov,
 		ChangeSettingFragmentShaderMode,

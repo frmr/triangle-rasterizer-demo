@@ -3,8 +3,14 @@
 
 trd::RenderManager::RenderManager(const Settings& settings, const Scene& scene) :
 	m_settings(settings),
-	m_scene(scene)
+	m_scene(scene),
+	m_rasterizer(m_settings.getScreenSize().width, m_settings.getScreenSize().height, m_settings.getTileSize().width, m_settings.getTileSize().height)
 {
+}
+
+void trd::RenderManager::updateTilerAttributes()
+{
+	m_rasterizer.setTilerAttributes(m_settings.getScreenSize().width, m_settings.getScreenSize().height, m_settings.getTileSize().width, m_settings.getTileSize().height);
 }
 
 void trd::RenderManager::draw(const Camera& camera, tr::ColorBuffer& colorBuffer, tr::DepthBuffer& depthBuffer)

@@ -18,7 +18,7 @@ namespace trd
 
 	private:
 		void             initWindow();
-		void             updateInputs(const float deltaTime);
+		void             updateInputs(const float deltaTime, bool& updateTiler);
 		void             saveColorBufferToFile();
 
 	private:

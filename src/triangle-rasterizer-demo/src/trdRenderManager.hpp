@@ -13,6 +13,7 @@ namespace trd
 	public:
 		                       RenderManager(const Settings& settings, const Scene& scene);
 
+		void                   updateTilerAttributes();
 		void                   draw(const Camera& camera, tr::ColorBuffer& colorBuffer, tr::DepthBuffer& depthBuffer);
 
 	private:
