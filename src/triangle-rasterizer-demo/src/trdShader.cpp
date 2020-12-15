@@ -4,6 +4,7 @@
 const tr::QuadFloat depthScale(8.0f);
 const tr::QuadFloat allOnes(1.0f);
 const tr::QuadFloat colorChannelMax(255.0f);
+const tr::QuadColor white(colorChannelMax, colorChannelMax, colorChannelMax, colorChannelMax);
 
 trd::Shader::Shader() :
 	m_texture(nullptr),
@@ -26,15 +27,16 @@ void trd::Shader::draw(const tr::QuadMask& mask, const tr::QuadVec3& screenPosit
 
 		tr::QuadColor(depthChannel, depthChannel, depthChannel, colorChannelMax).write(color, mask);
 	}
-	//else if (m_renderMode == RenderMode::Normals)
-	//{
-
-	//for (size_t i = 0; i < 4; ++i)
+	else if (m_renderMode == RenderMode::Normals)
+	{
 		//color = tr::Color(uint8_t(std::abs(normal.x) * 255.0f), uint8_t(std::abs(normal.y) * 255.0f), uint8_t(std::abs(normal.z) * 255.0f), 255);
-	//}
+
+
+	}
 	else
 	{
-		const tr::QuadColor textureColor = m_texture->getAt(textureCoord.x, textureCoord.y, mask);
+		//const tr::QuadColor textureColor = m_texture->getAt(textureCoord.x, textureCoord.y, mask);
+		const tr::QuadColor textureColor = m_useTexture ? m_texture->getAt(textureCoord.x, textureCoord.y, m_bilinearFiltering, tr::TextureWrappingMode::Repeat, mask) : white;
 
 		textureColor.write(color, mask);
 	}

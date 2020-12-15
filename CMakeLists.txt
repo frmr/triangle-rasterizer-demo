@@ -45,6 +45,7 @@ set(TRIANGLE_RASTERIZER_SOURCES
 	src/triangle-rasterizer/src/tr/trQuadTransformedVertex.cpp
 	src/triangle-rasterizer/src/tr/trQuadVec2.cpp
 	src/triangle-rasterizer/src/tr/trQuadVec3.cpp
+	src/triangle-rasterizer/src/tr/trQuadVec4.cpp
 	src/triangle-rasterizer/src/tr/trRect.cpp
 	src/triangle-rasterizer/src/tr/trTexture.cpp
 	src/triangle-rasterizer/src/tr/trTile.cpp
