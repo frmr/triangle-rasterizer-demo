@@ -35,13 +35,10 @@ set(TINYOBJLOADER_SOURCES
 set(TRIANGLE_RASTERIZER_SOURCES
 	src/triangle-rasterizer/src/matrix/Matrices.cpp
 	src/triangle-rasterizer/src/tr/trColorBuffer.cpp
-	src/triangle-rasterizer/src/tr/trDefaultShader.cpp
-	src/triangle-rasterizer/src/tr/trDepthShader.cpp
 	src/triangle-rasterizer/src/tr/trQuadColor.cpp
 	src/triangle-rasterizer/src/tr/trQuadFloat.cpp
 	src/triangle-rasterizer/src/tr/trQuadInt.cpp
 	src/triangle-rasterizer/src/tr/trQuadMask.cpp
-	src/triangle-rasterizer/src/tr/trQuadSizeT.cpp
 	src/triangle-rasterizer/src/tr/trQuadTransformedVertex.cpp
 	src/triangle-rasterizer/src/tr/trQuadVec2.cpp
 	src/triangle-rasterizer/src/tr/trQuadVec3.cpp
