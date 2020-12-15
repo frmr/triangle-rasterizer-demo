@@ -25,7 +25,7 @@ void trd::RenderManager::draw(const Camera& camera, tr::ColorBuffer& colorBuffer
 	m_shader.setRenderMode(m_settings.getRenderMode());
 	m_shader.setBilinearFiltering(m_settings.getBilinearFiltering());
 
-	m_scene.draw(camera, m_rasterizer, m_shader, colorBuffer, depthBuffer);
+	m_scene.draw(m_settings.getNumThreads(), camera, m_rasterizer, m_shader, colorBuffer, depthBuffer);
 }
 
 void trd::RenderManager::setTextureMode()

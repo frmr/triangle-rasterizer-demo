@@ -8,7 +8,7 @@ trd::Scene::Scene() :
 	createScene();
 }
 
-void trd::Scene::draw(const Camera& camera, tr::Rasterizer<Shader>& rasterizer, Shader& shader, tr::ColorBuffer& colorBuffer, tr::DepthBuffer& depthBuffer) const
+void trd::Scene::draw(const size_t numThreads, const Camera& camera, tr::Rasterizer<Shader>& rasterizer, Shader& shader, tr::ColorBuffer& colorBuffer, tr::DepthBuffer& depthBuffer) const
 {
 	Lights lights = m_lights;
 
@@ -26,7 +26,7 @@ void trd::Scene::draw(const Camera& camera, tr::Rasterizer<Shader>& rasterizer, 
 
 	m_hologramManager.queueHologram(camera.getPosition(), rasterizer, shader);
 
-	rasterizer.draw(colorBuffer, depthBuffer);
+	rasterizer.draw(numThreads, colorBuffer, depthBuffer);
 	rasterizer.clear();
 }
 
