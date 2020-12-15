@@ -13,7 +13,7 @@ trd::Shader::Shader() :
 
 void trd::Shader::draw(const tr::QuadMask& mask, const tr::QuadVec3& screenPosition, const tr::QuadVec3& worldPosition, const tr::QuadVec3& normal, const tr::QuadVec2& textureCoord, tr::Color* color, float* depth) const
 {
-	screenPosition.z.write(depth);
+	screenPosition.z.write(depth, mask);
 
 	//depth = screenPosition.z;
 
