@@ -4,6 +4,7 @@
 trd::Config::Config() :
 	tf::IniFile("trd.ini"),
 	m_customScreenSize({ getSizeT("customResolutionX"), getSizeT("customResolutionY") }),
+	m_customTileSize({ getSizeT("customTileX"), getSizeT("customTileY") }),
 	m_mouseSensitivity(getFloat("mouseSensitivity"))
 {
 }
@@ -11,6 +12,11 @@ trd::Config::Config() :
 trd::ScreenSize trd::Config::getCustomScreenSize() const
 {
 	return m_customScreenSize;
+}
+
+trd::ScreenSize trd::Config::getCustomTileSize() const
+{
+	return m_customTileSize;
 }
 
 float trd::Config::getMouseSensitivity() const

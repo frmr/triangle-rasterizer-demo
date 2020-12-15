@@ -8,7 +8,7 @@
 
 trd::App::App() :
 	m_config(),
-	m_settings(m_config.getCustomScreenSize()),
+	m_settings(m_config.getCustomScreenSize(), m_config.getCustomTileSize()),
 	m_window(),
 	m_running(false),
 	m_colorBuffer(),

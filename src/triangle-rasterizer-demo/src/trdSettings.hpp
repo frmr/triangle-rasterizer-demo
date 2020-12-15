@@ -11,7 +11,7 @@ namespace trd
 	class Settings
 	{
 	public:
-		                        Settings(const ScreenSize& customScreenSize);
+		                        Settings(const ScreenSize& customScreenSize, const ScreenSize& customTileSize);
 
 		void                    update(const InputState& inputState, bool& reinitWindow, bool& reinitCamera, bool& updateTiler);
 

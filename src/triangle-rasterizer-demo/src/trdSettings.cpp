@@ -1,7 +1,7 @@
 #include "trdSettings.hpp"
 #include <thread>
 
-trd::Settings::Settings(const ScreenSize& customScreenSize) :
+trd::Settings::Settings(const ScreenSize& customScreenSize, const ScreenSize& customTileSize) :
 	m_pauseAnimation(false),
 	m_screenSizeIndex(0),
 	m_tileSizeIndex(3),
@@ -15,8 +15,8 @@ trd::Settings::Settings(const ScreenSize& customScreenSize) :
 	m_bilinearFiltering(false),
 	m_takeScreenshot(false)
 {
-	m_screenSizes.push_back({  640,  480 });
-	m_screenSizes.push_back({ 1024,  768 });
+	//m_screenSizes.push_back({  640,  480 });
+	//m_screenSizes.push_back({ 1024,  768 });
 
 	if (customScreenSize.width > 0 && customScreenSize.height > 0)
 	{
@@ -31,6 +31,11 @@ trd::Settings::Settings(const ScreenSize& customScreenSize) :
 	m_tileSizes.push_back({  960,  540 });
 	m_tileSizes.push_back({ 1280,  720 });
 	m_tileSizes.push_back({ 1920, 1080 });
+
+	if (customTileSize.width > 0 && customTileSize.height > 0)
+	{
+		m_tileSizes.push_back(customTileSize);
+	}
 
 	m_fovs.push_back(60);
 	m_fovs.push_back(90);
