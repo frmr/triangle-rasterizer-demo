@@ -15,8 +15,8 @@ trd::Settings::Settings(const ScreenSize& customScreenSize, const ScreenSize& cu
 	m_bilinearFiltering(false),
 	m_takeScreenshot(false)
 {
-	//m_screenSizes.push_back({  640,  480 });
-	//m_screenSizes.push_back({ 1024,  768 });
+	m_screenSizes.push_back({  640,  480 });
+	m_screenSizes.push_back({ 1024,  768 });
 
 	if (customScreenSize.width > 0 && customScreenSize.height > 0)
 	{
@@ -24,13 +24,22 @@ trd::Settings::Settings(const ScreenSize& customScreenSize, const ScreenSize& cu
 	}
 
 	m_tileSizes.push_back({   16,   16 });
-	m_tileSizes.push_back({   80,   45 });
-	m_tileSizes.push_back({  160,   90 });
-	m_tileSizes.push_back({  320,  180 });
-	m_tileSizes.push_back({  640,  360 });
-	m_tileSizes.push_back({  960,  540 });
-	m_tileSizes.push_back({ 1280,  720 });
-	m_tileSizes.push_back({ 1920, 1080 });
+	m_tileSizes.push_back({   80,   45 }); // 48
+	m_tileSizes.push_back({   96,   54 }); // 40
+	m_tileSizes.push_back({  128,   72 }); // 30
+	m_tileSizes.push_back({  160,   90 }); // 24
+	m_tileSizes.push_back({  192,  108 }); // 20
+	m_tileSizes.push_back({  240,  135 }); // 16
+	m_tileSizes.push_back({  256,  144 }); // 15
+	m_tileSizes.push_back({  320,  180 }); // 12
+	m_tileSizes.push_back({  384,  216 }); // 10
+	m_tileSizes.push_back({  480,  270 }); // 8
+	m_tileSizes.push_back({  640,  360 }); // 6
+	m_tileSizes.push_back({  768,  432 }); // 5
+	m_tileSizes.push_back({  960,  540 }); // 4
+	m_tileSizes.push_back({ 1280,  720 }); // 3
+	m_tileSizes.push_back({ 1920, 1080 }); // 2
+	m_tileSizes.push_back({ 3840, 2160 }); // 1
 
 	if (customTileSize.width > 0 && customTileSize.height > 0)
 	{
