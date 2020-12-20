@@ -1,7 +1,7 @@
 #include "trdShader.hpp"
 #include <cassert>
 
-const tr::QuadFloat depthScale(8.0f);
+const tr::QuadFloat depthScale(12.0f);
 const tr::QuadFloat allOnes(1.0f);
 const tr::QuadFloat colorChannelMax(255.0f);
 const tr::QuadColor white(colorChannelMax, colorChannelMax, colorChannelMax, colorChannelMax);
@@ -31,7 +31,7 @@ void trd::Shader::draw(const tr::QuadMask& mask, const tr::QuadVec3& screenPosit
 	{
 		//color = tr::Color(uint8_t(std::abs(normal.x) * 255.0f), uint8_t(std::abs(normal.y) * 255.0f), uint8_t(std::abs(normal.z) * 255.0f), 255);
 
-
+		tr::QuadColor(normal.x.abs() * colorChannelMax, normal.y.abs() * colorChannelMax, normal.z.abs() * colorChannelMax, colorChannelMax).write(color, mask);
 	}
 	else
 	{
