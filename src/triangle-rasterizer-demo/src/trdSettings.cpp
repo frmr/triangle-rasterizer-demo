@@ -23,6 +23,7 @@ trd::Settings::Settings(const ScreenSize& customScreenSize, const ScreenSize& cu
 		m_screenSizes.push_back(customScreenSize);
 	}
 
+	// Comments indicate number of tiles on each axis at 3840x2160
 	m_tileSizes.push_back({   16,   16 });
 	m_tileSizes.push_back({   80,   45 }); // 48
 	m_tileSizes.push_back({   96,   54 }); // 40
