@@ -1,11 +1,11 @@
 #include "trdLight.hpp"
 
 trd::Light::Light(const Vector3& color) :
-	m_color(color)
+	m_color(color.z, color.y, color.x)
 {
 }
 
-const Vector3& trd::Light::getColor() const
+const tr::QuadVec3& trd::Light::getColor() const
 {
 	return m_color;
 }

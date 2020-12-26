@@ -1,18 +1,19 @@
 #pragma once
 
 #include "Vectors.h"
+#include "trQuadVec3.hpp"
 
 namespace trd
 {
 	class Light
 	{
 	protected:
-		               Light(const Vector3& color);
+		                    Light(const Vector3& color);
 
 	public:
-		const Vector3& getColor() const;
+		const tr::QuadVec3& getColor() const;
 
 	private:
-		Vector3        m_color;
+		tr::QuadVec3        m_color;
 	};
 }

@@ -7,11 +7,11 @@ namespace trd
 	class DirectionalLight : public Light
 	{
 	public:
-		               DirectionalLight(const Vector3& color, Vector3 direction);
+		                    DirectionalLight(const Vector3& color, Vector3 direction);
 
-		const Vector3& getDirection() const;
+		const tr::QuadVec3& getDirection() const;
 
 	private:
-		Vector3        m_direction;
+		tr::QuadVec3        m_direction;
 	};
 }
