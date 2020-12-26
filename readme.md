@@ -8,7 +8,8 @@ This demo features:
 * Multithreaded scan-line interleave
 
 It uses the [triangle-rasterizer](https://github.com/frmr/triangle-rasterizer) library, which features:
-* Scan-line triangle rasterization
+* Quad-based triangle rasterization
+* Multithreaded tiled rendering
 * Z-buffer
 * Affine and perspective-correct texture mapping
 * Texture repeat/clamp
@@ -16,10 +17,9 @@ It uses the [triangle-rasterizer](https://github.com/frmr/triangle-rasterizer) l
 * Backface culling
 * Position/normal interpolation
 * Triange/strip/fan
-* Scan-line interleave
 * Render to texture
 * Depth bias
-* Customizable fragment shaders
+* Programmable fragment shaders
 
 ## Instructions
 | Key | Action |
@@ -27,8 +27,10 @@ It uses the [triangle-rasterizer](https://github.com/frmr/triangle-rasterizer) l
 | WASD | Move camera |
 | Space | Move camera up |
 | Ctrl | Move camera down |
+| F12 | Take screenshot |
 | P | Pause animation |
 | R | Resolution |
+| L | Tile size |
 | T | Threads |
 | H | Horizontal FOV |
 | F | Fragment shader mode |
