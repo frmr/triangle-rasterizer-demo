@@ -14,7 +14,7 @@ namespace trd
 	public:
 		                   Scene();
 
-		void               draw(const Camera& camera, tr::Rasterizer<Shader>& rasterizer, Shader& shader, tr::ColorBuffer& colorBuffer, tr::DepthBuffer& depthBuffer) const;
+		void               draw(const size_t numThreads, const Camera& camera, tr::Rasterizer<Shader>& rasterizer, Shader& shader, tr::ColorBuffer& colorBuffer, tr::DepthBuffer& depthBuffer) const;
 		void               update(const Vector3& cameraPosition, const bool animationsPaused, const float frameTime, const float deltaTime);
 
 	private:

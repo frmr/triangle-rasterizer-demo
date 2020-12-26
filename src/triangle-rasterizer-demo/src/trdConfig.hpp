@@ -11,6 +11,7 @@ namespace trd
 		           Config();
 
 		ScreenSize getCustomScreenSize() const;
+		ScreenSize getCustomTileSize() const;
 		float      getMouseSensitivity() const;
 
 	private:
@@ -20,6 +21,7 @@ namespace trd
 
 	private:
 		ScreenSize m_customScreenSize;
+		ScreenSize m_customTileSize;
 		float      m_mouseSensitivity;
 	};
 }

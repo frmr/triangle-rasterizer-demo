@@ -11,6 +11,7 @@ void trd::Instructions::draw(const Settings& settings, tr::ColorBuffer& buffer)
 	lines.push_back(tf::String(""));
 	lines.push_back(tf::String("P:     Pause animation      {}",    { settings.getPauseAnimation() ? "Paused" : "Not paused" }));
 	lines.push_back(tf::String("R:     Resolution           {}x{}", { std::to_string(settings.getScreenSize().width), std::to_string(settings.getScreenSize().height) }));
+	lines.push_back(tf::String("L:     Tile size            {}x{}", { std::to_string(settings.getTileSize().width), std::to_string(settings.getTileSize().height) }));
 	lines.push_back(tf::String("T:     Threads              {}",    { std::to_string(settings.getNumThreads()) }));
 	lines.push_back(tf::String("H:     Horizontal FOV       {}",    { std::to_string(settings.getFov()) }));
 	lines.push_back(tf::String("F:     Fragment shader mode {}",    { convertRenderModeToString(settings.getRenderMode()) }));

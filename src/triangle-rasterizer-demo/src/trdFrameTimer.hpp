@@ -8,21 +8,22 @@ namespace trd
 	class FrameTimer : public TextRenderer
 	{
 	public:
-		                  FrameTimer();
+		                       FrameTimer();
 
-		void              draw(const ScreenSize& screenSize, tr::ColorBuffer& buffer) const;
-		void              update();
-		float             getFrameTime() const;
-		float             getDeltaTime() const;
-
-	private:
-		static tf::String toString(const double value, const uint8_t decimalPlaces);
+		void                   draw(const ScreenSize& screenSize, tr::ColorBuffer& buffer) const;
+		void                   update();
+		float                  getFrameTime() const;
+		float                  getDeltaTime() const;
 
 	private:
-		tf::Timer         m_frameTimer;
-		float             m_frameTime;
-		float             m_cumulativeFrameTime;
-		size_t            m_frameCount;
-		float             m_averageFrameTime;
+		static tf::String      toString(const double value, const uint8_t decimalPlaces);
+
+	private:
+		static constexpr float s_samplePeriod = 1000.0f;
+		tf::Timer              m_frameTimer;
+		float                  m_frameTime;
+		float                  m_cumulativeFrameTime;
+		size_t                 m_frameCount;
+		float                  m_averageFrameTime;
 	};
 }

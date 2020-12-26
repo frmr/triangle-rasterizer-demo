@@ -10,12 +10,12 @@ trd::PointLight::PointLight(const Vector3& color, const Vector3& position, const
 	assert(attenuation > 0.0f);
 }
 
-const Vector3& trd::PointLight::getPosition() const
+const tr::QuadVec3& trd::PointLight::getPosition() const
 {
 	return m_position;
 }
 
-float trd::PointLight::getAttenuation() const
+const tr::QuadFloat& trd::PointLight::getAttenuation() const
 {
 	return m_attenuation;
 }

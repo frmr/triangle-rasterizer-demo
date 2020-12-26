@@ -8,7 +8,7 @@
 
 trd::App::App() :
 	m_config(),
-	m_settings(m_config.getCustomScreenSize()),
+	m_settings(m_config.getCustomScreenSize(), m_config.getCustomTileSize()),
 	m_window(),
 	m_running(false),
 	m_colorBuffer(),
@@ -30,7 +30,7 @@ void trd::App::initWindow()
 	m_depthBuffer = tr::DepthBuffer(m_settings.getScreenSize().width, m_settings.getScreenSize().height);
 }
 
-void trd::App::updateInputs(const float deltaTime)
+void trd::App::updateInputs(const float deltaTime, bool& updateTiler)
 {
 	const InputState inputState = m_window.getInputState();
 	bool             reinitWindow;
@@ -41,7 +41,7 @@ void trd::App::updateInputs(const float deltaTime)
 		m_running = false;
 	}
 
-	m_settings.update(inputState, reinitWindow, reinitCamera);
+	m_settings.update(inputState, reinitWindow, reinitCamera, updateTiler);
 	m_camera.update(inputState, m_config.getMouseSensitivity(), deltaTime);
 
 	if (reinitWindow)
@@ -101,8 +101,15 @@ void trd::App::mainLoop()
 
 	while (m_running)
 	{
+		bool updateTiler;
+
 		frameTimer.update();
-		updateInputs(frameTimer.getDeltaTime());
+		updateInputs(frameTimer.getDeltaTime(), updateTiler);
+
+		if (updateTiler)
+		{
+			renderManager.updateTilerAttributes();
+		}
 
 		scene.update(m_camera.getPosition(), m_settings.getPauseAnimation(), frameTimer.getFrameTime(), frameTimer.getDeltaTime());
 		renderManager.draw(m_camera, m_colorBuffer, m_depthBuffer);

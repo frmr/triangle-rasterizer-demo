@@ -7,13 +7,13 @@ namespace trd
 	class PointLight : public Light
 	{
 	public:
-		               PointLight(const Vector3& color, const Vector3& position, const float attenuation);
+		                     PointLight(const Vector3& color, const Vector3& position, const float attenuation);
 
-		const Vector3& getPosition() const;
-		float          getAttenuation() const;
+		const tr::QuadVec3&  getPosition() const;
+		const tr::QuadFloat& getAttenuation() const;
 
 	private:
-		Vector3        m_position;
-		float          m_attenuation;
+		tr::QuadVec3         m_position;
+		tr::QuadFloat        m_attenuation;
 	};
 }

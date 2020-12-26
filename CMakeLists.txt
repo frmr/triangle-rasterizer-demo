@@ -10,7 +10,7 @@ if(NOT CMAKE_BUILD_TYPE)
 	set(CMAKE_BUILD_TYPE Release)
 endif()
 
-set(CMAKE_CXX_FLAGS "-Wall -Wextra -pthread -lm")
+set(CMAKE_CXX_FLAGS "-mavx2 -Wall -Wextra -pthread -lm")
 set(CMAKE_CXX_FLAGS_DEBUG "-g")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3")
 
@@ -34,10 +34,19 @@ set(TINYOBJLOADER_SOURCES
 
 set(TRIANGLE_RASTERIZER_SOURCES
 	src/triangle-rasterizer/src/matrix/Matrices.cpp
-	src/triangle-rasterizer/src/tr/trDefaultShader.cpp
-	src/triangle-rasterizer/src/tr/trDepthShader.cpp
+	src/triangle-rasterizer/src/tr/trColorBuffer.cpp
+	src/triangle-rasterizer/src/tr/trQuadColor.cpp
+	src/triangle-rasterizer/src/tr/trQuadFloat.cpp
+	src/triangle-rasterizer/src/tr/trQuadInt.cpp
+	src/triangle-rasterizer/src/tr/trQuadMask.cpp
+	src/triangle-rasterizer/src/tr/trQuadTransformedVertex.cpp
+	src/triangle-rasterizer/src/tr/trQuadVec2.cpp
+	src/triangle-rasterizer/src/tr/trQuadVec3.cpp
+	src/triangle-rasterizer/src/tr/trRect.cpp
 	src/triangle-rasterizer/src/tr/trTexture.cpp
+	src/triangle-rasterizer/src/tr/trTile.cpp
 	src/triangle-rasterizer/src/tr/trTransformedVertex.cpp
+	src/triangle-rasterizer/src/tr/trTriangle.cpp
 )
 
 set(TRIANGLE_RASTERIZER_DEMO_SOURCES
@@ -59,7 +68,6 @@ set(TRIANGLE_RASTERIZER_DEMO_SOURCES
 	src/triangle-rasterizer-demo/src/trdModel.cpp
 	src/triangle-rasterizer-demo/src/trdPointLight.cpp
 	src/triangle-rasterizer-demo/src/trdRenderManager.cpp
-	src/triangle-rasterizer-demo/src/trdRenderThread.cpp
 	src/triangle-rasterizer-demo/src/trdScene.cpp
 	src/triangle-rasterizer-demo/src/trdSettings.cpp
 	src/triangle-rasterizer-demo/src/trdShader.cpp
@@ -81,6 +89,8 @@ add_executable(triangle-rasterizer-demo
 )
 
 add_subdirectory(src/sdl)
+
+target_compile_definitions(triangle-rasterizer-demo PRIVATE TR_SIMD)
 
 target_include_directories(triangle-rasterizer-demo PUBLIC
 	src/triangle-rasterizer/src/tr

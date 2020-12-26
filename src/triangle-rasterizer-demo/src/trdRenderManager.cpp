@@ -3,51 +3,40 @@
 
 trd::RenderManager::RenderManager(const Settings& settings, const Scene& scene) :
 	m_settings(settings),
-	m_scene(scene)
+	m_scene(scene),
+	m_rasterizer(m_settings.getScreenSize().width, m_settings.getScreenSize().height, m_settings.getTileSize().width, m_settings.getTileSize().height)
 {
 }
 
-trd::RenderManager::~RenderManager()
+void trd::RenderManager::updateTilerAttributes()
 {
-	killThreads();
+	m_rasterizer.setTilerAttributes(m_settings.getScreenSize().width, m_settings.getScreenSize().height, m_settings.getTileSize().width, m_settings.getTileSize().height);
 }
 
 void trd::RenderManager::draw(const Camera& camera, tr::ColorBuffer& colorBuffer, tr::DepthBuffer& depthBuffer)
 {
 	depthBuffer.fill(1.0f);
 
-	if (m_settings.getNumThreads() != m_threads.size())
-	{
-		initThreads(m_settings.getNumThreads());
-	}
+	m_rasterizer.setCullFaceMode(tr::CullFaceMode::Front);
+	m_rasterizer.setPrimitive(tr::Primitive::Triangles);
+	m_rasterizer.setDepthTest(true);
 
-	for (auto& thread : m_threads)
-	{
-		thread->draw(camera, colorBuffer, depthBuffer);
-	}
+	setTextureMode();
+	m_shader.setRenderMode(m_settings.getRenderMode());
+	m_shader.setBilinearFiltering(m_settings.getBilinearFiltering());
 
-	for (auto& thread : m_threads)
-	{
-		thread->wait();
-	}
+	m_scene.draw(m_settings.getNumThreads(), camera, m_rasterizer, m_shader, colorBuffer, depthBuffer);
 }
 
-void trd::RenderManager::initThreads(const size_t numThreads)
+void trd::RenderManager::setTextureMode()
 {
-	killThreads();
-
-	for (size_t i = 0; i < numThreads; ++i)
+	if (m_settings.getTextureMode() == TextureMode::Off)
 	{
-		m_threads.emplace_back(new RenderThread(i, m_settings, m_scene));
+		m_shader.setUseTexture(false);
 	}
-}
-
-void trd::RenderManager::killThreads()
-{
-	for (auto& thread : m_threads)
+	else
 	{
-		thread->kill();
+		m_shader.setUseTexture(true);
+		m_rasterizer.setTextureMode(m_settings.getTextureMode() == TextureMode::Affine ? tr::TextureMode::Affine : tr::TextureMode::Perspective);
 	}
-
-	m_threads.clear();
 }

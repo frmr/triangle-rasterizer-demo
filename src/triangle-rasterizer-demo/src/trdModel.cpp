@@ -11,7 +11,7 @@ trd::Model::Model(const tf::String& meshFilename, MeshMap& meshMap, const Vector
 	recalculateMatrix();
 }
 
-void trd::Model::draw(const Vector3& cameraPosition, const bool sort, tr::Rasterizer<Shader>& rasterizer, Shader& shader, tr::ColorBuffer& colorBuffer, tr::DepthBuffer& depthBuffer) const
+void trd::Model::queueTriangles(const Vector3& cameraPosition, const bool sort, tr::Rasterizer<Shader>& rasterizer, Shader& shader) const
 {
 	rasterizer.setModelMatrix(m_matrix);
 
@@ -22,7 +22,7 @@ void trd::Model::draw(const Vector3& cameraPosition, const bool sort, tr::Raster
 		shader.setRenderMode(RenderMode::FullBright);
 	}
 
-	m_mesh->draw(cameraPosition, sort, rasterizer, shader, colorBuffer, depthBuffer);
+	m_mesh->queueTriangles(cameraPosition, sort, rasterizer, shader);
 
 	shader.setRenderMode(originalRenderMode);
 }

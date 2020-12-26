@@ -8,7 +8,7 @@ trd::Scene::Scene() :
 	createScene();
 }
 
-void trd::Scene::draw(const Camera& camera, tr::Rasterizer<Shader>& rasterizer, Shader& shader, tr::ColorBuffer& colorBuffer, tr::DepthBuffer& depthBuffer) const
+void trd::Scene::draw(const size_t numThreads, const Camera& camera, tr::Rasterizer<Shader>& rasterizer, Shader& shader, tr::ColorBuffer& colorBuffer, tr::DepthBuffer& depthBuffer) const
 {
 	Lights lights = m_lights;
 
@@ -21,10 +21,13 @@ void trd::Scene::draw(const Camera& camera, tr::Rasterizer<Shader>& rasterizer, 
 
 	for (const Model& model : m_models)
 	{
-		model.draw(camera.getPosition(), false, rasterizer, shader, colorBuffer, depthBuffer);
+		model.queueTriangles(camera.getPosition(), false, rasterizer, shader);
 	}
 
-	m_hologramManager.drawHologram(camera.getPosition(), rasterizer, shader, colorBuffer, depthBuffer);
+	m_hologramManager.queueHologram(camera.getPosition(), rasterizer, shader);
+
+	rasterizer.draw(numThreads, colorBuffer, depthBuffer);
+	rasterizer.clear();
 }
 
 void trd::Scene::update(const Vector3& cameraPosition, const bool pauseAnimation, const float frameTime, const float deltaTime)

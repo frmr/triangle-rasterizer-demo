@@ -11,12 +11,13 @@ namespace trd
 	class Settings
 	{
 	public:
-		                        Settings(const ScreenSize& customScreenSize);
+		                        Settings(const ScreenSize& customScreenSize, const ScreenSize& customTileSize);
 
-		void                    update(const InputState& inputState, bool& reinitWindow, bool& reinitCamera);
+		void                    update(const InputState& inputState, bool& reinitWindow, bool& reinitCamera, bool& updateTiler);
 
 		bool                    getPauseAnimation() const;
 		ScreenSize              getScreenSize() const;
+		ScreenSize              getTileSize() const;
 		bool                    getFullscreen() const;
 		RenderMode              getRenderMode() const;
 		unsigned int            getNumThreads() const;
@@ -32,6 +33,7 @@ namespace trd
 	private:
 		void                    togglePauseAnimation();
 		void                    cycleScreenSize();
+		void                    cycleTileSize();
 		void                    toggleFullscreen();
 		void                    cycleRenderMode();
 		void                    cycleNumThreads();
@@ -45,6 +47,8 @@ namespace trd
 		bool                    m_pauseAnimation;
 		std::vector<ScreenSize> m_screenSizes;
 		size_t                  m_screenSizeIndex;
+		std::vector<ScreenSize> m_tileSizes;
+		size_t                  m_tileSizeIndex;
 		bool                    m_fullscreen;
 		RenderMode              m_renderMode;
 		unsigned int            m_numThreads;

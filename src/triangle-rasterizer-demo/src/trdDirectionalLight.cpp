@@ -6,7 +6,7 @@ trd::DirectionalLight::DirectionalLight(const Vector3& color, Vector3 direction)
 {
 }
 
-const Vector3& trd::DirectionalLight::getDirection() const
+const tr::QuadVec3& trd::DirectionalLight::getDirection() const
 {
 	return m_direction;
 }

@@ -14,7 +14,7 @@ namespace trd
 	public:
 		                  Model(const tf::String& meshFilename, MeshMap& meshMap, const Vector3& position, const Vector3& rotation, const bool fullBright);
 
-		void              draw(const Vector3& cameraPosition, const bool sort, tr::Rasterizer<Shader>& rasterizer, Shader& shader, tr::ColorBuffer& colorBuffer, tr::DepthBuffer& depthBuffer) const;
+		void              queueTriangles(const Vector3& cameraPosition, const bool sort, tr::Rasterizer<Shader>& rasterizer, Shader& shader) const;
 
 		void              translate(const Vector3& translation);
 		void              rotate(const Vector3& rotation);

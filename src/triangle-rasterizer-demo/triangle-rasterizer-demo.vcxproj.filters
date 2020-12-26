@@ -5,9 +5,6 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Source Files\Cameras">
-      <UniqueIdentifier>{a53edc92-2e2b-4b98-a3a4-564df6bb00c5}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\enums">
       <UniqueIdentifier>{a0cc3e9b-5fa2-49a0-9c0a-68279ce8ce73}</UniqueIdentifier>
     </Filter>
@@ -22,9 +19,6 @@
     <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\trdAmbientLight.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\trdApp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -35,9 +29,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\trdControlledCamera.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\trdDirectionalLight.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\trdFrameTimer.cpp">
@@ -67,13 +58,7 @@
     <ClCompile Include="src\trdModel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\trdPointLight.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\trdRenderManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\trdRenderThread.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\trdScene.cpp">
@@ -94,11 +79,17 @@
     <ClCompile Include="src\trdWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\trdAmbientLight.cpp">
+      <Filter>Source Files\Lights</Filter>
+    </ClCompile>
+    <ClCompile Include="src\trdDirectionalLight.cpp">
+      <Filter>Source Files\Lights</Filter>
+    </ClCompile>
+    <ClCompile Include="src\trdPointLight.cpp">
+      <Filter>Source Files\Lights</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\trdAmbientLight.hpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\trdApp.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
@@ -111,16 +102,7 @@
     <ClInclude Include="src\trdControlledCamera.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\trdCorner.hpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\trdDigitalInput.hpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\trdDirectionalLight.hpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\trdExternalLibraryException.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="src\trdFont.hpp">
@@ -138,16 +120,7 @@
     <ClInclude Include="src\trdInstructions.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\trdInvalidFileException.hpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\trdKey.hpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\trdLight.hpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\trdLightComponent.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="src\trdLights.hpp">
@@ -159,22 +132,13 @@
     <ClInclude Include="src\trdMeshMap.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\trdMissingFileException.hpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\trdModel.hpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\trdPointLight.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="src\trdRenderManager.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="src\trdRenderMode.hpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\trdRenderThread.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="src\trdScene.hpp">
@@ -192,23 +156,50 @@
     <ClInclude Include="src\trdShader.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\trdTextAlign.hpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\trdTextRenderer.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="src\trdTextureMap.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\trdTextureMode.hpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\trdUnsupportedFileException.hpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\trdWindow.hpp">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\trdExternalLibraryException.hpp">
+      <Filter>Source Files\Exceptions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\trdInvalidFileException.hpp">
+      <Filter>Source Files\Exceptions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\trdMissingFileException.hpp">
+      <Filter>Source Files\Exceptions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\trdUnsupportedFileException.hpp">
+      <Filter>Source Files\Exceptions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\trdAmbientLight.hpp">
+      <Filter>Source Files\Lights</Filter>
+    </ClInclude>
+    <ClInclude Include="src\trdDirectionalLight.hpp">
+      <Filter>Source Files\Lights</Filter>
+    </ClInclude>
+    <ClInclude Include="src\trdPointLight.hpp">
+      <Filter>Source Files\Lights</Filter>
+    </ClInclude>
+    <ClInclude Include="src\trdCorner.hpp">
+      <Filter>Source Files\enums</Filter>
+    </ClInclude>
+    <ClInclude Include="src\trdKey.hpp">
+      <Filter>Source Files\enums</Filter>
+    </ClInclude>
+    <ClInclude Include="src\trdLightComponent.hpp">
+      <Filter>Source Files\enums</Filter>
+    </ClInclude>
+    <ClInclude Include="src\trdTextureMode.hpp">
+      <Filter>Source Files\enums</Filter>
+    </ClInclude>
+    <ClInclude Include="src\trdTextAlign.hpp">
+      <Filter>Source Files\enums</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

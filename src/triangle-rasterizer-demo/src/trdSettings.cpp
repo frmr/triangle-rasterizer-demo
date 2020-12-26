@@ -1,9 +1,10 @@
 #include "trdSettings.hpp"
 #include <thread>
 
-trd::Settings::Settings(const ScreenSize& customScreenSize) :
+trd::Settings::Settings(const ScreenSize& customScreenSize, const ScreenSize& customTileSize) :
 	m_pauseAnimation(false),
 	m_screenSizeIndex(0),
+	m_tileSizeIndex(3),
 	m_fullscreen(false),
 	m_renderMode(RenderMode::Lit),
 	m_numThreads(std::thread::hardware_concurrency()),
@@ -22,27 +23,53 @@ trd::Settings::Settings(const ScreenSize& customScreenSize) :
 		m_screenSizes.push_back(customScreenSize);
 	}
 
+	// Comments indicate number of tiles on each axis at 3840x2160
+	m_tileSizes.push_back({   16,   16 });
+	m_tileSizes.push_back({   80,   45 }); // 48
+	m_tileSizes.push_back({   96,   54 }); // 40
+	m_tileSizes.push_back({  128,   72 }); // 30
+	m_tileSizes.push_back({  160,   90 }); // 24
+	m_tileSizes.push_back({  192,  108 }); // 20
+	m_tileSizes.push_back({  240,  135 }); // 16
+	m_tileSizes.push_back({  256,  144 }); // 15
+	m_tileSizes.push_back({  320,  180 }); // 12
+	m_tileSizes.push_back({  384,  216 }); // 10
+	m_tileSizes.push_back({  480,  270 }); // 8
+	m_tileSizes.push_back({  640,  360 }); // 6
+	m_tileSizes.push_back({  768,  432 }); // 5
+	m_tileSizes.push_back({  960,  540 }); // 4
+	m_tileSizes.push_back({ 1280,  720 }); // 3
+	m_tileSizes.push_back({ 1920, 1080 }); // 2
+	m_tileSizes.push_back({ 3840, 2160 }); // 1
+
+	if (customTileSize.width > 0 && customTileSize.height > 0)
+	{
+		m_tileSizes.push_back(customTileSize);
+	}
+
 	m_fovs.push_back(60);
 	m_fovs.push_back(90);
 	m_fovs.push_back(110);
 }
 
-void trd::Settings::update(const InputState& inputState, bool& reinitWindow, bool& reinitCamera)
+void trd::Settings::update(const InputState& inputState, bool& reinitWindow, bool& reinitCamera, bool& updateTiler)
 {
 	reinitWindow = false;
 	reinitCamera = false;
+	updateTiler  = false;
 
-	if (inputState.getKeyState(Key::ChangeSettingPauseAnimation    ).pressed) { togglePauseAnimation();                           }
-	if (inputState.getKeyState(Key::ChangeSettingResolution        ).pressed) { cycleScreenSize();           reinitWindow = true; }
-	if (inputState.getKeyState(Key::ChangeSettingThreads           ).pressed) { cycleNumThreads();                                }
-	if (inputState.getKeyState(Key::ChangeSettingHorizontalFov     ).pressed) { cycleFov();                  reinitCamera = true; }
-	if (inputState.getKeyState(Key::ChangeSettingFragmentShaderMode).pressed) { cycleRenderMode();                                }
-	if (inputState.getKeyState(Key::ChangeSettingTextureMapping    ).pressed) { cycleTextureMode();                               }
-	if (inputState.getKeyState(Key::ChangeSettingBilinearFiltering ).pressed) { toggleBilinearFiltering();                        }
-	if (inputState.getKeyState(Key::ChangeSettingInstructions      ).pressed) { toggleInstructionsEnabled();                      }
-	if (inputState.getKeyState(Key::ChangeSettingFrameRateCounter  ).pressed) { toggleFrameRateEnabled();                         }
-	if (inputState.getKeyState(Key::ChangeSettingFullscreen        ).pressed) { toggleFullscreen();          reinitWindow = true; }
-	if (inputState.getKeyState(Key::TakeScreenshot                 ).pressed) { m_takeScreenshot = true; }
+	if (inputState.getKeyState(Key::ChangeSettingPauseAnimation    ).pressed) { togglePauseAnimation();                                               }
+	if (inputState.getKeyState(Key::ChangeSettingResolution        ).pressed) { cycleScreenSize();           reinitWindow = true; updateTiler = true; }
+	if (inputState.getKeyState(Key::ChangeSettingTileSize          ).pressed) { cycleTileSize();             updateTiler  = true;                     }
+	if (inputState.getKeyState(Key::ChangeSettingThreads           ).pressed) { cycleNumThreads();                                                    }
+	if (inputState.getKeyState(Key::ChangeSettingHorizontalFov     ).pressed) { cycleFov();                  reinitCamera = true;                     }
+	if (inputState.getKeyState(Key::ChangeSettingFragmentShaderMode).pressed) { cycleRenderMode();                                                    }
+	if (inputState.getKeyState(Key::ChangeSettingTextureMapping    ).pressed) { cycleTextureMode();                                                   }
+	if (inputState.getKeyState(Key::ChangeSettingBilinearFiltering ).pressed) { toggleBilinearFiltering();                                            }
+	if (inputState.getKeyState(Key::ChangeSettingInstructions      ).pressed) { toggleInstructionsEnabled();                                          }
+	if (inputState.getKeyState(Key::ChangeSettingFrameRateCounter  ).pressed) { toggleFrameRateEnabled();                                             }
+	if (inputState.getKeyState(Key::ChangeSettingFullscreen        ).pressed) { toggleFullscreen();          reinitWindow = true;                     }
+	if (inputState.getKeyState(Key::TakeScreenshot                 ).pressed) { m_takeScreenshot = true;                                              }
 }
 
 void trd::Settings::togglePauseAnimation()
@@ -53,6 +80,11 @@ void trd::Settings::togglePauseAnimation()
 void trd::Settings::cycleScreenSize()
 {
 	++m_screenSizeIndex %= m_screenSizes.size();
+}
+
+void trd::Settings::cycleTileSize()
+{
+	++m_tileSizeIndex %= m_tileSizes.size();
 }
 
 void trd::Settings::toggleFullscreen()
@@ -114,6 +146,11 @@ bool trd::Settings::getPauseAnimation() const
 trd::ScreenSize trd::Settings::getScreenSize() const
 {
 	return m_screenSizes.at(m_screenSizeIndex);
+}
+
+trd::ScreenSize trd::Settings::getTileSize() const
+{
+	return m_tileSizes.at(m_tileSizeIndex);
 }
 
 bool trd::Settings::getFullscreen() const
