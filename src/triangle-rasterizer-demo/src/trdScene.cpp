@@ -30,7 +30,7 @@ void trd::Scene::draw(const size_t numThreads, const Camera& camera, tr::Rasteri
 	rasterizer.clear();
 }
 
-void trd::Scene::update(const Vector3& cameraPosition, const bool pauseAnimation, const float frameTime, const float deltaTime)
+void trd::Scene::update(const bool pauseAnimation, const float frameTime)
 {
 	if (!pauseAnimation)
 	{

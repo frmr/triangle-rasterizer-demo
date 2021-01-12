@@ -62,9 +62,9 @@ void trd::App::saveColorBufferToFile()
 	tr::ColorBuffer rgbaBuffer       = m_colorBuffer;
 
 	// Flip red and blue channels for PNG
-	for (size_t x = 0; x < rgbaBuffer.getWidth(); ++x)
+	for (size_t x = 0; x < size_t(rgbaBuffer.getWidth()); ++x)
 	{
-		for (size_t y = 0; y < rgbaBuffer.getHeight(); ++y)
+		for (size_t y = 0; y < size_t(rgbaBuffer.getHeight()); ++y)
 		{
 			tr::Color& pixel = rgbaBuffer.at(x, y);
 
@@ -111,7 +111,7 @@ void trd::App::mainLoop()
 			renderManager.updateTilerAttributes();
 		}
 
-		scene.update(m_camera.getPosition(), m_settings.getPauseAnimation(), frameTimer.getFrameTime(), frameTimer.getDeltaTime());
+		scene.update(m_settings.getPauseAnimation(), frameTimer.getFrameTime());
 		renderManager.draw(m_camera, m_colorBuffer, m_depthBuffer);
 
 		if (m_settings.getTakeScreenshot())

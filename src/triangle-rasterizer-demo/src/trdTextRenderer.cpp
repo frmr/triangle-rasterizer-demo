@@ -68,6 +68,8 @@ void trd::TextRenderer::drawText(const std::vector<tf::String>& lines, const tr:
 		bottom = screenBounds.y;
 		right  = screenBounds.x;
 		break;
+	default:
+		return;
 	}
 
 	for (size_t y = top; y <= bottom; ++y)
