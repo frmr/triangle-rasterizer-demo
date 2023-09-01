@@ -34,7 +34,7 @@ Vector2 trd::Camera::getRotation() const
 	return m_rotation;
 }
 
-Matrix4 trd::Camera::getProjectionViewMatrix() const
+Matrix4 trd::Camera::getViewMatrix() const
 {
 	Matrix4 viewMatrix;
 
@@ -42,7 +42,12 @@ Matrix4 trd::Camera::getProjectionViewMatrix() const
 	viewMatrix.rotateY(-m_rotation.y);
 	viewMatrix.rotateX(-m_rotation.x);
 
-	return m_projectionMatrix * viewMatrix;
+	return viewMatrix;
+}
+
+Matrix4 trd::Camera::getProjectionMatrix() const
+{
+	return m_projectionMatrix;
 }
 
 void trd::Camera::setPerspective(const float left, const float right, const float bottom, const float top, const float near, const float far)

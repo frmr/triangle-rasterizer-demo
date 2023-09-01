@@ -19,7 +19,8 @@ namespace trd
 		Vector3      getPosition() const;
 		Vector2      getRotation() const;
 
-		Matrix4      getProjectionViewMatrix() const;
+		Matrix4      getViewMatrix() const;
+		Matrix4      getProjectionMatrix() const;
 
 	protected:
 		void         setPerspective(const float left, const float right, const float bottom, const float top, const float near, const float far);

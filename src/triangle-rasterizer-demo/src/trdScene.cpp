@@ -15,7 +15,8 @@ void trd::Scene::draw(const size_t numThreads, const Camera& camera, tr::Rasteri
 	lights.addLight(m_hologramManager.getLight());
 
 	shader.setLights(lights);
-	rasterizer.setProjectionViewMatrix(camera.getProjectionViewMatrix());
+	rasterizer.setProjectionMatrix(camera.getProjectionMatrix());
+	rasterizer.setViewMatrix(camera.getViewMatrix());
 	rasterizer.setCullFaceMode(tr::CullFaceMode::Front);
 	shader.setAlpha(1.0f);
 
