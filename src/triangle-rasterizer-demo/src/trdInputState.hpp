@@ -3,6 +3,7 @@
 #include "trdDigitalInput.hpp"
 #include "trdKey.hpp"
 #include <map>
+#include <cstdint>
 
 namespace trd
 {

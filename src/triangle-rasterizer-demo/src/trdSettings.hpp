@@ -5,6 +5,7 @@
 #include "trdTextureMode.hpp"
 #include "trdInputState.hpp"
 #include <vector>
+#include <cstdint>
 
 namespace trd
 {
