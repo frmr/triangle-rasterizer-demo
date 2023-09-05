@@ -1,12 +1,12 @@
 #pragma once
 
-#include <cstddef>
+#include <cstdint>
 
 namespace trd
 {
 	struct ScreenSize
 	{
-		size_t width;
-		size_t height;
+		uint32_t width;
+		uint32_t height;
 	};
 }

@@ -15,7 +15,7 @@ namespace trd
 		float      getMouseSensitivity() const;
 
 	private:
-		size_t     getSizeT(const tf::String& keyName) const;
+		uint32_t   getU32(const tf::String& keyName) const;
 		float      getFloat(const tf::String& keyName) const;
 		tf::String getString(const tf::String& keyName) const;
 

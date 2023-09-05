@@ -3,8 +3,8 @@
 
 trd::Config::Config() :
 	tf::IniFile("trd.ini"),
-	m_customScreenSize({ getSizeT("customResolutionX"), getSizeT("customResolutionY") }),
-	m_customTileSize({ getSizeT("customTileX"), getSizeT("customTileY") }),
+	m_customScreenSize({ getU32("customResolutionX"), getU32("customResolutionY") }),
+	m_customTileSize({ getU32("customTileX"), getU32("customTileY") }),
 	m_mouseSensitivity(getFloat("mouseSensitivity"))
 {
 }
@@ -24,12 +24,12 @@ float trd::Config::getMouseSensitivity() const
 	return m_mouseSensitivity;
 }
 
-size_t trd::Config::getSizeT(const tf::String& keyName) const
+uint32_t trd::Config::getU32(const tf::String& keyName) const
 {
 	try
 	{
 		const tf::String value = getString(keyName);
-		return value.empty() ? 0 : std::stoull(getString(keyName));
+		return value.empty() ? 0u : uint32_t(std::stoul(getString(keyName)));
 	}
 	catch (const std::exception&)
 	{
